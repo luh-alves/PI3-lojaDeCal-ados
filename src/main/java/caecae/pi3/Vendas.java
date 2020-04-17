@@ -18,9 +18,10 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author rolucon
  */
-@WebServlet(name = "Vendas", urlPatterns = {"/Vendas"})
+@WebServlet(name = "Vendas", urlPatterns = {"/vendas"})
 public class Vendas extends HttpServlet {
-
+    CarrinhoDeCompras carrinho = new CarrinhoDeCompras();
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -36,6 +37,8 @@ public class Vendas extends HttpServlet {
         
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/plain");
+        
+        request.setAttribute("listaProd", carrinho.getProdutos());
         
         RequestDispatcher dispatcher = request.getRequestDispatcher("vendas.jsp");
         dispatcher.forward(request, response);
@@ -55,6 +58,23 @@ public class Vendas extends HttpServlet {
         
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/plain");
+        
+        boolean finalizar = request.getParameter("finalizarBtt") != null;
+        boolean addProd = request.getParameter("addProdBtt") != null;
+        boolean remover = request.getParameter("removeBtt") != null;
+        boolean cancelar = request.getParameter("cancelarBtt") != null;
+        
+        
+        if(addProd){
+            carrinho.addProduto(10);
+            System.out.println("AddProd");
+        } else if(cancelar) {
+            carrinho.cancelaCompra();
+            request.setAttribute("cliente", "");
+        }
+        
+        System.out.println("Ta funcionando");
+        request.setAttribute("listaProd", carrinho.getProdutos());
         
         RequestDispatcher dispatcher = request.getRequestDispatcher("vendas.jsp");
         dispatcher.forward(request, response);

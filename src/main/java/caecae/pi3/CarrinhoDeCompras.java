@@ -42,4 +42,8 @@ public class CarrinhoDeCompras {
     public void cancelaCompra(){
         produtos.clear();
     }
+    
+    public ArrayList<Object> getProdutos(){
+        return produtos;
+    }
 }
