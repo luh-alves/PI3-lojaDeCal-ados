@@ -17,15 +17,22 @@ import caecae.pi3.model.VendaProdutoModel;
 public class VendaService {
     
     public void confirmaVenda(VendaModel venda){
+        boolean flag = true;
         VendaDao vendaDao = new VendaDao();
-        vendaDao.create(venda);
+        if(!vendaDao.create(venda)){
+            flag = false;
+        }
         
         for (Object produto : venda.getProdutos()) {
             VendaProdutoDao dao = new VendaProdutoDao();
             VendaProdutoModel vPModel = 
                 new VendaProdutoModel(venda.getIdVenda(), 0/*produto.getId()*/);
             
-            dao.create(vPModel);
+            if(!dao.create(vPModel)){
+                flag = false;
+            }
         }
+        
+        //Decrementa produtos e se tudo der certo atualiza else reverte
     }
 }

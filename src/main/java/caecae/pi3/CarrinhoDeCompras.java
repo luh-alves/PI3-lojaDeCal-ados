@@ -20,6 +20,7 @@ public class CarrinhoDeCompras {
     private ArrayList<Object> produtos; 
 
     public CarrinhoDeCompras() {
+        service = new VendaService();
         produtos = new ArrayList();
     }
     
@@ -31,12 +32,14 @@ public class CarrinhoDeCompras {
         //Procura produto e remove da lsita
     }
     
-    public void confirmaCompre(){
+    public void confirmaCompra(int idCliente){
         VendaModel venda = new VendaModel();
         venda.setDataVenda(new Date(System.currentTimeMillis()));
-        venda.setIdCliente(0); //Pegar o id do cliente
+        venda.setIdCliente(idCliente);
         venda.setProdutos(produtos);
         service.confirmaVenda(venda);
+        produtos.clear();
+        System.out.println("ID Cliente: " + idCliente);
     }
     
     public void cancelaCompra(){

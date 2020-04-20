@@ -40,7 +40,7 @@
                 <form id="form1" method="post" action="${pageContext.request.contextPath}/vendas" novalidate>
                     <div>
                         <label for="">Cliente: </label>
-                        <input type="text" name="cliente" value="${param.cliente}">
+                        <input type="text" name="cliente" value="${clienteAtr}">
                     </div>
                     <div>
                         <label for="">Produto: </label>

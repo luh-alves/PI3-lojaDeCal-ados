@@ -5,6 +5,7 @@
  */
 package caecae.pi3;
 
+import caecae.pi3.model.VendaModel;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -64,16 +65,22 @@ public class Vendas extends HttpServlet {
         boolean remover = request.getParameter("removeBtt") != null;
         boolean cancelar = request.getParameter("cancelarBtt") != null;
         
+        String cliente = request.getParameter("cliente");
         
         if(addProd){
             carrinho.addProduto(10);
             System.out.println("AddProd");
-        } else if(cancelar) {
+            request.setAttribute("clienteAtr", cliente);
+        } else if(remover){
+            request.setAttribute("clienteAtr", cliente);
+        }else if(cancelar) {
             carrinho.cancelaCompra();
-            request.setAttribute("cliente", "");
-        }
+        } else if(finalizar) {
+            int aux = Integer.parseInt(cliente);
+            carrinho.confirmaCompra(aux);
+            
+        } 
         
-        System.out.println("Ta funcionando");
         request.setAttribute("listaProd", carrinho.getProdutos());
         
         RequestDispatcher dispatcher = request.getRequestDispatcher("vendas.jsp");
