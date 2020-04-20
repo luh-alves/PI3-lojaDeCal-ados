@@ -3,7 +3,6 @@
     Created on : 14 de abr. de 2020, 20:58:20
     Author     : rolucon
 --%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
