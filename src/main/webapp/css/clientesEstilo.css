@@ -1,0 +1,185 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 16, 2020, 10:50:14 AM
+    Author     : felipeferreira
+*/
+
+/* Paleta de cores
+    #caecae
+    #82dee8
+    #ffed8f
+    #edeaa4
+    #81a167
+*/
+
+/* ---- Geral ---- */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    min-width: 700px;
+    background: #81a167;
+}
+
+button {
+    background: #82dee8;
+}
+
+input {
+    background: #fffbb0;
+}
+
+#imagem-topo{
+    background: #caecae;
+    text-indent: -9999px;
+}
+/* --- Header Menu Superior ---*/
+header{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding: 15px;
+    text-align: center;
+    background: #caecae;
+    min-width: 850px;
+}
+
+header ul {margin-top: 18px;
+    list-style: none;
+}
+
+header li {
+    display: inline-block;
+    margin: 0 10px;
+    color: black;
+}
+
+header a {
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+}
+header button{
+    margin-right: 20px;
+    width: 100px;
+    height: 25px;
+}
+
+.center{
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2%;
+}
+
+nome {
+    background: black;
+}
+
+#espacador {
+    margin-top: 80px;
+}
+
+/* ----- Corpo ------  */
+
+
+section {
+    border: 2px solid black;
+    background: #e6e29e;
+}
+
+form, .carrinho, .botoes {
+    border: 1px solid black;
+    margin: 10px 0;
+    padding: 15px;
+}
+
+form div{
+    margin: 10px 0px;
+}
+
+form input{
+    width: 60%;
+    margin-left: 10px;
+}
+
+.nome-aba, .titulo{
+    width: 100%;  
+    padding: 10px;
+    border: 1px solid black;
+    text-align: center;
+}
+
+.nome-aba{
+    margin: 25px 0;
+    font-size: 30px;
+}
+
+.botoes button {
+    height: 30px;
+    width: 100px;
+    margin: 0 10px;
+}
+
+.opcoes{
+    float: right;
+    width: 150px;
+    padding: 10px;
+    height: 150px;
+}
+
+.opcoes button{
+     height: 40px;
+    width: 100px;
+    padding: 10px;
+}
+
+.inputs{
+    display: inline-block;
+    width: 80%;
+}
+
+
+/* --- Coluna--- */
+#duas-col #tela{
+    width: 100%;
+    float: left;
+    margin: 0 0 10px 20px;
+    /* background: green; */
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
+.clientes .titulo {
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+.clientes th, .clientes td{
+    padding: 7px;
+}
+
+.clientes th {
+    text-transform: uppercase;
+    border: 1px solid black;
+    font-size: 90%;
+}
+
+tr:hover.hover{
+    background: #82dee8;
+}
+.dados{
+    text-align: center;
+}
