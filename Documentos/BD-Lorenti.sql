@@ -51,8 +51,10 @@ venda_id integer auto_increment not null unique,
 venda_data_venda datetime default current_timestamp,
 venda_func smallint not null,
 venda_val_total numeric(10,2) not null,
+venda_cli_id integer not null,
 primary key (venda_id),
-foreign key (venda_func) references funcionario(func_id)
+foreign key (venda_func) references funcionario(func_id),
+foreign key (venda_cli_id) references cliente(cli_id)
 );
 create table itens (
 it_produto integer not null,
