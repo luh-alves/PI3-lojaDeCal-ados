@@ -25,19 +25,12 @@ func_user varchar (40) not null unique,
 func_senha varchar(40)not null,
 primary key (func_id)
 );
-create table filial(
-fil_id integer auto_increment not null unique,
-fil_nome varchar(40) not null ,
-fil_endereco varchar(50) not null,
-fil_estado varchar(2) not null,
-primary key (fil_id)
-);
-create table matriz(
-mat_id integer auto_increment not null unique,
-mat_nome varchar(40) not null,
-mat_endereco varchar(50)not null,
-mat_estado varchar(2) not null,
-primary key (mat_id)
+create table Unidade(
+unid_id integer auto_increment not null unique,
+unid_nome varchar(40) not null ,
+unid_endereco varchar(50) not null,
+unid_estado varchar(2) not null,
+primary key (unid_id);
 );
 create table produto(
 prod_id integer auto_increment not null unique,
