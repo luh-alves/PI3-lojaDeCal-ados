@@ -30,7 +30,7 @@ unid_id integer auto_increment not null unique,
 unid_nome varchar(40) not null ,
 unid_endereco varchar(50) not null,
 unid_estado varchar(2) not null,
-primary key (unid_id);
+primary key (unid_id)
 );
 create table produto(
 prod_id integer auto_increment not null unique,
