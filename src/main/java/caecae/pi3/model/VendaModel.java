@@ -15,6 +15,8 @@ import java.util.Date;
 public class VendaModel {
     private int idVenda;
     private int idCliente;
+    private int idFuncionario;
+    private double valorTotal;
     private Date dataVenda;
     private ArrayList<Object> produtos;
 
@@ -32,6 +34,22 @@ public class VendaModel {
 
     public void setIdCliente(int idCliente) {
         this.idCliente = idCliente;
+    }
+
+    public int getIdFuncionario() {
+        return idFuncionario;
+    }
+
+    public void setIdFuncionario(int idFuncionario) {
+        this.idFuncionario = idFuncionario;
+    }
+
+    public double getValorTotal() {
+        return valorTotal;
+    }
+
+    public void setValorTotal(double valorTotal) {
+        this.valorTotal = valorTotal;
     }
 
     public Date getDataVenda() {
