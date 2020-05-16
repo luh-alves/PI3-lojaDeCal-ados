@@ -17,11 +17,15 @@ public class Cliente {
     private String cpf;
     private String nome;
     private String email;
-    private char sexo;
+    private String sexo;
     private Date dataNascimento;
 
     
-    public Cliente(String cpf, String nome, String email, char sexo, Date dataNascimento) {
+    public Cliente() {
+    }
+
+    
+    public Cliente(String cpf, String nome, String email, String sexo, Date dataNascimento) {
         this.cpf = cpf;
         this.nome = nome;
         this.email = email;
@@ -53,11 +57,11 @@ public class Cliente {
         this.email = email;
     }
 
-    public char getSexo() {
+    public String getSexo() {
         return sexo;
     }
 
-    public void setSexo(char sexo) {
+    public void setSexo(String sexo) {
         this.sexo = sexo;
     }
 
