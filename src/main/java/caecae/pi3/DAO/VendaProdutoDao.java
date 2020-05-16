@@ -36,7 +36,7 @@ public class VendaProdutoDao implements DaoInterface<VendaProdutoModel>{
     }
 
     @Override
-    public boolean delete(VendaProdutoModel t) throws DaoException {
+    public boolean delete(int id) throws DaoException {
         return false;
     }
     

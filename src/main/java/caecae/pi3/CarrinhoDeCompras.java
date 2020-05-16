@@ -37,7 +37,7 @@ public class CarrinhoDeCompras {
         venda.setDataVenda(new Date(System.currentTimeMillis()));
         venda.setIdCliente(idCliente);
         venda.setProdutos(produtos);
-        service.confirmaVenda(venda);
+        //service.confirmaVenda(venda);
         produtos.clear();
         System.out.println("ID Cliente: " + idCliente);
     }

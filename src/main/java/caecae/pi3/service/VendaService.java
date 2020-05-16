@@ -7,6 +7,7 @@ package caecae.pi3.service;
 
 import caecae.pi3.DAO.VendaDao;
 import caecae.pi3.DAO.VendaProdutoDao;
+import caecae.pi3.exception.DaoException;
 import caecae.pi3.model.VendaModel;
 import caecae.pi3.model.VendaProdutoModel;
 
@@ -14,9 +15,9 @@ import caecae.pi3.model.VendaProdutoModel;
  *
  * @author rolucon
  */
-public class VendaService {
+public class VendaService  {
     
-    public void confirmaVenda(VendaModel venda){
+    public void confirmaVenda(VendaModel venda) throws DaoException{
         boolean flag = true;
         VendaDao vendaDao = new VendaDao();
         if(!vendaDao.create(venda)){

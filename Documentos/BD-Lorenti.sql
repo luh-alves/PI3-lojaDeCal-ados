@@ -37,6 +37,7 @@ prod_id integer auto_increment not null unique,
 prod_nome varchar(40) not null,
 prod_qtd integer not null,
 prod_preco decimal(10,2) not null,
+prod_descr varchar(60) ,
 primary key (prod_id)
 );
 create table venda(

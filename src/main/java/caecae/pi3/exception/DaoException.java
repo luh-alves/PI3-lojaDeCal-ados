@@ -9,7 +9,7 @@ package caecae.pi3.exception;
  *
  * @author rolucon
  */
-public class DaoException extends RuntimeException {
+public class DaoException extends Exception {
        
     public DaoException(String cause) {
         super(cause);

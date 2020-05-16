@@ -4,6 +4,8 @@
     Author     : Luciana Alves
 --%>
 
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -33,29 +35,27 @@
             <div class="nome-aba">Cadastro de Produtos</div>
             <div class="container">
                 <div class="form-container">
-                    <form action="">
+                    <form action="${pageContext.request.contextPath}/produtos/salvar" method="POST">
                         <div>
                             <label for="">Nome: </label>
-                            <input type="text">
+                            <input type="text" name="nome">
                         </div>
                         <div>
                             <label for="">Valor: </label>
-                            <input type="text">
+                            <input type="text" name="valor">
                         </div>     
                         <div>
                             <label for="">Quantidade: </label>
-                            <input type="text">
+                            <input type="text" name="quantidade">
                         </div>     
                         <div>
                             <label for="">Descrição: </label>
-                            <input disabled type="text">
-                        </div>  
+                            <input type="text" name="descricao">
+                        </div> 
+                        <div class="buttons-container">
+                            <button type="submit" name="salvarBtt">Salvar Produto</button>
+                        </div>
                     </form>
-                </div>
-                <div class="buttons-container">
-                    <button>Salvar Produto</button>
-                    <button>Atualizar Produto</button>
-                    <button>Excluir Produto</button>
                 </div>
             </div>
             <div class="conteudo">
@@ -71,13 +71,28 @@
                         <th class="valor">Valor</th>
                         <th class="estoque">Estoque</th>
                         <th class="descricao">Descrição</th>
+                        <th class="acoes">Ações</th>
                     </tr>
-                    <tr class="hover">
-                        <td>Sapato Scarpin Dela</td>
-                        <td class="valor">R$ 60,00</td>
-                        <td class="estoque">8</td>
-                        <td class="descricao">Sapato femenino, preto, bico fino</td>
-                    </tr>
+                    <c:forEach items="${listaProdutos}" var="produto" >
+                        <tr class="hover">
+
+                            <td class="nome" ><c:out value="${produto.getNome()}"/></td>
+                            <td class="valor"><c:out value="${produto.getValor()}"/></td>
+                            <td class="estoque"><c:out value="${produto.getQuantidade()}"/></td>                           
+                            <td class="descricao"><c:out value="${produto.getDescricao()}"/></td>
+                            <td class="buttonExcluir">
+                                <form action="${pageContext.request.contextPath}/produtos/excluir" method="GET">
+                                    <input name="produtoId" value="${produto.getId()}" type="hidden"/>                        
+                                    <button type="submit">Excluir</button>
+                                </form>
+                                <button type="submit" name="atualizarBtt">Atualizar</button>
+                            </td>
+
+
+
+
+                        </tr>
+                    </c:forEach>
                 </table>
             </div><!--pesquisar-->
 

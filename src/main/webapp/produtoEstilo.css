@@ -114,7 +114,7 @@ form input{
 .form-container {
     width: 80%;
     float: left;
-    
+
 }
 
 .buttons-container {
@@ -125,7 +125,7 @@ form input{
     margin-top: 15px;
     justify-content: center;
     padding-left: 48px;
-    
+
 }
 .buttons-container button{
     width: 100px;
@@ -135,11 +135,14 @@ form input{
 table {
     width: 100%;
     border-collapse: collapse;
-    border: 1px solid black;    
+    border: 1px solid black;   
+
 
 }
+
 .pesquisar{
     margin-bottom: 15px;
+    
 }
 .conteudo{
     margin-bottom: 15px;
@@ -158,9 +161,6 @@ table {
     font-size: 90%;
 }
 
-tr:hover.hover{
-    background: #82dee8;
-}
 .nomeProduto{
     text-align: left;
 }
@@ -168,6 +168,14 @@ tr:hover.hover{
     text-align: center;
 }
 .estoque{
-    text-align: right;
+    text-align: center;
 }
 
+.buttonExcluir button:hover{
+    background: red;
+    color: white;
+}
+.buttonAtualizar button:hover{
+    background: green;
+    color: white;
+}

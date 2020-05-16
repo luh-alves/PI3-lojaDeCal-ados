@@ -5,7 +5,7 @@
     <artifactId>pi3</artifactId>
     <version>1.0</version>
     <packaging>war</packaging>
-    <name>pi3-1.0</name>
+    <name>lojacalcados</name>
     <organization>
         <name>Senac TADS PI3 / 2020 - Loja De Calçados</name>
     </organization>

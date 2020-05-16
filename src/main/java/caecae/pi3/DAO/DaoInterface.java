@@ -18,5 +18,5 @@ public interface DaoInterface<T> {
     public boolean create(T t) throws DaoException;
     public T read(int id) throws DaoException;
     public boolean update(T t) throws DaoException;
-    public boolean delete(T t) throws DaoException;
+    public boolean delete(int id) throws DaoException;
 }
