@@ -93,7 +93,7 @@ public class Vendas extends HttpServlet {
             int aux = Integer.parseInt(cliente);
             carrinho.confirmaCompra(aux);
         } 
-        
+        request.setAttribute("totalAtr", "R$: " + carrinho.getTotal());
         request.setAttribute("listaProd", carrinho.getProdutos());
         
         RequestDispatcher dispatcher = request.getRequestDispatcher("vendas.jsp");

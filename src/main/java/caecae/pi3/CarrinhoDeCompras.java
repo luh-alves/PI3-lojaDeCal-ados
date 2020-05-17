@@ -37,6 +37,7 @@ public class CarrinhoDeCompras {
         for (ProdutoModel produto : produtos) {
             if(produto.getId() == id){
                 produtos.remove(produto);
+                total -= produto.getValor() * produto.getQuantidade();
                 return;
             }
         }
@@ -50,6 +51,7 @@ public class CarrinhoDeCompras {
             venda.setDataVenda(new Date(System.currentTimeMillis()));
             venda.setIdCliente(idCliente);
             venda.setProdutos(produtos);
+            venda.setValorTotal(total);
             service.confirmaVenda(venda);
             produtos.clear();
             total = 0;

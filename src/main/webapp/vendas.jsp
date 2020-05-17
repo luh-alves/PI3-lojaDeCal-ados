@@ -90,7 +90,7 @@
                     </div>
                     <div class="valor-total">
                         <div>Valor Total</div>
-                        <input disabled type="text" name="total">
+                        <input disabled type="text" name="total" value="${totalAtr}">
                     </div>
                 </div><!--conteudo-->
             </div><!--segunda-->
