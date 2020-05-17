@@ -5,11 +5,14 @@
  */
 package caecae.pi3.service;
 
+import caecae.pi3.ConnectionFactory;
 import caecae.pi3.DAO.VendaDao;
-import caecae.pi3.DAO.VendaProdutoDao;
 import caecae.pi3.exception.DaoException;
 import caecae.pi3.model.VendaModel;
-import caecae.pi3.model.VendaProdutoModel;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
@@ -18,22 +21,7 @@ import caecae.pi3.model.VendaProdutoModel;
 public class VendaService  {
     
     public void confirmaVenda(VendaModel venda) throws DaoException{
-        boolean flag = true;
         VendaDao vendaDao = new VendaDao();
-        if(!vendaDao.create(venda)){
-            flag = false;
-        }
-        
-        for (Object produto : venda.getProdutos()) {
-            VendaProdutoDao dao = new VendaProdutoDao();
-            VendaProdutoModel vPModel = 
-                new VendaProdutoModel(venda.getIdVenda(), 0/*produto.getId()*/);
-            
-            if(!dao.create(vPModel)){
-                flag = false;
-            }
-        }
-        
-        //Decrementa produtos e se tudo der certo atualiza else reverte
+        vendaDao.create(venda);
     }
 }

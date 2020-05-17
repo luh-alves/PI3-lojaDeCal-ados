@@ -10,6 +10,7 @@
     <head>
         <title>CAECAE PI3</title>
         <link rel="stylesheet" href="vendaEstilo.css">
+        <script src="SelecionaLinha.js"></script> 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
     <body id="duas-col">
@@ -67,17 +68,17 @@
                         <div class="titulo">
                             Carrinho
                         </div><!--titulo-->
-                        <table>
-                            <tr>
+                        <table id="carrinho">
+                            <thead>
                                 <th class="prod">Produto</th>
                                 <th class="qtd">Quantidade</th>
                                 <th class="preco">Valor</th>
-                            </tr>
+                            </thead>
                             <c:forEach var="produto" items="${listaProd}">
                                 <tr class="hover">
-                                    <td>${produto}</td>
-                                    <td class="qtd">01</td>
-                                    <td class="preco">R$ 1000,00</td>
+                                    <td>${produto.nome}</td>
+                                    <td class="qtd">${produto.quantidade}</td>
+                                    <td class="preco">${produto.valor} R$</td>
                                 </tr>
                             </c:forEach>
                         </table>

@@ -150,6 +150,10 @@ table {
     font-size: 90%;
 }
 
+.carrinho tr td{
+    cursor: pointer;
+}
+
 tr:hover.hover{
     background: #82dee8;
 }
