@@ -10,7 +10,7 @@
     <head>
         <title>CAECAE PI3</title>
         <link rel="stylesheet" href="vendaEstilo.css">
-        <script src="SelecionaLinha.js"></script> 
+        <!--<script src="selecionaLinha.js"></script>--> 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
     <body id="duas-col">
@@ -54,6 +54,7 @@
                         <label for="">Valor: </label>
                         <input disabled type="text" name="valor">
                     </div> 
+                    <input id="linhaSelec" type="text" name="linhaSelec" value="-1" hidden="true"></input>
                 </form>
                 <div class="botoes">
                     <button form="form1" type="submit" name="finalizarBtt">Finalizar Venda</button>
@@ -68,14 +69,14 @@
                         <div class="titulo">
                             Carrinho
                         </div><!--titulo-->
-                        <table id="carrinho">
+                        <table id="tabela">
                             <thead>
                                 <th class="prod">Produto</th>
                                 <th class="qtd">Quantidade</th>
                                 <th class="preco">Valor</th>
                             </thead>
                             <c:forEach var="produto" items="${listaProd}">
-                                <tr class="hover">
+                                <tr id="${produto.id}" class="hover">
                                     <td>${produto.nome}</td>
                                     <td class="qtd">${produto.quantidade}</td>
                                     <td class="preco">${produto.valor} R$</td>
@@ -95,5 +96,31 @@
             </div><!--segunda-->
             <div style="clear: both;"></div>
         </section><!--center-->
+        
+       
+        <script>
+            var tabela = document.getElementById("tabela");
+            var linhas = tabela.getElementsByTagName("tr");
+            var valor = document.getElementById("linhaSelec");
+            
+            for(var i = 0; i < linhas.length; i++){
+                    var linha = linhas[i];
+              linha.addEventListener("click", function(){
+                            selLinha(this, false); 
+                    });
+            }
+
+            function selLinha(linha, multiplos){
+              if(!multiplos){
+                    var linhas = linha.parentElement.getElementsByTagName("tr");
+                    for(var i = 0; i < linhas.length; i++){
+                       var linha_ = linhas[i];
+                       linha_.classList.remove("selecionado");    
+                    }
+              }
+              linha.classList.toggle("selecionado");
+              valor.value = linha.id;
+            }
+        </script>
     </body>
 </html>

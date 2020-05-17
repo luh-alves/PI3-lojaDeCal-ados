@@ -70,8 +70,8 @@ public class Vendas extends HttpServlet {
         boolean addProd = request.getParameter("addProdBtt") != null;
         boolean remover = request.getParameter("removeBtt") != null;
         boolean cancelar = request.getParameter("cancelarBtt") != null;
-        
         String cliente = request.getParameter("cliente");
+        int idProd = Integer.parseInt(request.getParameter("linhaSelec"));
         
         if(addProd){
             ProdutoDao pdao = new ProdutoDao();//Gerar um produto pelo id
@@ -83,10 +83,10 @@ public class Vendas extends HttpServlet {
             } catch (DaoException ex) {
                 Logger.getLogger(Vendas.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
             request.setAttribute("clienteAtr", cliente);
         } else if(remover){
             request.setAttribute("clienteAtr", cliente);
+            carrinho.removeProduto(idProd);
         }else if(cancelar) {
             carrinho.cancelaCompra();
         } else if(finalizar) {

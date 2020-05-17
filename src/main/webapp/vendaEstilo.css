@@ -157,6 +157,7 @@ table {
 tr:hover.hover{
     background: #82dee8;
 }
+
 .prod{
     text-align: left;
 }
@@ -182,4 +183,7 @@ tr:hover.hover{
 }
 .valor-total input{
     height: 30px;
+}
+#tabela tr.hover.selecionado{
+  background: #aff7ff;
 }

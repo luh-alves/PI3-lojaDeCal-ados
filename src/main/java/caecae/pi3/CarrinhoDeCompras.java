@@ -33,8 +33,15 @@ public class CarrinhoDeCompras {
         total += produto.getValor() * produto.getQuantidade();
     }
     
-    public void removeProduto(ProdutoModel produto) {
+    public void removeProduto(int id) {
+        for (ProdutoModel produto : produtos) {
+            if(produto.getId() == id){
+                produtos.remove(produto);
+                return;
+            }
+        }
         //Procura produto e remove da lsita
+        
     }
     
     public void confirmaCompra(int idCliente){
