@@ -5,9 +5,15 @@
  */
 package caecae.pi3;
 
+import caecae.pi3.DAO.ProdutoDao;
+import caecae.pi3.exception.DaoException;
+import caecae.pi3.model.ProdutoModel;
 import caecae.pi3.model.VendaModel;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -68,8 +74,16 @@ public class Vendas extends HttpServlet {
         String cliente = request.getParameter("cliente");
         
         if(addProd){
-            carrinho.addProduto(10);
-            System.out.println("AddProd");
+            ProdutoDao pdao = new ProdutoDao();//Gerar um produto pelo id
+            try {
+                ArrayList<ProdutoModel> prods = pdao.getAll();
+                for (ProdutoModel prod : prods) {
+                    carrinho.addProduto(prod);
+                }
+            } catch (DaoException ex) {
+                Logger.getLogger(Vendas.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
             request.setAttribute("clienteAtr", cliente);
         } else if(remover){
             request.setAttribute("clienteAtr", cliente);
@@ -78,7 +92,6 @@ public class Vendas extends HttpServlet {
         } else if(finalizar) {
             int aux = Integer.parseInt(cliente);
             carrinho.confirmaCompra(aux);
-            
         } 
         
         request.setAttribute("listaProd", carrinho.getProdutos());

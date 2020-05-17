@@ -7,8 +7,10 @@ package caecae.pi3.DAO;
 
 import caecae.pi3.ConnectionFactory;
 import caecae.pi3.exception.DaoException;
+import caecae.pi3.model.ProdutoModel;
 import caecae.pi3.model.VendaModel;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -27,7 +29,7 @@ import java.util.ArrayList;
  */
 public class VendaDao implements DaoInterface<VendaModel>{
     /** Retorna todas as vendas, se nao tiver vendas retorna null
-    *@return ArrayList<Object> - Lista de Todas as Vendas 
+    *@return ArrayList<ProdutoModel> - Lista de Todas as Vendas 
     * @throws DaoException
     */
     @Override
@@ -51,8 +53,8 @@ public class VendaDao implements DaoInterface<VendaModel>{
                 venda.setDataVenda(rs.getDate("venda_data_venda"));
                 
                 //Percorre e pega todas os produtos vendidos no id da compra
-                ArrayList<Object> produtos = new ArrayList<>();
-                String sqlProd = "SELECT * FROM vendaProduto WHERE id = ?";
+                ArrayList<ProdutoModel> produtos = new ArrayList<>();
+                String sqlProd = "SELECT * FROM itens WHERE id = ?";
                 stmt = con.prepareStatement(sql);
                 stmt.setInt(1, venda.getIdVenda());
                 ResultSet rsProd = stmt.executeQuery();
@@ -67,7 +69,7 @@ public class VendaDao implements DaoInterface<VendaModel>{
             rs.close();
             con.close();
             
-        } catch (ClassNotFoundException | SQLException ex) {
+        } catch (SQLException ex) {
            throw new RuntimeException("ERRO getALL VendaDAO", ex);
         } finally {
             return vendas;
@@ -81,40 +83,41 @@ public class VendaDao implements DaoInterface<VendaModel>{
     */
     @Override
     public boolean create(VendaModel venda) throws DaoException {
-        
-        String sql = "INSERT INTO venda (venda_data_venda, venda_cli, venda_func,"
-                + " venda_val_total) VALUES (?,?,?,?)";
-
-        try (Connection con = ConnectionFactory.getConnection()) {
-            con.setAutoCommit(false);
-            try (PreparedStatement stmt = con.prepareStatement(sql,
-                    Statement.RETURN_GENERATED_KEYS)){
-                stmt.setDate(1, java.sql.Date.valueOf(LocalDate.now()));
-                stmt.setInt(2, venda.getIdCliente());
-                stmt.setInt(3, venda.getIdFuncionario());
-                stmt.setDouble(4, venda.getValorTotal());
-    
-                // Pega o id gerado para a venda
-                int idVenda = stmt.executeUpdate();
-                stmt.close(); // Verificar o close do stmt - Onde deve ficar
-                
-                //Percorrer produtos e add a vendas.
-                if (!venda.getProdutos().isEmpty()){
-                    for (Object produto : venda.getProdutos()) {
-                        
+//        Ajustar para a venda
+        int vendaId;
+        String sql = "INSERT INTO venda (venda_cli_id, venda_func, venda_val_total, venda_data_venda) VALUES (?,?,?,?)";
+        try (Connection conn = ConnectionFactory.getConnection()) {
+            conn.setAutoCommit(false);
+            try (PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+                stmt.setInt(1, venda.getIdCliente());
+                stmt.setInt(2, 1);//venda.getIdFuncionario());
+                stmt.setDouble(3, venda.getValorTotal());
+                stmt.setDate(4, new java.sql.Date(venda.getDataVenda().getTime()));
+                stmt.executeUpdate();
+                ResultSet rs = stmt.getGeneratedKeys();
+                rs.next();
+                vendaId = (int) rs.getLong(1);
+                for (ProdutoModel prod : venda.getProdutos()) {
+                    sql = "INSERT INTO itens (it_produto, it_venda, it_valor_prod, it_qtd) VALUES(?,?,?,?)";
+                    try(PreparedStatement stmtProd = conn.prepareStatement(sql)){
+                        stmtProd.setInt(1, prod.getId());
+                        stmtProd.setInt(2, vendaId);
+                        stmtProd.setDouble(3, prod.getValor());
+                        stmtProd.setInt(4, prod.getQuantidade());
+                        stmtProd.execute();
+                        stmtProd.close();
                     }
                 }
-                con.commit();
-            } catch(Exception e) {
-                con.rollback();
-                throw new RuntimeException("ERRO create-stmt VendaDAO", e);
-//                return false;
+                conn.commit();
+                return true;
+            } catch (SQLException e) {
+                conn.rollback();
+                System.out.println(e.getMessage());
+                throw new RuntimeException(e);
             }
-        } catch (ClassNotFoundException | SQLException ex) {
-            throw new RuntimeException("ERRO create-con VendaDAO", ex);
-//            return false;
-        } finally {
-            return true;
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            throw new RuntimeException(ex);
         }
     }  
 
@@ -127,9 +130,27 @@ public class VendaDao implements DaoInterface<VendaModel>{
     public boolean update(VendaModel venda) throws DaoException {
         return false;
     }
-
+    
+    //Nao Testado
     @Override
     public boolean delete(int id) throws DaoException {
-        return false;
+        String sql = "DELETE itens.*, venda.* FROM itens, venda WHERE itens.it_venda = ? AND venda.venda_id = ?";
+        try (Connection conn = ConnectionFactory.getConnection()) {
+            conn.setAutoCommit(false);
+            try (PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+                stmt.setInt(1, id);
+                stmt.setInt(2, id);
+                stmt.execute(); 
+                conn.commit();
+                return true;
+            } catch (SQLException e) {
+                conn.rollback();
+                System.out.println(e.getMessage());
+                throw new RuntimeException(e);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            throw new RuntimeException(ex);
+        }
     }
 }

@@ -18,7 +18,7 @@ public class VendaModel {
     private int idFuncionario;
     private double valorTotal;
     private Date dataVenda;
-    private ArrayList<Object> produtos;
+    private ArrayList<ProdutoModel> produtos;
 
     public int getIdVenda() {
         return idVenda;
@@ -60,11 +60,11 @@ public class VendaModel {
         this.dataVenda = dataVenda;
     }
 
-    public ArrayList<Object> getProdutos() {
+    public ArrayList<ProdutoModel> getProdutos() {
         return produtos;
     }
 
-    public void setProdutos(ArrayList<Object> produtos) {
+    public void setProdutos(ArrayList<ProdutoModel> produtos) {
         this.produtos = produtos;
     }
     
