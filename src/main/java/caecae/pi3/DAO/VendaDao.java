@@ -68,7 +68,6 @@ public class VendaDao implements DaoInterface<VendaModel>{
             }
             rs.close();
             con.close();
-            
         } catch (SQLException ex) {
            throw new RuntimeException("ERRO getALL VendaDAO", ex);
         } finally {
@@ -116,16 +115,8 @@ public class VendaDao implements DaoInterface<VendaModel>{
                 throw new RuntimeException(e);
             }
         } catch (SQLException ex) {
-<<<<<<< HEAD
             throw new RuntimeException("ERRO create-con VendaDAO", ex);
-//            return false;
-        } finally {
-            return true;
-=======
-            System.out.println(ex.getMessage());
-            throw new RuntimeException(ex);
->>>>>>> 01ad00d11fa9de5ff1e8e16cb8a90e6a06a786ff
-        }
+        } 
     }  
 
     @Override
