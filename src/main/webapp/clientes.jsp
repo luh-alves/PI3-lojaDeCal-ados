@@ -82,16 +82,16 @@
                         <tr class="hover">
                             <td class="nome" ><c:out value="${cliente.getNome()}"/></td>
                             <td class="cpf"><c:out value="${cliente.getCpf()}"/></td>
-                            <td class="email"><c:out value="${cliente.getEmail()}"/></td>                           
+                            <td class="email"><c:out value="${cliente.getEmail()}"/></td>
                             <td class="sexo"><c:out value="${cliente.getSexo()}"/></td>
                              <td class="buttonExcluir">
                                 <form action="${pageContext.request.contextPath}/clientes/excluir" method="GET">
-                                    <input name="ID" value="${cliente.getId()}" type="hidden"/>                        
+                                    <input name="ID" value="${cliente.getId()}" type="hidden"/>
                                     <button type="submit" id ="actions">Excluir</button>
                                 </form>
                             </td>
                         </tr>
-                       
+
                     </c:forEach>
                         </table>
                     </div><!--clientes-->

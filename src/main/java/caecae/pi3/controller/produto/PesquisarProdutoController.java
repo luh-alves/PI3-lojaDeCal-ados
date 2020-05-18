@@ -10,8 +10,6 @@ import caecae.pi3.service.AppException;
 import caecae.pi3.service.ProdutoService;
 import java.io.IOException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,22 +20,24 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Luciana Alves
  */
-@WebServlet(name = "excluiProdutoController", urlPatterns = {"/produtos/excluir"})
-public class excluiProdutoController extends HttpServlet {
+@WebServlet(name = "PesquisarProdutoController", urlPatterns = {"/produtos/buscar"})
+public class PesquisarProdutoController extends HttpServlet {
 
     private ProdutoService service = new ProdutoService();
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            String produtoId = req.getParameter("produtoId");
-            service.excluirProduto(Integer.parseInt(produtoId));
-        } catch (AppException ex) {
-            Logger.getLogger(excluiProdutoController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        resp.sendRedirect(req.getContextPath() + "/produtos");
+            String nome = request.getParameter("produtoNome");
+            List<ProdutoModel> lista = service.pesquisar(nome);
+            request.setAttribute("listaProdutos", lista);
 
+        } catch (AppException ex) {
+            String msg = ex.getMessage();
+            request.setAttribute("msgErro", msg);
+        }
+        request.getRequestDispatcher("/WEB-INF/jsp/produtos.jsp").forward(request, response);
     }
 
 }

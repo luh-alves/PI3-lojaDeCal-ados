@@ -29,7 +29,7 @@ import java.util.ArrayList;
  */
 public class VendaDao implements DaoInterface<VendaModel>{
     /** Retorna todas as vendas, se nao tiver vendas retorna null
-    *@return ArrayList<ProdutoModel> - Lista de Todas as Vendas 
+    *@return ArrayList<ProdutoModel> - Lista de Todas as Vendas
     * @throws DaoException
     */
     @Override
@@ -116,7 +116,7 @@ public class VendaDao implements DaoInterface<VendaModel>{
             }
         } catch (SQLException ex) {
             throw new RuntimeException("ERRO create-con VendaDAO", ex);
-        } 
+        }
     }  
 
     @Override
@@ -128,7 +128,7 @@ public class VendaDao implements DaoInterface<VendaModel>{
     public boolean update(VendaModel venda) throws DaoException {
         return false;
     }
-    
+
     //Nao Testado
     @Override
     public boolean delete(int id) throws DaoException {
@@ -138,7 +138,7 @@ public class VendaDao implements DaoInterface<VendaModel>{
             try (PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                 stmt.setInt(1, id);
                 stmt.setInt(2, id);
-                stmt.execute(); 
+                stmt.execute();
                 conn.commit();
                 return true;
             } catch (SQLException e) {
@@ -150,5 +150,10 @@ public class VendaDao implements DaoInterface<VendaModel>{
             System.out.println(ex.getMessage());
             throw new RuntimeException(ex);
         }
+    }
+
+    @Override
+    public ArrayList get(String nome) throws DaoException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

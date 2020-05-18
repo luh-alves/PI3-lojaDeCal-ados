@@ -118,18 +118,14 @@ form input{
 }
 
 .buttons-container {
-    margin-left: 80%;
-    border: 1px solid black;
-    height: 150px;
-    padding-top: 10px;
-    margin-top: 15px;
-    justify-content: center;
+    margin-left: 80%;  
     padding-left: 48px;
 
 }
 .buttons-container button{
     width: 100px;
-    height: 40px;
+    height: 60px;
+
 }
 
 table {
@@ -142,7 +138,7 @@ table {
 
 .pesquisar{
     margin-bottom: 15px;
-    
+
 }
 .conteudo{
     margin-bottom: 15px;
@@ -175,6 +171,7 @@ table {
     background: red;
     color: white;
 }
+
 .buttonAtualizar button:hover{
     background: green;
     color: white;

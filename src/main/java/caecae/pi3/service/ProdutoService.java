@@ -10,7 +10,6 @@ import caecae.pi3.exception.DaoException;
 import caecae.pi3.model.ProdutoModel;
 import java.util.List;
 
-
 /**
  *
  * @author Luciana Alves
@@ -53,6 +52,17 @@ public class ProdutoService {
         try {
             produtoDao.delete(id);
             return true;
+        } catch (DaoException ex) {
+            System.out.println(ex.getMessage());
+            throw new AppException(ex.getMessage(), ex);
+        }
+    }
+
+    public List<ProdutoModel> pesquisar(String nome) throws AppException {
+        List<ProdutoModel> lista;
+        try {
+            lista = produtoDao.get(nome);
+            return lista;
         } catch (DaoException ex) {
             System.out.println(ex.getMessage());
             throw new AppException(ex.getMessage(), ex);

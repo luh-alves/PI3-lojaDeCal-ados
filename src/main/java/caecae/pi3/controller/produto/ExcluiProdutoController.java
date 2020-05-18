@@ -22,29 +22,22 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Luciana Alves
  */
-@WebServlet(name = "ProdutoListaController", urlPatterns = {"/produtos"})
-public class ListaProdutoController extends HttpServlet {
+@WebServlet(name = "excluiProdutoController", urlPatterns = {"/produtos/excluir"})
+public class ExcluiProdutoController extends HttpServlet {
 
     private ProdutoService service = new ProdutoService();
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        List<ProdutoModel> produtos;
         try {
-            
-            String nome = request.getParameter("produtoNome");
-            if (nome == null) {
-                produtos = service.listarTodos();
-            } else {
-                produtos = service.pesquisar(nome);
-            }
-            request.setAttribute("listaProdutos", produtos);
-
+            String produtoId = req.getParameter("produtoId");
+            service.excluirProduto(Integer.parseInt(produtoId));
         } catch (AppException ex) {
-            String msg = ex.getMessage();
-            request.setAttribute("msgErro", msg);
+            Logger.getLogger(ExcluiProdutoController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        request.getRequestDispatcher("/WEB-INF/jsp/produtos.jsp").forward(request, response);
+        resp.sendRedirect(req.getContextPath() + "/produtos");
+
     }
+
 }

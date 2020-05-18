@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>CAECAE PI3</title>
+        <title>Produtos</title>
         <link rel="stylesheet" href="produtoEstilo.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
@@ -52,16 +52,19 @@
                             <label for="">Descrição: </label>
                             <input type="text" name="descricao">
                         </div> 
-                        <div class="buttons-container">
+                        <div>
                             <button type="submit" name="salvarBtt">Salvar Produto</button>
                         </div>
                     </form>
                 </div>
             </div>
             <div class="conteudo">
-                <label for="">Nome Produto: </label>
-                <input disabled type="text">
-                <button>Buscar</button> 
+                <label for="">Nome Produto: 
+                    <form action="${pageContext.request.contextPath}/produtos" method="GET">
+                        <input name="produtoNome" type="text"/>                        
+                        <button type="submit">Buscar</button>
+                    </form>
+                </label>
             </div><!--conteudo-->
 
             <div class="pesquisar">
@@ -75,7 +78,6 @@
                     </tr>
                     <c:forEach items="${listaProdutos}" var="produto" >
                         <tr class="hover">
-
                             <td class="nome" ><c:out value="${produto.getNome()}"/></td>
                             <td class="valor"><c:out value="${produto.getValor()}"/></td>
                             <td class="estoque"><c:out value="${produto.getQuantidade()}"/></td>                           
@@ -85,12 +87,11 @@
                                     <input name="produtoId" value="${produto.getId()}" type="hidden"/>                        
                                     <button type="submit">Excluir</button>
                                 </form>
-                                <button type="submit" name="atualizarBtt">Atualizar</button>
+                                <form action="${pageContext.request.contextPath}/produtos/atualizar" method="GET">
+                                    <input name="produtoId" value="${produto.getId()}" type="hidden"/>                        
+                                    <button type="submit">Atualizar</button>
+                                </form>
                             </td>
-
-
-
-
                         </tr>
                     </c:forEach>
                 </table>
