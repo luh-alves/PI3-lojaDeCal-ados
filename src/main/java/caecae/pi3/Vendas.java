@@ -75,7 +75,11 @@ public class Vendas extends HttpServlet {
         String cliente = request.getParameter("cliente");
         
         if(addProd){
-            addProduto(request,response);
+            try {
+                addProduto(request,response);
+            } catch (AppException ex) {
+                throw new RuntimeException("Erro ao Add Produto");
+            }
             request.setAttribute("clienteAtr", cliente);
         } else if(remover){
             removeProduto(request,response);
@@ -102,7 +106,7 @@ public class Vendas extends HttpServlet {
         dispatcher.forward(request, response);
     }
     
-    private void addProduto(HttpServletRequest request, HttpServletResponse response){
+    private void addProduto(HttpServletRequest request, HttpServletResponse response) throws AppException{
         String idProd = (request.getParameter("produtoId"));
         String qtd = request.getParameter("qtd");
         boolean erro = false;
@@ -118,7 +122,7 @@ public class Vendas extends HttpServlet {
                 try{
                     int qtdN = Integer.parseInt(qtd);
                     
-                    if(qtdN <= prod.getQuantidade()){
+                    if(qtdN + carrinho.qtdById(id) <= prod.getQuantidade()){
                         ProdutoModel finalProd = new ProdutoModel();
                         finalProd.setId(prod.getId());
                         finalProd.setNome(prod.getNome());
@@ -127,7 +131,10 @@ public class Vendas extends HttpServlet {
                         finalProd.setValor(prod.getValor());
                         carrinho.addProduto(finalProd);
                     } else {
-                        request.setAttribute("erroQtd", "Quantidade Superior ao estoque(" + prod.getQuantidade() + ")");
+                        request.setAttribute("erroQtd", 
+                                "Quantidade Superior ao estoque(Max: " 
+                                        + prod.getQuantidade() + ", No carrinho: " 
+                                        + carrinho.qtdById(id) +")");
                         erro = true;
                     }
                 }catch(NumberFormatException e){
@@ -138,34 +145,12 @@ public class Vendas extends HttpServlet {
         } catch(NumberFormatException e) {
             erro = true;
             request.setAttribute("erroProdId", "Id do Produto deve conter apenas numeros");
-        } catch (AppException ex) {
-            throw new RuntimeException(ex);
         } finally{
             if(erro){
                 request.setAttribute("prodIdAtr", idProd);
                 request.setAttribute("qtdAtr", qtd);
             }
-        }
-        
-//        if(idProd == null || idProd.trim().length() < 1){
-//            //Id Prod Invalido
-//            request.setAttribute("erroProdId", "Id do Produto Invalido");
-//        }
-//        if(qtd == null || qtd.trim().length() < 1){
-//            request.setAttribute("erroQtd", "Insira a Quantidade desejada");
-//        } else {
-//            ProdutoDao pdao = new ProdutoDao();//Gerar um produto pelo id
-//            try {
-//                ArrayList<ProdutoModel> prods = pdao.getAll();
-//                for (ProdutoModel prod : prods) {
-//                    carrinho.addProduto(prod);
-//                }
-//            } catch (DaoException ex) {
-//                Logger.getLogger(Vendas.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//        }
-        
-            
+        }    
     }
     
     private void removeProduto(HttpServletRequest request, HttpServletResponse response){
