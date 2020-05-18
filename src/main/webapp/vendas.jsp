@@ -49,7 +49,7 @@
                     </div>
                     <div>
                         <label for="">ID Produto: </label>
-                        <input type="text" name="produtoId">
+                        <input type="text" name="produtoId" value="${prodIdAtr}">
                         <c:if test="${erroProdId != null}">
                             <div class="msgErro">
                                 <c:out value="${erroProdId}"/>
@@ -58,11 +58,11 @@
                     </div>     
                     <div>
                         <label for="">Nome Produto: </label>
-                        <input disabled type="text" name="produto">
+                        <input disabled type="text" name="produto" value="${prodNomeAtr}">
                     </div>     
                     <div>
                         <label for="">Quantidade: </label>
-                        <input type="text" name="qtd">
+                        <input type="text" name="qtd" value="${qtdAtr}">
                         <c:if test="${erroQtd != null}">
                             <div class="msgErro">
                                 <c:out value="${erroQtd}"/>

@@ -9,6 +9,8 @@ import caecae.pi3.DAO.ProdutoDao;
 import caecae.pi3.exception.DaoException;
 import caecae.pi3.model.ProdutoModel;
 import caecae.pi3.model.VendaModel;
+import caecae.pi3.service.AppException;
+import caecae.pi3.service.ProdutoService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -28,7 +30,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "Vendas", urlPatterns = {"/vendas"})
 public class Vendas extends HttpServlet {
     CarrinhoDeCompras carrinho = new CarrinhoDeCompras();
-    
+    ProdutoService prodService = new ProdutoService();
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -103,24 +105,65 @@ public class Vendas extends HttpServlet {
     private void addProduto(HttpServletRequest request, HttpServletResponse response){
         String idProd = (request.getParameter("produtoId"));
         String qtd = request.getParameter("qtd");
+        boolean erro = false;
         //Validaçoes dos Campos deve vir aqui
-        if(idProd == null || idProd.trim().length() < 1){
-            //Id Prod Invalido
-            request.setAttribute("erroProdId", "Id do Produto Invalido");
-        }
-        if(qtd == null || qtd.trim().length() < 1){
-            request.setAttribute("erroQtd", "Insira a Quantidade desejada");
-        } else {
-            ProdutoDao pdao = new ProdutoDao();//Gerar um produto pelo id
-            try {
-                ArrayList<ProdutoModel> prods = pdao.getAll();
-                for (ProdutoModel prod : prods) {
-                    carrinho.addProduto(prod);
+        try{
+            int id = Integer.parseInt(idProd);
+            ProdutoModel prod = prodService.pesquisar(id);
+            
+            if(prod == null){
+                request.setAttribute("erroProdId", "Id do Produto Invalido");
+                erro = true;
+            } else {
+                try{
+                    int qtdN = Integer.parseInt(qtd);
+                    
+                    if(qtdN <= prod.getQuantidade()){
+                        ProdutoModel finalProd = new ProdutoModel();
+                        finalProd.setId(prod.getId());
+                        finalProd.setNome(prod.getNome());
+                        finalProd.setQuantidade(qtdN);
+                        finalProd.setDescricao(prod.getDescricao());
+                        finalProd.setValor(prod.getValor());
+                        carrinho.addProduto(finalProd);
+                    } else {
+                        request.setAttribute("erroQtd", "Quantidade Superior ao estoque(" + prod.getQuantidade() + ")");
+                        erro = true;
+                    }
+                }catch(NumberFormatException e){
+                    request.setAttribute("erroQtd", "Campo Quantidade deve conter apenas numeros");
+                    erro = true;
                 }
-            } catch (DaoException ex) {
-                Logger.getLogger(Vendas.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } catch(NumberFormatException e) {
+            erro = true;
+            request.setAttribute("erroProdId", "Id do Produto deve conter apenas numeros");
+        } catch (AppException ex) {
+            throw new RuntimeException(ex);
+        } finally{
+            if(erro){
+                request.setAttribute("prodIdAtr", idProd);
+                request.setAttribute("qtdAtr", qtd);
             }
         }
+        
+//        if(idProd == null || idProd.trim().length() < 1){
+//            //Id Prod Invalido
+//            request.setAttribute("erroProdId", "Id do Produto Invalido");
+//        }
+//        if(qtd == null || qtd.trim().length() < 1){
+//            request.setAttribute("erroQtd", "Insira a Quantidade desejada");
+//        } else {
+//            ProdutoDao pdao = new ProdutoDao();//Gerar um produto pelo id
+//            try {
+//                ArrayList<ProdutoModel> prods = pdao.getAll();
+//                for (ProdutoModel prod : prods) {
+//                    carrinho.addProduto(prod);
+//                }
+//            } catch (DaoException ex) {
+//                Logger.getLogger(Vendas.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//        }
         
             
     }
