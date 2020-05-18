@@ -41,18 +41,37 @@
                     <div>
                         <label for="">Cliente: </label>
                         <input type="text" name="cliente" value="${clienteAtr}">
+                        <c:if test="${erroCliente != null}">
+                            <div class="msgErro">
+                                <c:out value="${erroCliente}"/>
+                            </div>
+                        </c:if>
                     </div>
                     <div>
-                        <label for="">Produto: </label>
-                        <input type="text" name="produto">
+                        <label for="">ID Produto: </label>
+                        <input type="text" name="produtoId">
+                        <c:if test="${erroProdId != null}">
+                            <div class="msgErro">
+                                <c:out value="${erroProdId}"/>
+                            </div>
+                        </c:if>
+                    </div>     
+                    <div>
+                        <label for="">Nome Produto: </label>
+                        <input disabled type="text" name="produto">
                     </div>     
                     <div>
                         <label for="">Quantidade: </label>
                         <input type="text" name="qtd">
+                        <c:if test="${erroQtd != null}">
+                            <div class="msgErro">
+                                <c:out value="${erroQtd}"/>
+                            </div>
+                        </c:if>
                     </div>     
                     <div>
                         <label for="">Valor: </label>
-                        <input disabled type="text" name="valor">
+                        <input disabled type="text" name="valor" value="${valorAtr}">
                     </div> 
                     <input id="linhaSelec" type="text" name="linhaSelec" value="-1" hidden="true"></input>
                 </form>
@@ -96,9 +115,8 @@
             </div><!--segunda-->
             <div style="clear: both;"></div>
         </section><!--center-->
-        
-       
-        <script>
+         
+        <script>      
             var tabela = document.getElementById("tabela");
             var linhas = tabela.getElementsByTagName("tr");
             var valor = document.getElementById("linhaSelec");

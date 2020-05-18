@@ -71,9 +71,46 @@ public class Vendas extends HttpServlet {
         boolean remover = request.getParameter("removeBtt") != null;
         boolean cancelar = request.getParameter("cancelarBtt") != null;
         String cliente = request.getParameter("cliente");
-        int idProd = Integer.parseInt(request.getParameter("linhaSelec"));
         
         if(addProd){
+            addProduto(request,response);
+            request.setAttribute("clienteAtr", cliente);
+        } else if(remover){
+            removeProduto(request,response);
+            request.setAttribute("clienteAtr", cliente);
+        }else if(cancelar) {
+            carrinho.cancelaCompra();
+        } else if(finalizar) {
+            //Validaçoes de campo para finalizar a compra
+            if(cliente == null || cliente.trim().length() < 1) {
+                request.setAttribute("erroCliente", "Id do Cliente Invalido");
+            } else if(carrinho.getProdutos().isEmpty()) {
+                // Tentar Colocar um alert
+                request.setAttribute("erroCliente", "Carrinho vazio");
+            }else{
+                request.setAttribute("erroCliente", "Compra Executada");
+                int aux = Integer.parseInt(cliente);
+                carrinho.confirmaCompra(aux);
+            }
+        } 
+        request.setAttribute("totalAtr", "R$: " + carrinho.getTotal());
+        request.setAttribute("listaProd", carrinho.getProdutos());
+        
+        RequestDispatcher dispatcher = request.getRequestDispatcher("vendas.jsp");
+        dispatcher.forward(request, response);
+    }
+    
+    private void addProduto(HttpServletRequest request, HttpServletResponse response){
+        String idProd = (request.getParameter("produtoId"));
+        String qtd = request.getParameter("qtd");
+        //Validaçoes dos Campos deve vir aqui
+        if(idProd == null || idProd.trim().length() < 1){
+            //Id Prod Invalido
+            request.setAttribute("erroProdId", "Id do Produto Invalido");
+        }
+        if(qtd == null || qtd.trim().length() < 1){
+            request.setAttribute("erroQtd", "Insira a Quantidade desejada");
+        } else {
             ProdutoDao pdao = new ProdutoDao();//Gerar um produto pelo id
             try {
                 ArrayList<ProdutoModel> prods = pdao.getAll();
@@ -83,21 +120,20 @@ public class Vendas extends HttpServlet {
             } catch (DaoException ex) {
                 Logger.getLogger(Vendas.class.getName()).log(Level.SEVERE, null, ex);
             }
-            request.setAttribute("clienteAtr", cliente);
-        } else if(remover){
-            request.setAttribute("clienteAtr", cliente);
-            carrinho.removeProduto(idProd);
-        }else if(cancelar) {
-            carrinho.cancelaCompra();
-        } else if(finalizar) {
-            int aux = Integer.parseInt(cliente);
-            carrinho.confirmaCompra(aux);
-        } 
-        request.setAttribute("totalAtr", "R$: " + carrinho.getTotal());
-        request.setAttribute("listaProd", carrinho.getProdutos());
+        }
         
-        RequestDispatcher dispatcher = request.getRequestDispatcher("vendas.jsp");
-        dispatcher.forward(request, response);
+            
     }
+    
+    private void removeProduto(HttpServletRequest request, HttpServletResponse response){
+        try{ 
+            int idProdCarrinho = Integer.parseInt(request.getParameter("linhaSelec"));
+            if(idProdCarrinho != -1) {
+                carrinho.removeProduto(idProdCarrinho);
+            }
+        } catch (Exception e) {
 
+        }
+    }
+    
 }
