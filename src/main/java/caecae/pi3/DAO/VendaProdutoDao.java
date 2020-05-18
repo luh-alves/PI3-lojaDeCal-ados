@@ -39,5 +39,10 @@ public class VendaProdutoDao implements DaoInterface<VendaProdutoModel>{
     public boolean delete(int id) throws DaoException {
         return false;
     }
+
+    @Override
+    public ArrayList get(String nome) throws DaoException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

@@ -67,7 +67,7 @@ public class VendaDao implements DaoInterface<VendaModel>{
             rs.close();
             con.close();
             
-        } catch (ClassNotFoundException | SQLException ex) {
+        } catch (SQLException ex) {;;
            throw new RuntimeException("ERRO getALL VendaDAO", ex);
         } finally {
             return vendas;
@@ -110,7 +110,7 @@ public class VendaDao implements DaoInterface<VendaModel>{
                 throw new RuntimeException("ERRO create-stmt VendaDAO", e);
 //                return false;
             }
-        } catch (ClassNotFoundException | SQLException ex) {
+        } catch (SQLException ex) {
             throw new RuntimeException("ERRO create-con VendaDAO", ex);
 //            return false;
         } finally {
@@ -131,5 +131,10 @@ public class VendaDao implements DaoInterface<VendaModel>{
     @Override
     public boolean delete(int id) throws DaoException {
         return false;
+    }
+
+    @Override
+    public ArrayList get(String nome) throws DaoException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

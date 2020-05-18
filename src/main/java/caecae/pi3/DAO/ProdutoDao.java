@@ -93,13 +93,38 @@ public class ProdutoDao implements DaoInterface<ProdutoModel> {
     }
 
     @Override
-    public boolean update(ProdutoModel t) throws DaoException {
-        return false;
+    public ArrayList<ProdutoModel> get(String nome) throws DaoException {
+        String sql = "SELECT * FROM produto where prod_nome like ?";
+        List<ProdutoModel> produtos = new ArrayList<>();
+        try (Connection conn = ConnectionFactory.getConnection();) {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, "%" + nome + "%");
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                ProdutoModel produto = new ProdutoModel();
+                produto.setId(rs.getInt("prod_id"));
+                produto.setNome(rs.getString("prod_nome"));
+                produto.setQuantidade(rs.getInt("prod_qtd"));
+                produto.setValor(rs.getDouble("prod_preco"));
+                produto.setDescricao(rs.getString("prod_descr"));
+                produtos.add(produto);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutoDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return (ArrayList<ProdutoModel>) produtos;
+
     }
 
     @Override
     public ProdutoModel read(int id) throws DaoException {
         return null;
+    }
+
+    @Override
+    public boolean update(ProdutoModel t) throws DaoException {
+        return false;
     }
 
 }

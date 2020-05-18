@@ -38,27 +38,27 @@
                 <form method="post" action="${pageContext.request.contextPath}/clientes/salvar">
                     <div class="inputs">
                         <div>
-                        <label for="">Nome: </label>
-                        <input type="text" name="nome">
+                            <label for="">Nome: </label>
+                            <input type="text" name="nome">
+                        </div>
+                        <div>
+                            <label for="">CPF: </label>
+                            <input type="text" name="cpf">
+                        </div>     
+                        <div>
+                            <label for="">E-mail: </label>
+                            <input type="text" name="email">
+                        </div>     
+                        <div>
+                            <label for="">Sexo: </label>
+                            <input  type="text" name="sexo">
+                        </div>
+                        <div>
+                            <label for="">Dt. Nascimento: </label>
+                            <input type="text" name="dtnascimento">
+                        </div>
                     </div>
-                    <div>
-                        <label for="">CPF: </label>
-                        <input type="text" name="cpf">
-                    </div>     
-                    <div>
-                        <label for="">E-mail: </label>
-                        <input type="text" name="email">
-                    </div>     
-                    <div>
-                        <label for="">Sexo: </label>
-                        <input  type="text" name="sexo">
-                    </div>
-                    <div>
-                        <label for="">Dt. Nascimento: </label>
-                        <input type="text" name="dtnascimento">
-                    </div>
-                    </div>
-                     <div class="botoes opcoes">
+                    <div class="botoes opcoes">
                         <button>Novo</button>
                         <button>Alterar</button>
                         <button>Excluir</button>
