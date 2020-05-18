@@ -38,31 +38,29 @@
                 <form method="post" action="${pageContext.request.contextPath}/clientes/salvar">
                     <div class="inputs">
                         <div>
-                            <label for="">Nome: </label>
-                            <input type="text" name="nome">
-                        </div>
-                        <div>
-                            <label for="">CPF: </label>
-                            <input type="text" name="cpf">
-                        </div>     
-                        <div>
-                            <label for="">E-mail: </label>
-                            <input type="text" name="email">
-                        </div>     
-                        <div>
-                            <label for="">Sexo: </label>
-                            <input  type="text" name="sexo">
-                        </div>
-                        <div>
-                            <label for="">Dt. Nascimento: </label>
-                            <input type="text" name="dtnascimento">
-                        </div>
+                        <label for="">Nome: </label>
+                        <input type="text" name="nome">
                     </div>
-                    <div class="botoes opcoes">
-                        <button>Novo</button>
-                        <button>Alterar</button>
-                        <button>Excluir</button>
+                    <div>
+                        <label for="">CPF: </label>
+                        <input type="text" name="cpf">
+                    </div>     
+                    <div>
+                        <label for="">E-mail: </label>
+                        <input type="text" name="email">
+                    </div>     
+                    <div>
+                        <label for="">Sexo: </label>
+                        <input  type="text" name="sexo">
+                    </div>
+                    <div>
+                        <label for="">Dt. Nascimento: </label>
+                        <input type="date" name="dtnascimento">
+                    </div>
+                    </div>
+                     <div class="botoes opcoes">
                         <button type="submit" class="salvar">Salvar</button>
+                        <button type="button" class="excluir">Excluir</button>
                     </div><!--botoes-->
                 </form>
                 <label for="">Buscar (CPF): </label>
@@ -73,30 +71,28 @@
                             Cliente
                         </div><!--titulo-->
                         <table>
-                            <tr>
-                                <th class="dados">ID</th>
-                                <th class="dados">CPF</th>
-                                <th class="dados">Nome</th>
-                                <th class="dados">Email</th>
-                                <th class="dados">Dt. Nascimento</th>
-                                <th class="dados">Sexo</th>
-                            </tr>
-                            <tr class="hover">
-                                <td>01</td>
-                                <td class="dados">12345</td>
-                                <td class="dados">Joao</td>
-                                <td class="dados">joao@email.com</td>
-                                <td class="dados">24/09/1999</td>
-                                <td class="dados">M</td>
-                            </tr>
-                            <tr class="hover">
-                                <td>02</td>
-                                <td class="dados">6789</td>
-                                <td class="dados">Maria</td>
-                                <td class="dados">maria@email.com</td>
-                                <td class="dados">06/09/2000</td>
-                                <td class="dados">F</td>
-                            </tr>
+                             <tr>
+                        <th class="nome">Nome</th>
+                        <th class="cpf">CPF</th>
+                        <th class="email">E-mail</th>
+                        <th class="sexo">Sexo</th>
+                        <th class="acoes">Ações</th>
+                    </tr>
+                            <c:forEach items="${listarClientes}" var="cliente" >
+                        <tr class="hover">
+                            <td class="nome" ><c:out value="${cliente.getNome()}"/></td>
+                            <td class="cpf"><c:out value="${cliente.getCpf()}"/></td>
+                            <td class="email"><c:out value="${cliente.getEmail()}"/></td>
+                            <td class="sexo"><c:out value="${cliente.getSexo()}"/></td>
+                             <td class="buttonExcluir">
+                                <form action="${pageContext.request.contextPath}/clientes/excluir" method="GET">
+                                    <input name="ID" value="${cliente.getId()}" type="hidden"/>
+                                    <button type="submit" id ="actions">Excluir</button>
+                                </form>
+                            </td>
+                        </tr>
+
+                    </c:forEach>
                         </table>
                     </div><!--clientes-->
                 </div><!--conteudo-->
@@ -105,3 +101,4 @@
         </section><!--center-->
     </body>
 </html>
+
