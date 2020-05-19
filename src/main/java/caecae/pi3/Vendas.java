@@ -22,6 +22,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -29,7 +30,6 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "Vendas", urlPatterns = {"/vendas"})
 public class Vendas extends HttpServlet {
-    CarrinhoDeCompras carrinho = new CarrinhoDeCompras();
     ProdutoService prodService = new ProdutoService();
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -43,6 +43,13 @@ public class Vendas extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession sessao = request.getSession();
+        CarrinhoDeCompras carrinho;
+        if(sessao.getAttribute("carrinho") == null){
+            carrinho = new CarrinhoDeCompras();
+            sessao.setAttribute("carrinho", carrinho);
+        }
+        carrinho = (CarrinhoDeCompras) sessao.getAttribute("carrinho");
         
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/plain");
@@ -64,7 +71,8 @@ public class Vendas extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        HttpSession sessao = request.getSession();
+        CarrinhoDeCompras carrinho;
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/plain");
         
@@ -74,15 +82,22 @@ public class Vendas extends HttpServlet {
         boolean cancelar = request.getParameter("cancelarBtt") != null;
         String cliente = request.getParameter("cliente");
         
+        if(sessao.getAttribute("carrinho") == null){
+            carrinho = new CarrinhoDeCompras();
+            sessao.setAttribute("carrinho", carrinho);
+        }
+        carrinho = (CarrinhoDeCompras) sessao.getAttribute("carrinho");
+        
+        
         if(addProd){
             try {
-                addProduto(request,response);
+                addProduto(request,response,carrinho);
             } catch (AppException ex) {
                 throw new RuntimeException("Erro ao Add Produto");
             }
             request.setAttribute("clienteAtr", cliente);
         } else if(remover){
-            removeProduto(request,response);
+            removeProduto(request,response,carrinho);
             request.setAttribute("clienteAtr", cliente);
         }else if(cancelar) {
             carrinho.cancelaCompra();
@@ -106,7 +121,8 @@ public class Vendas extends HttpServlet {
         dispatcher.forward(request, response);
     }
     
-    private void addProduto(HttpServletRequest request, HttpServletResponse response) throws AppException{
+    private void addProduto(HttpServletRequest request, HttpServletResponse response,
+            CarrinhoDeCompras carrinho) throws AppException{
         String idProd = (request.getParameter("produtoId"));
         String qtd = request.getParameter("qtd");
         boolean erro = false;
@@ -153,7 +169,8 @@ public class Vendas extends HttpServlet {
         }    
     }
     
-    private void removeProduto(HttpServletRequest request, HttpServletResponse response){
+    private void removeProduto(HttpServletRequest request, HttpServletResponse response,
+            CarrinhoDeCompras carrinho){
         try{ 
             int idProdCarrinho = Integer.parseInt(request.getParameter("linhaSelec"));
             if(idProdCarrinho != -1) {
