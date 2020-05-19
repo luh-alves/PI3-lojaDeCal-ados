@@ -119,7 +119,29 @@ public class ProdutoDao implements DaoInterface<ProdutoModel> {
 
     @Override
     public ProdutoModel read(int id) throws DaoException {
-        return null;
+        String sql = "SELECT * FROM produto where prod_id = ?";
+        ProdutoModel produto = null;
+        try (Connection conn = ConnectionFactory.getConnection();) {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                produto = new ProdutoModel();
+                produto.setId(rs.getInt("prod_id"));
+                produto.setNome(rs.getString("prod_nome"));
+                produto.setQuantidade(rs.getInt("prod_qtd"));
+                produto.setValor(rs.getDouble("prod_preco"));
+                produto.setDescricao(rs.getString("prod_descr"));
+            }
+            rs.close();
+            stmt.close();
+            conn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutoDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return produto;
+        
     }
 
     @Override

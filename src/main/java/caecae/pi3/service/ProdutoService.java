@@ -68,5 +68,15 @@ public class ProdutoService {
             throw new AppException(ex.getMessage(), ex);
         }
     }
-
+    
+    public ProdutoModel pesquisar(int id) throws AppException {
+        ProdutoModel produto;
+        try {
+            produto = produtoDao.read(id);
+            return produto;
+        } catch (DaoException ex) {
+            System.out.println(ex.getMessage());
+            throw new AppException(ex.getMessage(), ex);
+        }
+    }
 }
