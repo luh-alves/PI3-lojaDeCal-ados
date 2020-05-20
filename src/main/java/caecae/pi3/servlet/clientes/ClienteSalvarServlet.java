@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package caecae.pi3.servlet;
+package caecae.pi3.servlet.clientes;
 
 import caecae.pi3.exception.DaoException;
 import caecae.pi3.model.Cliente;

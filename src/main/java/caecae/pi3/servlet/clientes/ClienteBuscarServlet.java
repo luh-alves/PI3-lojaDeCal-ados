@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package caecae.pi3.servlet;
+package caecae.pi3.servlet.clientes;
 
 import caecae.pi3.model.Cliente;
 import caecae.pi3.service.AppException;
@@ -21,30 +21,33 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Felipe
  */
-@WebServlet(name = "ClienteServlet", urlPatterns = {"/clientes"})
-public class ClienteServlet extends HttpServlet {
-
-        private ClienteService service = new ClienteService();
+@WebServlet(name = "ClienteBuscarServlet", urlPatterns = {"/clientes/buscar"})
+public class ClienteBuscarServlet extends HttpServlet {
     
+            private ClienteService service = new ClienteService();
+
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-                List<Cliente> clientes;
+         List<Cliente> cliente;
         try {
-            clientes = service.listar();
-            request.setAttribute("listarClientes", clientes);
+            String cpf = request.getParameter("CPF");
+            cliente = service.buscar(cpf);
+            request.setAttribute("buscarCliente", cliente);
 
         } catch (AppException ex) {
             String msg = ex.getMessage();
             request.setAttribute("msgErro", msg);
         }
         request.getRequestDispatcher("/clientes.jsp").forward(request, response);
+
     }
-    
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
     }
-    
+
 }

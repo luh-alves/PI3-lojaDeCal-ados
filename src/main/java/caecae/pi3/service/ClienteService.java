@@ -9,6 +9,7 @@ import caecae.pi3.DAO.ClienteDAO;
 import caecae.pi3.exception.DaoException;
 import caecae.pi3.model.Cliente;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -58,6 +59,15 @@ public class ClienteService {
             e.printStackTrace();
             throw new AppException("ERRO NA EXCLUSÃO DOS DADOS", e);
         }
+    }
+    
+    public ArrayList<Cliente> buscar(String cpf) throws AppException {
+        try { 
+            return dao.buscar(cpf);
+        } catch (DaoException e){
+            e.printStackTrace();
+            throw new AppException("ERRO NA BUSCA DOS DADOS", e);
+        }     
     }
     
 }

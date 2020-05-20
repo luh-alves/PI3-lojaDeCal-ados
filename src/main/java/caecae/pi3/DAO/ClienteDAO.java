@@ -95,4 +95,27 @@ public class ClienteDAO {
         
     }
     
+    public ArrayList<Cliente> buscar(String cpf) throws DaoException, AppException {
+        ArrayList<Cliente> clientes = new ArrayList<>();
+        String sql = "Select * from CLIENTE where cli_cpf = ?";
+           try (Connection conn = ConnectionFactory.getConnection();) {
+                PreparedStatement stmt = conn.prepareStatement(sql);
+                stmt.setString(1, cpf);
+                ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Cliente cliente = new Cliente();
+                cliente.setId(rs.getInt("cli_id"));
+                cliente.setCpf(rs.getString("cli_cpf"));
+                cliente.setNome(rs.getString("cli_nome"));
+                cliente.setEmail(rs.getString("cli_email"));
+                cliente.setSexo(rs.getString("cli_sexo"));
+                clientes.add(cliente);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return (ArrayList<Cliente>) clientes;
+    }
+    
 }
