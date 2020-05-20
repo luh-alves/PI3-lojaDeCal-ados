@@ -64,10 +64,11 @@
                     </div><!--botoes-->
                 </form>
                     
+                    
                     <!--buscar--> 
-                    <form action="${pageContext.request.contextPath}/clientes/buscar" method="GET">    
+                    <form action="${pageContext.request.contextPath}/clientes" method="GET">    
                          <label for="">Buscar (CPF): </label>
-                         <input type="text" name="CPF">  <button type="submit">Buscar</button>
+                         <input  name="CPF" type="text">  <button type="submit">Buscar</button>
                     </form>
                 <!--fim buscar-->
                 

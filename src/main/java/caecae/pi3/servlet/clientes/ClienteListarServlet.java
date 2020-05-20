@@ -21,30 +21,33 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Felipe
  */
-@WebServlet(name = "ClienteServlet", urlPatterns = {"/clientes/servlet"})
-public class ClienteServlet extends HttpServlet {
+@WebServlet(name = "ClienteListarServlet", urlPatterns = {"/clientes"})
+public class ClienteListarServlet extends HttpServlet {
 
         private ClienteService service = new ClienteService();
-    
+   
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-                List<Cliente> clientes;
+         List<Cliente> clientes;
         try {
-            clientes = service.listar();
+            
+            String cpf = request.getParameter("CPF");
+            if (cpf == null) {
+                clientes = service.listar();
+            } else {
+                clientes = service.buscar(cpf);
+            }
             request.setAttribute("listarClientes", clientes);
 
         } catch (AppException ex) {
             String msg = ex.getMessage();
             request.setAttribute("msgErro", msg);
         }
-        request.getRequestDispatcher("/clientes.jsp").forward(request, response);
-    }
+        request.getRequestDispatcher("clientes.jsp").forward(request, response);
     
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
     }
+
+
     
 }
