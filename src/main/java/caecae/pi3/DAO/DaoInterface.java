@@ -17,7 +17,7 @@ public interface DaoInterface<T> {
     public ArrayList<T> getAll() throws DaoException;
     public boolean create(T t) throws DaoException;
     public T read(int id) throws DaoException;
-    public boolean update(T t) throws DaoException;
+    public boolean update(int id, T t) throws DaoException ;
     public boolean delete(int id) throws DaoException;
     public ArrayList get( String nome) throws DaoException;
 }

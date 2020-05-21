@@ -31,9 +31,9 @@ public class ClienteListarServlet extends HttpServlet {
             throws ServletException, IOException {
          List<Cliente> clientes;
         try {
-            
+            service.listar();
             String cpf = request.getParameter("CPF");
-            if (cpf == null) {
+            if (cpf == null || cpf == "" || cpf == " ") {
                 clientes = service.listar();
             } else {
                 clientes = service.buscar(cpf);

@@ -118,35 +118,55 @@ public class ProdutoDao implements DaoInterface<ProdutoModel> {
     }
 
     @Override
+    public boolean update(int id, ProdutoModel p) throws DaoException {
+        boolean retorno = false;
+        PreparedStatement instrucaoSQL = null;
+
+        try {
+            Connection conn = ConnectionFactory.getConnection();
+            String sql = "UPDATE produto SET prod_nome = ?, prod_qtd = ?, prod_preco = ?, prod_descr = ? WHERE prod_id = ?";
+            instrucaoSQL = conn.prepareStatement(sql,
+                    Statement.RETURN_GENERATED_KEYS);
+            System.out.println(p.getId());
+            instrucaoSQL.setString(1, p.getNome());
+            instrucaoSQL.setInt(2, p.getQuantidade());
+            instrucaoSQL.setDouble(3, p.getValor());
+            instrucaoSQL.setString(4, p.getDescricao());
+            instrucaoSQL.setInt(5, p.getId());
+
+            int linhasAfetadas = instrucaoSQL.executeUpdate();
+
+            retorno = linhasAfetadas > 0;
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            retorno = false;
+        }
+
+        return retorno;
+    }
+
+    @Override
     public ProdutoModel read(int id) throws DaoException {
-        String sql = "SELECT * FROM produto where prod_id = ?";
-        ProdutoModel produto = null;
+        String sql = "SELECT * from produto WHERE prod_id = ?";
+
         try (Connection conn = ConnectionFactory.getConnection();) {
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
-
             if (rs.next()) {
-                produto = new ProdutoModel();
+                ProdutoModel produto = new ProdutoModel();
                 produto.setId(rs.getInt("prod_id"));
                 produto.setNome(rs.getString("prod_nome"));
                 produto.setQuantidade(rs.getInt("prod_qtd"));
                 produto.setValor(rs.getDouble("prod_preco"));
                 produto.setDescricao(rs.getString("prod_descr"));
+                return produto;
             }
-            rs.close();
-            stmt.close();
-            conn.close();
         } catch (SQLException ex) {
             Logger.getLogger(ProdutoDao.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return produto;
-        
-    }
-
-    @Override
-    public boolean update(ProdutoModel t) throws DaoException {
-        return false;
+        return null;
     }
 
 }

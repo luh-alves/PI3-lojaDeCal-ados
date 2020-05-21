@@ -60,7 +60,6 @@
                     </div>
                      <div class="botoes opcoes">
                         <button type="submit" class="salvar">Salvar</button>
-                        <button type="button" class="excluir">Excluir</button>
                     </div><!--botoes-->
                 </form>
                     
@@ -96,6 +95,10 @@
                                     <input name="ID" value="${cliente.getId()}" type="hidden"/>
                                     <button type="submit" id ="actions">Excluir</button>
                                 </form>
+                                    <form action="${pageContext.request.contextPath}/clientes/editar" method="GET">  
+                                        <input name="ID" value="${cliente.getId()}" type="hidden"/>
+                                    <button type="submit" id ="actions">Editar</button>
+                                    </form>
                             </td>
                         </tr>
 

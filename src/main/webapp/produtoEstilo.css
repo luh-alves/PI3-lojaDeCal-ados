@@ -89,7 +89,7 @@ form div{
 
 form input{
     width: 60%;
-    margin-left: 10px;
+
 }
 
 .nome-aba, .titulo{
@@ -106,15 +106,23 @@ form input{
 
 .container {
     border: 1px solid black;
-    height: 200px;
+    height: 240px;
     margin: auto;
     padding: 10px;
+   
 }
 
 .form-container {
-    width: 80%;
+    width: 100%;
     float: left;
+    
 
+}
+.b button{
+    width: 100px;
+    height: 60px;
+    margin-left: 80%; 
+    float: right;       
 }
 
 .buttons-container {
@@ -125,6 +133,7 @@ form input{
 .buttons-container button{
     width: 100px;
     height: 60px;
+    text-align: center;
 
 }
 
@@ -144,8 +153,15 @@ table {
     margin-bottom: 15px;
     margin-top: 15px;
 }
+.conteudo label{
+    text-align: left;
+}
 
+.conteudo button{
+    width: 60px;
+    height: 30px;
 
+}
 .pesquisar th, .pesquisar td{
     padding: 7px;
 }
@@ -166,13 +182,27 @@ table {
 .estoque{
     text-align: center;
 }
-
+.excluirB {
+    text-align: center;
+}
+.buttonAtualizar button{
+    width: 80px;
+    height: 40px;
+}
+.buttonExcluir button{
+    width: 80px;
+    height: 40px;
+}
 .buttonExcluir button:hover{
     background: red;
     color: white;
 }
 
 .buttonAtualizar button:hover{
+    background: green;
+    color: white;
+}
+.b button:hover{
     background: green;
     color: white;
 }

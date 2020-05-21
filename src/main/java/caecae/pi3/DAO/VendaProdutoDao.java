@@ -31,17 +31,17 @@ public class VendaProdutoDao implements DaoInterface<VendaProdutoModel>{
     }
 
     @Override
-    public boolean update(VendaProdutoModel t) throws DaoException {
-        return false;
-    }
-
-    @Override
     public boolean delete(int id) throws DaoException {
         return false;
     }
 
     @Override
     public ArrayList get(String nome) throws DaoException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean update(int id, VendaProdutoModel t) throws DaoException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
