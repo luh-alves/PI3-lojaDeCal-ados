@@ -11,6 +11,8 @@ import caecae.pi3.model.VendaModel;
 import caecae.pi3.service.VendaService;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,37 +22,48 @@ import java.util.logging.Logger;
  */
 public class CarrinhoDeCompras {
     private VendaService service;
-    private ArrayList<ProdutoModel> produtos; 
+    private HashMap<Integer, ProdutoModel> produtos; 
     private double total = 0;
     
     public CarrinhoDeCompras() {
-        service = new VendaService();
-        produtos = new ArrayList();
+        this.produtos = new HashMap<Integer, ProdutoModel>();
+        this.service = new VendaService();
     }
     
     public void addProduto(ProdutoModel produto) {
-        produtos.add(produto);
-        total += produto.getValor() * produto.getQuantidade();
+        if(produtos.containsKey(produto.getId())){
+            ProdutoModel prod = produtos.get(produto.getId());
+            prod.setQuantidade(prod.getQuantidade() + produto.getQuantidade());
+        } else {
+            produtos.put(produto.getId(), produto);
+        }
+//        produtos.add(produto);
+//        total += produto.getValor() * produto.getQuantidade();
     }
     
     public void removeProduto(int id) {
-        for (ProdutoModel produto : produtos) {
-            if(produto.getId() == id){
-                produtos.remove(produto);
-                total -= produto.getValor() * produto.getQuantidade();
-                return;
-            }
-        }
+        produtos.remove(id);
+//        for (ProdutoModel produto : produtos) {
+//            if(produto.getId() == id){
+//                produtos.remove(produto);
+//                total -= produto.getValor() * produto.getQuantidade();
+//                return;
+//            }
+//        }
         //Procura produto e remove da lsita
         
     }
     
     public void confirmaCompra(int idCliente){
+        ArrayList<ProdutoModel> list = new ArrayList<>();
+        for (Integer key : produtos.keySet()) {
+        list.add(produtos.get(key));              
+        }
         try {
             VendaModel venda = new VendaModel();
             venda.setDataVenda(new Date(System.currentTimeMillis()));
             venda.setIdCliente(idCliente);
-            venda.setProdutos(produtos);
+            venda.setProdutos(list);
             venda.setValorTotal(total);
             service.confirmaVenda(venda);
             produtos.clear();
@@ -66,7 +79,20 @@ public class CarrinhoDeCompras {
     }
     
     public ArrayList<ProdutoModel> getProdutos(){
-        return produtos;
+        ArrayList<ProdutoModel> list = new ArrayList<>();
+        for (Integer key : produtos.keySet()) {
+            list.add(produtos.get(key));              
+        }
+        return list;
+    }
+    
+    public int qtdById(int id){
+        if(produtos.containsKey(id)){
+            return produtos.get(id).getQuantidade();
+        } else {
+            return 0;
+        }
+        
     }
     
     public double getTotal(){

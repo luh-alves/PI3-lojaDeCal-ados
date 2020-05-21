@@ -63,8 +63,15 @@
                         <button type="button" class="excluir">Excluir</button>
                     </div><!--botoes-->
                 </form>
-                <label for="">Buscar (CPF): </label>
-                <input type="text">  <button>Buscar</button>
+                    
+                    
+                    <!--buscar--> 
+                    <form action="${pageContext.request.contextPath}/clientes" method="GET">    
+                         <label for="">Buscar (CPF): </label>
+                         <input  name="CPF" type="text">  <button type="submit">Buscar</button>
+                    </form>
+                <!--fim buscar-->
+                
                 <div class="conteudo">
                     <div class="clientes">
                         <div class="titulo">

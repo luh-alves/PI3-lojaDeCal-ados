@@ -184,6 +184,10 @@ tr:hover.hover{
 .valor-total input{
     height: 30px;
 }
-#tabela tr.hover.selecionado{
-  background: #aff7ff;
+.selecionado{
+  background: #104f56;
+}
+
+.msgErro{
+    color: red;
 }
