@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="1dcb12f0-056a-47c4-9275-7c507c9fa39d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/caecae/pi3/servlet/ClienteExcluirServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/selecionaLinha.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/caecae/pi3/CarrinhoDeCompras.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/caecae/pi3/CarrinhoDeCompras.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/caecae/pi3/DAO/ClienteDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/caecae/pi3/DAO/ClienteDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/caecae/pi3/DAO/VendaDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/caecae/pi3/DAO/VendaDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/caecae/pi3/Vendas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/caecae/pi3/Vendas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/caecae/pi3/model/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/caecae/pi3/model/Cliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/caecae/pi3/model/VendaModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/caecae/pi3/model/VendaModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/caecae/pi3/service/ClienteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/caecae/pi3/service/ClienteService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/caecae/pi3/service/VendaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/caecae/pi3/service/VendaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/caecae/pi3/servlet/ClienteSalvarServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/caecae/pi3/servlet/ClienteSalvarServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/caecae/pi3/servlet/ClienteServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/caecae/pi3/servlet/ClienteServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/META-INF/context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/META-INF/context.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/clientes.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/clientes.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/vendaEstilo.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/vendaEstilo.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/vendas.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/vendas.jsp" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/classes/" />
+    <ignored path="$PROJECT_DIR$/target/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/main/webapp/index.html" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectConfigurationFiles">
+    <option name="files">
+      <list>
+        <option value="$PROJECT_DIR$/pi3.iml" />
+        <option value="$PROJECT_DIR$/.idea/misc.xml" />
+        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
+        <option value="$PROJECT_DIR$/.idea/compiler.xml" />
+        <option value="$PROJECT_DIR$/.idea/encodings.xml" />
+        <option value="$PROJECT_DIR$/.idea/modules.xml" />
+        <option value="$PROJECT_DIR$/.idea/libraries/Maven__javax_servlet_javax_servlet_api_3_0_1.xml" />
+        <option value="$PROJECT_DIR$/.idea/libraries/Maven__javax_servlet_jstl_1_2.xml" />
+        <option value="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_5_1_48.xml" />
+        <option value="$PROJECT_DIR$/.idea/libraries/Maven__unknown_binary_javax_ws_rs_api_2_0_SNAPSHOT.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="85" />
+    <option name="y" value="25" />
+    <option name="width" value="1750" />
+    <option name="height" value="980" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="pi3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PI-3" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1dcb12f0-056a-47c4-9275-7c507c9fa39d" name="Default Changelist" comment="" />
+      <created>1589831954024</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1589831954024</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <layout>
+      <window_info id="Designer" />
+      <window_info id="UI Designer" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22483222" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" weight="0.62889516" />
+      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.3286119" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Palette" />
+      <window_info anchor="right" id="Maven" />
+      <window_info anchor="right" id="Palette&#9;" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+</project>

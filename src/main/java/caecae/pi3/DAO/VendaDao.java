@@ -118,17 +118,6 @@ public class VendaDao implements DaoInterface<VendaModel>{
             throw new RuntimeException("ERRO create-con VendaDAO", ex);
         }
     }  
-
-    @Override
-    public VendaModel read(int id) throws DaoException {
-        return null;
-    }
-
-    @Override
-    public boolean update(VendaModel venda) throws DaoException {
-        return false;
-    }
-
     //Nao Testado
     @Override
     public boolean delete(int id) throws DaoException {
@@ -154,6 +143,16 @@ public class VendaDao implements DaoInterface<VendaModel>{
 
     @Override
     public ArrayList get(String nome) throws DaoException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean update(int id, VendaModel t) throws DaoException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public VendaModel read(int id) throws DaoException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

@@ -69,4 +69,23 @@ public class ProdutoService {
         }
     }
 
+    public void atualizar(int id, ProdutoModel produto) throws AppException {
+        try {
+            produtoDao.update(id, produto);
+        } catch (DaoException ex) {
+            System.out.println(ex.getMessage());
+            throw new AppException(ex.getMessage(), ex);
+        }
+
+    }
+
+    public ProdutoModel read(int id) throws AppException {
+        try {
+            ProdutoModel produto = produtoDao.read(id);
+            return produto;
+        } catch (DaoException ex) {
+            System.out.println(ex.getMessage());
+            throw new AppException(ex.getMessage(), ex);
+        }
+    }
 }
