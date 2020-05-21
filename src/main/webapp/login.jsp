@@ -1,4 +1,3 @@
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,10 +11,10 @@
     </body>
     <div class="login-page">
         <div class="form">
-            <form class="login-form">
-                <input type="text" placeholder="user" />
-                <input type="password" placeholder="senha" />
-                <button>login</button>
+            <form class="login-form" method="post"action="${pageContext.request.contextPath}/login/validate" novalidate>
+                <input type="text" name="user" id="loginUser" placeholder="user" />
+                <input type="password" name="senha" id="loginSenha" placeholder="senha" />
+                <button type="submit" name="LogBtn">login</button>
             </form>
         </div>
     </div>
