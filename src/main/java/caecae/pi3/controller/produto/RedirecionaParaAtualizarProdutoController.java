@@ -33,7 +33,7 @@ public class RedirecionaParaAtualizarProdutoController extends HttpServlet {
         try {
 
             String id = request.getParameter("produtoId");
-            ProdutoModel produto = service.read(Integer.parseInt(id));
+            ProdutoModel produto = service.pesquisar(Integer.parseInt(id));
             request.setAttribute("produto", produto);
 
         } catch (AppException ex) {
