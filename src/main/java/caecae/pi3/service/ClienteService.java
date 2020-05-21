@@ -61,6 +61,15 @@ public class ClienteService {
         }
     }
     
+    public void alterar(Cliente c) throws DaoException, AppException{
+        try{
+            dao.alterar(c);
+        } catch (DaoException e) {
+              e.printStackTrace();
+            throw new AppException("ERRO NA EDIÇÃO DOS DADOS", e);
+        }
+    }
+    
     public ArrayList<Cliente> buscar(String cpf) throws AppException {
         try { 
             return dao.buscar(cpf);

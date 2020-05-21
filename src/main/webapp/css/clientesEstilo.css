@@ -132,7 +132,7 @@ form input{
     float: right;
     width: 150px;
     padding: 10px;
-    height: 150px;
+    height: 65px;
 }
 
 .opcoes button{
@@ -183,3 +183,4 @@ tr:hover.hover{
 .dados{
     text-align: center;
 }
+
