@@ -117,8 +117,7 @@ public class Vendas extends HttpServlet {
         request.setAttribute("totalAtr", "R$: " + carrinho.getTotal());
         request.setAttribute("listaProd", carrinho.getProdutos());
         
-        RequestDispatcher dispatcher = request.getRequestDispatcher("vendas.jsp");
-        dispatcher.forward(request, response);
+        response.sendRedirect(request.getContextPath() + "/vendas");
     }
     
     private void addProduto(HttpServletRequest request, HttpServletResponse response,
