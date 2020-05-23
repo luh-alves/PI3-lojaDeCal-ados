@@ -10,6 +10,7 @@ import caecae.pi3.service.AppException;
 import caecae.pi3.service.ClienteService;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,7 +37,8 @@ public class ClienteListarServlet extends HttpServlet {
             if (cpf == null || cpf == "" || cpf == " ") {
                 clientes = service.listar();
             } else {
-                clientes = service.buscar(cpf);
+                clientes = new ArrayList<>();//Alterado
+                clientes.add(service.buscar(cpf));//Alterado
             }
             request.setAttribute("listarClientes", clientes);
 

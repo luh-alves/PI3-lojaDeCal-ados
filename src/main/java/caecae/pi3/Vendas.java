@@ -7,9 +7,11 @@ package caecae.pi3;
 
 import caecae.pi3.DAO.ProdutoDao;
 import caecae.pi3.exception.DaoException;
+import caecae.pi3.model.Cliente;
 import caecae.pi3.model.ProdutoModel;
 import caecae.pi3.model.VendaModel;
 import caecae.pi3.service.AppException;
+import caecae.pi3.service.ClienteService;
 import caecae.pi3.service.ProdutoService;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -56,6 +58,9 @@ public class Vendas extends HttpServlet {
         
         request.setAttribute("listaProd", carrinho.getProdutos());
         
+        // FeedBacks
+//        request.setAttribute("erroCliente", "CPF do Cliente Invalido");
+        
         RequestDispatcher dispatcher = request.getRequestDispatcher("vendas.jsp");
         dispatcher.forward(request, response);
     }
@@ -72,6 +77,7 @@ public class Vendas extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession sessao = request.getSession();
+        PrintWriter out = response.getWriter();
         CarrinhoDeCompras carrinho;
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/plain");
@@ -80,7 +86,7 @@ public class Vendas extends HttpServlet {
         boolean addProd = request.getParameter("addProdBtt") != null;
         boolean remover = request.getParameter("removeBtt") != null;
         boolean cancelar = request.getParameter("cancelarBtt") != null;
-        String cliente = request.getParameter("cliente");
+        String cliente = request.getParameter("cliente").trim();
         
         if(sessao.getAttribute("carrinho") == null){
             carrinho = new CarrinhoDeCompras();
@@ -103,21 +109,37 @@ public class Vendas extends HttpServlet {
             carrinho.cancelaCompra();
         } else if(finalizar) {
             //Validaçoes de campo para finalizar a compra
-            if(cliente == null || cliente.trim().length() < 1) {
-                request.setAttribute("erroCliente", "Id do Cliente Invalido");
+            if(cliente == null || cliente.trim().length() != 11) {
+                request.setAttribute("erroCliente", "CPF do Cliente Invalido" + cliente.trim().length());
             } else if(carrinho.getProdutos().isEmpty()) {
-                // Tentar Colocar um alert
-                request.setAttribute("erroCliente", "Carrinho vazio");
+                //Alerta Carrinho
+                request.setAttribute("erroAlert", "Carrinho vazio esta vazio");
             }else{
-                request.setAttribute("erroCliente", "Compra Executada");
-                int aux = Integer.parseInt(cliente);
-                carrinho.confirmaCompra(aux);
+                try{
+//                    int cpf = Integer.parseInt(cliente); Nao esta funcionando
+                    Cliente cli = clienteByCpf(cliente);
+                    if(cli != null){
+                        if(carrinho.confirmaCompra(cli)){  
+                            request.setAttribute("erroAlert", "Venda Realizada com sucesso");
+                        } else{
+                           request.setAttribute("erroAlert", "Erro ao Finalizar a venda");
+                        }
+                    } else{
+                        request.setAttribute("erroAlert", "Cliente nao possue cadastro");
+                    }
+                } catch(NumberFormatException e){
+                    request.setAttribute("erroCliente", "CPF do Cliente Invalido Number");
+                } catch (AppException ex) {
+                    Logger.getLogger(Vendas.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         } 
         request.setAttribute("totalAtr", "R$: " + carrinho.getTotal());
         request.setAttribute("listaProd", carrinho.getProdutos());
         
-        response.sendRedirect(request.getContextPath() + "/vendas");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("vendas.jsp");
+        dispatcher.forward(request, response);
+//        response.sendRedirect(request.getContextPath() + "/vendas"); Problemas para mostrar o feedback
     }
     
     private void addProduto(HttpServletRequest request, HttpServletResponse response,
@@ -180,4 +202,8 @@ public class Vendas extends HttpServlet {
         }
     }
     
+    private Cliente clienteByCpf(String cliente) throws AppException{
+        ClienteService cliService = new ClienteService();
+        return cliService.buscar(cliente);
+    }
 }

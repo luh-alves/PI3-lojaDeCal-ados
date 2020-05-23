@@ -39,7 +39,7 @@
                 </div><!--conteudo-->
                 <form id="form1" method="post" action="${pageContext.request.contextPath}/vendas" novalidate>
                     <div>
-                        <label for="">Cliente: </label>
+                        <label for="">Cliente CPF: </label>
                         <input type="text" name="cliente" value="${clienteAtr}">
                         <c:if test="${erroCliente != null}">
                             <div class="msgErro">
@@ -116,6 +116,11 @@
             <div style="clear: both;"></div>
         </section><!--center-->
          
+        <c:if test="${erroAlert != null}">
+            <script>
+                var r=alert("${erroAlert}");   
+            </script>
+        </c:if>
         <script>      
             var tabela = document.getElementById("tabela");
             var linhas = tabela.getElementsByTagName("tr");

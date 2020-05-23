@@ -30,7 +30,7 @@ public class ClienteBuscarServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         List<Cliente> cliente;
+         Cliente cliente;// Alterado
         try {
             String cpf = request.getParameter("CPF");
             cliente = service.buscar(cpf);

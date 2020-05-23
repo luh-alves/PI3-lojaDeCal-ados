@@ -6,6 +6,7 @@
 package caecae.pi3;
 
 import caecae.pi3.exception.DaoException;
+import caecae.pi3.model.Cliente;
 import caecae.pi3.model.ProdutoModel;
 import caecae.pi3.model.VendaModel;
 import caecae.pi3.service.VendaService;
@@ -34,8 +35,10 @@ public class CarrinhoDeCompras {
         if(produtos.containsKey(produto.getId())){
             ProdutoModel prod = produtos.get(produto.getId());
             prod.setQuantidade(prod.getQuantidade() + produto.getQuantidade());
+            total += produto.getValor() * produto.getQuantidade();
         } else {
             produtos.put(produto.getId(), produto);
+            total += produto.getValor() * produto.getQuantidade();
         }
 //        produtos.add(produto);
 //        total += produto.getValor() * produto.getQuantidade();
@@ -54,21 +57,23 @@ public class CarrinhoDeCompras {
         
     }
     
-    public void confirmaCompra(int idCliente){
+    public boolean confirmaCompra(Cliente cliente){
         ArrayList<ProdutoModel> list = new ArrayList<>();
         for (Integer key : produtos.keySet()) {
-        list.add(produtos.get(key));              
+            list.add(produtos.get(key));              
         }
         try {
             VendaModel venda = new VendaModel();
             venda.setDataVenda(new Date(System.currentTimeMillis()));
-            venda.setIdCliente(idCliente);
+            venda.setIdCliente(cliente.getId());
             venda.setProdutos(list);
             venda.setValorTotal(total);
             service.confirmaVenda(venda);
             produtos.clear();
             total = 0;
+            return true;
         } catch (DaoException ex) {
+//            return false;
             throw new RuntimeException("Falha ao Confirmar Compra ", ex);
         }
         
