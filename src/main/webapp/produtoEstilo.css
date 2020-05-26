@@ -109,13 +109,13 @@ form input{
     height: 240px;
     margin: auto;
     padding: 10px;
-   
+
 }
 
 .form-container {
     width: 100%;
     float: left;
-    
+
 
 }
 .b button{
@@ -205,4 +205,17 @@ table {
 .b button:hover{
     background: green;
     color: white;
+}
+.valorTotal{
+    padding-top: 30px;
+    margin-left: 84.5%;
+
+}
+.valorTotal input{
+    background-color: #caecae;
+}
+.valorTotal label{
+    color: black;
+    font-size: 23px;
+   
 }
