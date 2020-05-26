@@ -2,21 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1dcb12f0-056a-47c4-9275-7c507c9fa39d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/caecae/pi3/servlet/clientes/ClienteBuscarServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/caecae/pi3/servlet/clientes/ClienteListarServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/Login.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/Login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/caecae/pi3/CarrinhoDeCompras.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/caecae/pi3/CarrinhoDeCompras.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/caecae/pi3/login/servlet/validate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/caecae/pi3/servlet/clientes/ClientesEditarServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/testeDeLogin.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nb-configuration.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nb-configuration.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/caecae/pi3/DAO/ClienteDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/caecae/pi3/DAO/ClienteDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/caecae/pi3/Vendas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/caecae/pi3/Vendas.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/caecae/pi3/service/ClienteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/caecae/pi3/service/ClienteService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/caecae/pi3/service/ProdutoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/caecae/pi3/service/ProdutoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/caecae/pi3/servlet/ClienteExcluirServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/caecae/pi3/servlet/clientes/ClienteExcluirServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/caecae/pi3/servlet/ClienteSalvarServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/caecae/pi3/servlet/clientes/ClienteSalvarServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/caecae/pi3/servlet/ClienteServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/caecae/pi3/servlet/clientes/ClienteServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/caecae/pi3/servlet/clientes/ClienteListarServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/caecae/pi3/servlet/clientes/ClienteListarServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/Login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/clientes.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/clientes.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/vendaEstilo.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/vendaEstilo.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/vendas.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/vendas.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/clientesEstilo.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/clientesEstilo.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -53,7 +51,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="85" />
     <option name="y" value="25" />
     <option name="width" value="1750" />
@@ -106,7 +104,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22818792" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
