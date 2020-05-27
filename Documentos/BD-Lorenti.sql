@@ -49,7 +49,6 @@ venda_cli_id integer not null,
 venda_qnt integer not null,
 primary key (venda_id),
 foreign key (venda_func) references funcionario(func_id),
-foreign key (venda_qnt) references produto(prod_qnt),
 foreign key (venda_cli_id) references cliente(cli_id)
 );
 create table itens (
