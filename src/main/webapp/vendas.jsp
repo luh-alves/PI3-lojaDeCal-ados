@@ -18,11 +18,11 @@
             <nav>
                 <div class="center">
                     <ul>
-                        <button>Voltar</button>
-                        <li><a href="">Gestao de Cliente</a></li>
-                        <li><a href="">Gestao de Produtos</a></li>
-                        <li><a href="">Relatorio Financeiro</a></li>
-                        <li><a href="">Vendas</a></li>
+                        <button type="button" value="Voltar" onClick="history.go(-1)">Voltar</button>
+                        <li><a href="/clientes">Gestao de Cliente</a></li>
+                        <li><a href="/produtos">Gestao de Produtos</a></li>
+                        <li><a href="/relatorioAnalitico.jsp">Relatorio Financeiro</a></li>
+                        <li><a href="/vendas.jsp">Vendas</a></li>
                     </ul>
                 </div><!--center-->
             </nav>

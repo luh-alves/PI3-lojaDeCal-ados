@@ -19,11 +19,11 @@
             <nav>
                 <div class="center">
                     <ul>
-                        <button>Voltar</button>
-                        <li><a href="">Gestão de Clientes</a></li>
-                        <li><a href="">Gestão de Produtos</a></li>
-                        <li><a href="">Relatorio Financeiro</a></li>
-                        <li><a href="">Vendas</a></li>
+                        <button type="button" value="Voltar" onClick="history.go(-1)">Voltar</button>
+                        <li><a href="/clientes">Gestao de Cliente</a></li>
+                        <li><a href="/produtos">Gestao de Produtos</a></li>
+                        <li><a href="/relatorioAnalitico.jsp">Relatorio Financeiro</a></li>
+                        <li><a href="/vendas.jsp">Vendas</a></li>
                     </ul>
                 </div><!--center-->
             </nav>
@@ -35,9 +35,10 @@
             <div class="nome-aba">Relatorio Analitico</div>
             <div class="conteudo">
 
-                <form action="${pageContext.request.contextPath}/produtos" method="GET">
+                <form action="${pageContext.request.contextPath}/filial" method="GET">
                     <label>Nome Filial:</label>
-                    <input name="produtoNome" type="text"/>                        
+                    <input name="produtoNome" type="text"/>  
+                   
                     <button type="submit">Buscar</button>
                 </form>
 
@@ -53,10 +54,10 @@
                     </tr>
                     <c:forEach items="${listaProdutos}" var="produto" >
                         <tr class="hover">
-                            <td class="nome" ><c:out value="${produto.getNome()}"/></td>
-                            <td class="quantidade"><c:out value="${produto.getValor()}"/></td>
-                            <td class="valorUnitario"><c:out value="${produto.getQuantidade()}"/></td>                           
-                            <td class="total"><c:out value="${produto.getDescricao()}"/></td>
+                            <td class="nome" ><c:out value="${produto.getNome()}"/>Sapatilha</td>
+                            <td class="quantidade"><c:out value="${produto.getQuantidade()}"/>4</td>
+                            <td class="valorUnitario"><c:out value="${produto.getValor()}"/>25,00</td>                           
+                            <td class="total"><c:out value="${produto.getTotal()}"/>4*25,00</td>
                         </tr>
                     </c:forEach>                       
                 </table>
