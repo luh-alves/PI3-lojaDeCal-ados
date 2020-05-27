@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1dcb12f0-056a-47c4-9275-7c507c9fa39d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/caecae/pi3/login/servlet/validate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/caecae/pi3/servlet/clientes/ClientesEditarServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/testeDeLogin.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nb-configuration.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nb-configuration.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/caecae/pi3/DAO/ClienteDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/caecae/pi3/DAO/ClienteDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/caecae/pi3/Vendas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/caecae/pi3/Vendas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/caecae/pi3/service/ClienteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/caecae/pi3/service/ClienteService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/caecae/pi3/servlet/clientes/ClienteListarServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/caecae/pi3/servlet/clientes/ClienteListarServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/clientes.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/clientes.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/clientesEstilo.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/clientesEstilo.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.html" afterDir="false" />
-    </list>
+    <list default="true" id="1dcb12f0-056a-47c4-9275-7c507c9fa39d" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -51,7 +37,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="85" />
     <option name="y" value="25" />
     <option name="width" value="1750" />
