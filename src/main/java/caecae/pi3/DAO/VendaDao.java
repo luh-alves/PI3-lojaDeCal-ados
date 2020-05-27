@@ -107,6 +107,7 @@ public class VendaDao implements DaoInterface<VendaModel>{
                         stmtProd.close();
                     }
                 }
+                
                 conn.commit();
                 return true;
             } catch (SQLException e) {
@@ -147,12 +148,90 @@ public class VendaDao implements DaoInterface<VendaModel>{
     }
 
     @Override
-    public boolean update(int id, VendaModel t) throws DaoException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean update(int id, VendaModel venda) throws DaoException {
+        String sql = "UPDATE venda SET venda_func = ?, venda_val_total = ?, venda_cli_id = ? WHERE venda_id = ?";
+        
+        
+        try(Connection conn = ConnectionFactory.getConnection()){
+            PreparedStatement stmt = conn.prepareStatement(sql,
+                    Statement.RETURN_GENERATED_KEYS);
+            conn.setAutoCommit(false);
+           
+            stmt.setInt(1, venda.getIdCliente());
+            stmt.setInt(2, 1);//venda.getIdFuncionario());
+            stmt.setDouble(3, venda.getValorTotal());
+            stmt.setDate(4, new java.sql.Date(venda.getDataVenda().getTime()));
+            stmt.setInt(5, id);
+
+            stmt.executeUpdate();
+            
+           sql = "DELETE FROM itens WHERE it_venda = ?";
+                try(PreparedStatement stmtProd = conn.prepareStatement(sql)){
+                    stmtProd.setInt(1, id);
+                    stmtProd.execute();
+                    stmtProd.close();
+                }
+
+            for (ProdutoModel prod : venda.getProdutos()) {
+                sql = "INSERT INTO itens (it_produto, it_venda, it_valor_prod, it_qtd) VALUES(?,?,?,?)";
+                try(PreparedStatement stmtProd = conn.prepareStatement(sql)){
+                    stmtProd.setInt(1, prod.getId());
+                    stmtProd.setInt(2, id);
+                    stmtProd.setDouble(3, prod.getValor());
+                    stmtProd.setInt(4, prod.getQuantidade());
+                    stmtProd.execute();
+                    stmtProd.close();
+                }
+            }
+            conn.commit();
+            conn.close();
+            return true;
+        } catch (SQLException ex) {
+            return false;
+//           throw new RuntimeException("ERRO getALL VendaDAO", ex);
+        } 
     }
 
     @Override
     public VendaModel read(int id) throws DaoException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       String sql = "SELECT * FROM venda where id = ?";
+        
+        VendaModel vendas = null;
+        
+        try(Connection con = ConnectionFactory.getConnection()){
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            stmt.close();
+
+            if(rs.next()){
+                VendaModel venda = new VendaModel();
+                venda.setIdVenda(rs.getInt("venda_id"));
+                venda.setIdCliente(rs.getInt("venda_cli"));
+                venda.setIdFuncionario(rs.getInt("venda_func"));
+                venda.setValorTotal(rs.getDouble("venda_val_total"));
+                venda.setDataVenda(rs.getDate("venda_data_venda"));
+                
+                //Percorre e pega todas os produtos vendidos no id da compra
+                ArrayList<ProdutoModel> produtos = new ArrayList<>();
+                String sqlProd = "SELECT * FROM itens WHERE id = ?";
+                stmt = con.prepareStatement(sql);
+                stmt.setInt(1, venda.getIdVenda());
+                ResultSet rsProd = stmt.executeQuery();
+                
+                while(rsProd.next()){
+                    //Cria produto e add na lista
+                }
+                rsProd.close();
+                stmt.close();
+                venda.setProdutos(produtos);
+            }
+            rs.close();
+            con.close();
+        } catch (SQLException ex) {
+           throw new RuntimeException("ERRO read VendaDAO", ex);
+        } finally {
+            return vendas;
+        }
     }
 }
