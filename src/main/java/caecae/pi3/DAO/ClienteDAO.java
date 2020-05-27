@@ -92,7 +92,7 @@ public class ClienteDAO {
     }
     
     public void alterar(Cliente c) throws DaoException, AppException{
-         String sql = "UPDATE cliente set cli_cpf = ?, set cli_nome = ?, set cli_email = ?, set cli_sexo = ? WHERE cli_id = ?";
+         String sql = "UPDATE cliente set cli_cpf = ?, cli_nome = ?, cli_email = ?, cli_sexo = ? WHERE cli_id = ?";
         try (Connection conn = ConnectionFactory.getConnection()) {
             // DESLIGAR AUTO-COMMIT -> POSSIBILITAR DESFAZER OPERAÇÕES NO BD CASO OCORRA ERRO
             conn.setAutoCommit(false);

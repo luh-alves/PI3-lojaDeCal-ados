@@ -24,7 +24,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Felipe
  */
-@WebServlet(name = "ClientesEditarServlet", urlPatterns = {"/clientes/editar"})
+@WebServlet(name = "ClientesEditarServlet", urlPatterns = {"/clientes/atualizar"})
 public class ClientesEditarServlet extends HttpServlet {
 
     private ClienteService service = new ClienteService();
@@ -33,6 +33,7 @@ public class ClientesEditarServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
          request.setCharacterEncoding("UTF-8");
+        String id = request.getParameter("clienteId");
         String nome = request.getParameter("nome");
         String cpf = request.getParameter("cpf");
         String email = request.getParameter("email");
@@ -40,6 +41,8 @@ public class ClientesEditarServlet extends HttpServlet {
         //String dtnascimento = request.getParameter("dtnascimento");
         
         Cliente c = new Cliente();
+        c.setId(Integer.parseInt(id));
+        System.out.println("o Id é:" + id);
         c.setNome(nome);
         c.setCpf(cpf);
         c.setEmail(email);
@@ -54,7 +57,7 @@ public class ClientesEditarServlet extends HttpServlet {
             service.alterar(c);
             sessao.setAttribute("msgSucesso", "Cliente alterado com sucesso");
         } catch (AppException ex) {
-            sessao.setAttribute("msgErro", "Erro ao salvar cliente - " + ex.getMessage());
+            sessao.setAttribute("msgErro", "Erro ao editar cliente - " + ex.getMessage());
              response.sendRedirect(request.getContextPath() + "/clientes");
         }       catch (DaoException ex) {
                     Logger.getLogger(ClienteSalvarServlet.class.getName()).log(Level.SEVERE, null, ex);

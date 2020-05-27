@@ -34,8 +34,7 @@
             <div class="nome-aba">Clientes</div>
             <div id="tela">
                 <div class="conteudo">
-                </div><!--conteudo-->
-                <form method="post" action="${pageContext.request.contextPath}/clientes/salvar">
+                     <form method="post" action="${pageContext.request.contextPath}/clientes/salvar">
                     <div class="inputs">
                         <div>
                             <label for="">Nome: </label>
@@ -62,6 +61,8 @@
                         <button type="submit" class="salvar">Salvar</button>
                     </div><!--botoes-->
                 </form>
+                </div><!--conteudo-->
+               
 
 
                 <!--buscar--> 
@@ -95,8 +96,8 @@
                                             <input name="ID" value="${cliente.getId()}" type="hidden"/>
                                             <button type="submit" id ="actions">Excluir</button>
                                         </form>
-                                        <form action="${pageContext.request.contextPath}/clientes/editar" method="GET">  
-                                            <input name="ID" value="${cliente.getId()}" type="hidden"/>
+                                        <form action="${pageContext.request.contextPath}/clientes/redireciona" method="GET">  
+                                            <input name="clienteCpf" value="${cliente.getCpf()}" type="hidden"/>
                                             <button type="submit" id ="actions">Editar</button>
                                         </form>
                                     </td>
@@ -104,9 +105,9 @@
 
                             </c:forEach>
                         </table>
-                    </div><!--clientes-->
-                </div><!--conteudo-->
-            </div><!--primeira-->
+                    </div>
+                </div>
+            </div>
             <div style="clear: both;"></div>
         </section><!--center-->
     </body>
