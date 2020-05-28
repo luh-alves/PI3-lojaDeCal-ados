@@ -37,7 +37,9 @@ prod_nome varchar(40) not null,
 prod_qtd integer not null,
 prod_preco decimal(10,2) not null,
 prod_descr varchar(60) ,
-primary key (prod_id)
+prod_filial int,
+primary key (prod_id),
+foreign key (prod_filial) references unidade(unid_id)
 );
 create table venda(
 venda_id integer auto_increment not null unique,
