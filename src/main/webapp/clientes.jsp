@@ -42,7 +42,7 @@
                         </div>
                         <div>
                             <label for="">CPF: </label>
-                            <input type="text" name="cpf" required onkeypress="return isNumberKey(event)"/ required oninvalid="this.setCustomValidity('Digite um cpf válido')" 
+                            <input type="text" name="cpf" required onkeypress="return isNumberKey(event)"/ required oninvalid="this.setCustomValidity('Digite um CPFválido')" 
 onchange="try{setCustomValidity('')}catch(e){}"minlength="11" maxlength="11">
                         </div>     
                         <div>
