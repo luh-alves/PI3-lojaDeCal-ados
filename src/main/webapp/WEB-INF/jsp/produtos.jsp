@@ -33,6 +33,20 @@
         </div><!--espacador-->
         <section class="center">
             <div class="nome-aba">Cadastro de Produtos</div>
+            <div class="nome-filial">
+                <label>Nome Filial:</label>
+                <select>
+                    <option disabled selected>Selecione uma Filial...</option>
+                    <option value="">São Paulo</option>
+                    <option value="">Brasilia</option>
+                    <option value="">Curitiba</option>
+                    <option value="">Florianopolis</option>
+                    <option value="">Rio de Janeiro</option>>
+                    <option value="">Minas Gerais</option>
+                    <option value="">Belo Horizonte</option>
+                </select>
+
+            </div>
             <div class="container">
                 <div class="form-container">
                     <form action="${pageContext.request.contextPath}/produtos/salvar" method="POST">

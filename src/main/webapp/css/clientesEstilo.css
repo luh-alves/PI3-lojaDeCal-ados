@@ -184,3 +184,15 @@ tr:hover.hover{
     text-align: center;
 }
 
+.radiobuttons {
+    float: left;
+}
+
+.labelsexo{
+    float: left
+}
+
+.displaySexos{
+    padding-bottom:  50px;
+}
+

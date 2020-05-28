@@ -98,7 +98,13 @@ form input{
     border: 1px solid black;
     text-align: center;
 }
-
+.nome-filial{
+    width: 100%;  
+    padding: 10px;
+    border: 1px solid black;
+    text-align: center;
+    margin-bottom: 15px;
+}
 .nome-aba{
     margin: 25px 0;
     font-size: 30px;
@@ -217,5 +223,5 @@ table {
 .valorTotal label{
     color: black;
     font-size: 23px;
-   
+
 }

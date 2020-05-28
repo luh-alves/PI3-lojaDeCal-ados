@@ -38,21 +38,29 @@
                     <div class="inputs">
                         <div>
                             <label for="">Nome: </label>
-                            <input type="text" name="nome">
+                            <input type="text" name="nome" required>
                         </div>
                         <div>
                             <label for="">CPF: </label>
-                            <input type="text" name="cpf">
+                            <input type="text" name="cpf" required onkeypress="return isNumberKey(event)"/ required oninvalid="this.setCustomValidity('Digite um CPFválido')"
+onchange="try{setCustomValidity('')}catch(e){}"minlength="11" maxlength="11">
                         </div>     
                         <div>
                             <label for="">E-mail: </label>
-                            <input type="text" name="email">
+                            <input type="text" name="email" required>
                         </div>     
                         <div>
-                            <label for="">Sexo: </label>
-                            <input  type="text" name="sexo">
+                            <label class="labelsexo" for="">Sexo: </label>
+                            <div class ="radiobuttons">
+                                <input type="radio" id="masculino" name="sexo" value="M" required="">
+                            <label for="male">Masculino</label>
+                            <input type="radio" id="feminino" name="sexo" value="F">
+                            <label for="female">Feminino</label>
+                            <input type="radio" id="outro" name="sexo" value="O">
+                            <label for="other">Outro</label>
+                            </div>
                         </div>
-<!--                        <div>
+                     <!--   <div>
                             <label for="">Dt. Nascimento: </label>
                             <input type="date" name="dtnascimento">
                         </div>-->
@@ -112,4 +120,23 @@
         </section><!--center-->
     </body>
 </html>
+
+<script>
+function isNumberKey(evt){
+    const charCode = (evt.which) ? evt.which : evt.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57))
+        return false;
+
+    return true;
+}
+</script>
+
+<script>
+    function isAtKey(evt){
+        const charCode = (evt.which) ? evt.which :  evt.keyCode;
+        if (charCode === 64)
+            return true;
+        return false;
+    }
+</script>
 

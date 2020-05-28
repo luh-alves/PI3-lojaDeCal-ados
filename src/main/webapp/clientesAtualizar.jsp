@@ -44,11 +44,20 @@
                         </div>     
                         <div>
                             <label for="">Email: </label>
-                            <input type="text" name="email" value="${cliente.getEmail()}">
+                            <input type="text" name="email" value="${cliente.getEmail()}"  required onkeypress="return isNumberKey(event)"/ required oninvalid="this.setCustomValidity('Digite um CPFválido')" 
+onchange="try{setCustomValidity('')}catch(e){}"minlength="11" maxlength="11">
                         </div>     
-                        <div>
-                            <label for="">Sexo: </label>
-                            <input type="text" name="sexo" value="${cliente.getSexo()}">
+                        <div class="displaySexos">
+                            <label class="labelsexo" for="">Sexo: </label>
+                            <br>
+                            <div class ="radiobuttons">
+                                <input type="radio" id="masculino" name="sexo" value="M" required=""> 
+                            <label for="male">Masculino</label>
+                            <input type="radio" id="feminino" name="sexo" value="F">
+                            <label for="female">Feminino</label>
+                            <input type="radio" id="outro" name="sexo" value="O">
+                            <label for="other">Outro</label>
+                            </div>
                         </div> 
 
                         <div class="b">
@@ -61,5 +70,15 @@
         </section>
     </body>
 </html>
+
+<script>
+function isNumberKey(evt){
+    const charCode = (evt.which) ? evt.which : evt.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57))
+        return false;
+    
+    return true;
+}
+</script>
 
 
