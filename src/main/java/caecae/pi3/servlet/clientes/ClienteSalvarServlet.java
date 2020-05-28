@@ -64,16 +64,6 @@ public class ClienteSalvarServlet extends HttpServlet {
         c.setCpf(cpf);
         c.setEmail(email);
         c.setSexo(sexo);
-        //Date nasc;
-          //      try {
-           //         nasc = new SimpleDateFormat("dd/MM/yyy").parse(dtnascimento);
-             //        c.setDataNascimento(nasc);
-               //      System.out.println(nasc);
-                //} catch (ParseException ex) {
-                  //  Logger.getLogger(ClienteSalvarServlet.class.getName()).log(Level.SEVERE, null, ex);
-                //}
-       
-        
         
         HttpSession sessao = request.getSession();
         

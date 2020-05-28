@@ -96,10 +96,8 @@ public class ClienteDAO {
     public void alterar(Cliente c) throws DaoException, AppException{
          String sql = "UPDATE cliente set cli_cpf = ?, cli_nome = ?, cli_email = ?, cli_sexo = ? WHERE cli_id = ?";
         try (Connection conn = ConnectionFactory.getConnection()) {
-            // DESLIGAR AUTO-COMMIT -> POSSIBILITAR DESFAZER OPERAÇÕES NO BD CASO OCORRA ERRO
             conn.setAutoCommit(false);
 
-            // ADICIONAR O Statement.RETURN_GENERATED_KEYS PARA RECUPERAR ID GERADO NO BD
             try (PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                 stmt.setString(1, c.getCpf());
                 stmt.setString(2, c.getNome());
@@ -108,7 +106,7 @@ public class ClienteDAO {
                 stmt.setInt(5, c.getId());
                 stmt.execute();
                 }
-                // EFETIVAR NO BD TODAS AS OPERACOES REALIZADAS
+            //Efetivar operações
                 conn.commit();
         } catch (SQLException e) {
             e.printStackTrace();
