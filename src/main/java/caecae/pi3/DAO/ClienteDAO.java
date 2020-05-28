@@ -39,7 +39,7 @@ public class ClienteDAO {
                 cliente.setNome(rs.getString("cli_nome"));
                 cliente.setEmail(rs.getString("cli_email"));
                 cliente.setSexo(rs.getString("cli_sexo"));
-                cliente.setDataNascimento(rs.getDate("cli_dataNascimento"));
+                //cliente.setDataNascimento(rs.getDate("cli_dataNascimento"));
                 clientes.add(cliente);
             }
         } catch (SQLException ex) {
