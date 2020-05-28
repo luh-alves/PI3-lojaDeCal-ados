@@ -39,6 +39,7 @@ public class ClienteDAO {
                 cliente.setNome(rs.getString("cli_nome"));
                 cliente.setEmail(rs.getString("cli_email"));
                 cliente.setSexo(rs.getString("cli_sexo"));
+                cliente.setDataNascimento(rs.getDate("cli_dataNascimento"));
                 clientes.add(cliente);
             }
         } catch (SQLException ex) {
@@ -61,6 +62,7 @@ public class ClienteDAO {
                 stmt.setString(2, c.getNome());
                 stmt.setString(3, c.getEmail());
                 stmt.setString(4, String.valueOf(c.getSexo()));
+                //stmt.setDate(5, (java.sql.Date)c.getDataNascimento());
                 stmt.execute();
                 }
                 // EFETIVAR NO BD TODAS AS OPERACOES REALIZADAS

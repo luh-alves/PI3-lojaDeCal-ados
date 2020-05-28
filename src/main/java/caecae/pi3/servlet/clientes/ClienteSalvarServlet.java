@@ -11,6 +11,8 @@ import caecae.pi3.service.AppException;
 import caecae.pi3.service.ClienteService;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Date;
@@ -55,15 +57,22 @@ public class ClienteSalvarServlet extends HttpServlet {
         String cpf = request.getParameter("cpf");
         String email = request.getParameter("email");
         String sexo = request.getParameter("sexo");
-        //String dtnascimento = request.getParameter("dtnascimento");
+        String dtnascimento = request.getParameter("dtnascimento");
         
         Cliente c = new Cliente();
         c.setNome(nome);
         c.setCpf(cpf);
         c.setEmail(email);
         c.setSexo(sexo);
-        //LocalDate dtNascimento = LocalDate.parse(dtnascimento);
-        //c.setDataNascimento(2017-01-23);
+        //Date nasc;
+          //      try {
+           //         nasc = new SimpleDateFormat("dd/MM/yyy").parse(dtnascimento);
+             //        c.setDataNascimento(nasc);
+               //      System.out.println(nasc);
+                //} catch (ParseException ex) {
+                  //  Logger.getLogger(ClienteSalvarServlet.class.getName()).log(Level.SEVERE, null, ex);
+                //}
+       
         
         
         HttpSession sessao = request.getSession();
