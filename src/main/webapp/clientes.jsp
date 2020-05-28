@@ -34,43 +34,43 @@
             <div class="nome-aba">Clientes</div>
             <div id="tela">
                 <div class="conteudo">
-                     <form method="post" action="${pageContext.request.contextPath}/clientes/salvar">
-                    <div class="inputs">
-                        <div>
-                            <label for="">Nome: </label>
-                            <input type="text" name="nome" required>
-                        </div>
-                        <div>
-                            <label for="">CPF: </label>
-                            <input type="text" name="cpf" required onkeypress="return isNumberKey(event)"/ required oninvalid="this.setCustomValidity('Digite um CPFválido')"
-onchange="try{setCustomValidity('')}catch(e){}"minlength="11" maxlength="11">
-                        </div>     
-                        <div>
-                            <label for="">E-mail: </label>
-                            <input type="text" name="email" required>
-                        </div>     
-                        <div>
-                            <label class="labelsexo" for="">Sexo: </label>
-                            <div class ="radiobuttons">
-                                <input type="radio" id="masculino" name="sexo" value="M" required="">
-                            <label for="male">Masculino</label>
-                            <input type="radio" id="feminino" name="sexo" value="F">
-                            <label for="female">Feminino</label>
-                            <input type="radio" id="outro" name="sexo" value="O">
-                            <label for="other">Outro</label>
+                    <form method="post" action="${pageContext.request.contextPath}/clientes/salvar">
+                        <div class="inputs">
+                            <div>
+                                <label for="">Nome: </label>
+                                <input type="text" name="nome" required>
                             </div>
+                            <div>
+                                <label for="">CPF: </label>
+                                <input type="text" name="cpf" required onkeypress="return isNumberKey(event)"/ required oninvalid="this.setCustomValidity('Digite um CPFválido')"
+                                       onchange="try{setCustomValidity('')}catch(e){}"minlength="11" maxlength="11">
+                            </div>     
+                            <div>
+                                <label for="">E-mail: </label>
+                                <input type="text" name="email" required>
+                            </div>     
+                            <div>
+                                <label class="labelsexo" for="">Sexo: </label>
+                                <div class ="radiobuttons">
+                                    <input type="radio" id="masculino" name="sexo" value="M" required="">
+                                    <label for="male">Masculino</label>
+                                    <input type="radio" id="feminino" name="sexo" value="F">
+                                    <label for="female">Feminino</label>
+                                    <input type="radio" id="outro" name="sexo" value="O">
+                                    <label for="other">Outro</label>
+                                </div>
+                            </div>
+                            <!--   <div>
+                                   <label for="">Dt. Nascimento: </label>
+                                   <input type="date" name="dtnascimento">
+                               </div>-->
                         </div>
-                     <!--   <div>
-                            <label for="">Dt. Nascimento: </label>
-                            <input type="date" name="dtnascimento">
-                        </div>-->
-                    </div>
-                    <div class="botoes opcoes">
-                        <button type="submit" class="salvar">Salvar</button>
-                    </div><!--botoes-->
-                </form>
+                        <div class="botoes opcoes">
+                            <button type="submit" class="salvar">Salvar</button>
+                        </div><!--botoes-->
+                    </form>
                 </div><!--conteudo-->
-               
+
 
 
                 <!--buscar--> 
@@ -122,18 +122,18 @@ onchange="try{setCustomValidity('')}catch(e){}"minlength="11" maxlength="11">
 </html>
 
 <script>
-function isNumberKey(evt){
-    const charCode = (evt.which) ? evt.which : evt.keyCode;
-    if (charCode > 31 && (charCode < 48 || charCode > 57))
-        return false;
+    function isNumberKey(evt) {
+        const charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
 
-    return true;
-}
+        return true;
+    }
 </script>
 
 <script>
-    function isAtKey(evt){
-        const charCode = (evt.which) ? evt.which :  evt.keyCode;
+    function isAtKey(evt) {
+        const charCode = (evt.which) ? evt.which : evt.keyCode;
         if (charCode === 64)
             return true;
         return false;

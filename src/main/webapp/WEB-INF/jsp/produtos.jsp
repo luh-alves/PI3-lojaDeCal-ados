@@ -52,20 +52,24 @@
                     <form action="${pageContext.request.contextPath}/produtos/salvar" method="POST">
                         <div>
                             <label for="">Nome: </label>
-                            <input type="text" name="nome">
+                            <input type="text" name="nome" required>
 
                         </div>
                         <div>
                             <label for="">Valor: </label>
-                            <input type="text" name="valor">                         
+<!--                            <input type="text" name="valor" required>  -->
+                            <input type="text" name="valor" required onkeypress="return isNumberKey(event)"/ required oninvalid="this.setCustomValidity('Atenção no valor')"
+                                   onchange="try{setCustomValidity('')}catch(e){} "minlength="1" maxlength="5">
                         </div>     
                         <div>
                             <label for="">Quantidade: </label>
-                            <input type="text" name="quantidade">
+<!--                            <input type="text" name="quantidade" required>-->
+                            <input type="text" name="quantidade" required onkeypress="return isNumberKey(event)"/ required oninvalid="this.setCustomValidity('Atenção na Quantidade')"
+                                   onchange="try{setCustomValidity('')}catch(e){} "minlength="1" maxlength="5">
                         </div>     
                         <div>
                             <label for="">Descrição: </label>
-                            <input type="text" name="descricao">
+                            <input type="text" name="descricao" required>
                         </div> 
 
                         <div class="b">
@@ -125,3 +129,21 @@
         </section><!--center-->
     </body>
 </html>
+<script>
+    function isNumberKey(evt) {
+        const charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+
+        return true;
+    }
+</script>
+
+<script>
+    function isAtKey(evt) {
+        const charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode === 64)
+            return true;
+        return false;
+    }
+</script>
