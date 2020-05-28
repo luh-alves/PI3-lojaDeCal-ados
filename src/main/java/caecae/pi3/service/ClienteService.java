@@ -17,66 +17,67 @@ import java.util.List;
  * @author Felipe
  */
 public class ClienteService {
-    
-        private ClienteDAO dao = new ClienteDAO();
-    
+
+    private ClienteDAO dao = new ClienteDAO();
+
     public List<Cliente> listar() throws AppException {
         List<Cliente> lista;
         try {
-         lista = ClienteDAO.listar();
-         return lista;
+            lista = ClienteDAO.listar();
+            return lista;
         } catch (DaoException ex) {
             System.out.println(ex.getMessage());
             throw new AppException(ex.getMessage(), ex);
         }
-        
-     }
-    
+
+    }
+
     private boolean isValid(Cliente c) {
-        if (c != null && c.getNome() != null && c.getCpf()!= null && c.getEmail()!= null) {
+        if (c != null && c.getNome() != null && c.getCpf() != null && c.getEmail() != null) {
             return true;
         }
         return false;
     }
-    
+
     public void incluir(Cliente c) throws DaoException, AppException {
         try {
             if (isValid(c)) {
                 dao.incluir(c);
             } else {
-                 throw new AppException("DADOS INVALIDOS", null);
+                throw new AppException("DADOS INVALIDOS", null);
             }
         } catch (DaoException e) {
             e.printStackTrace();
             throw new AppException("ERRO NA INCLUSAO DOS DADOS", e);
         }
     }
-    
+
     public void excluir(int id) throws AppException {
-        try {            
-                dao.excluir(id);                  
+        try {
+            dao.excluir(id);
         } catch (DaoException e) {
             e.printStackTrace();
             throw new AppException("ERRO NA EXCLUSÃO DOS DADOS", e);
         }
     }
-    
-    public void alterar(Cliente c) throws DaoException, AppException{
-        try{
+
+    public void alterar(Cliente c) throws DaoException, AppException {
+        try {
             dao.alterar(c);
         } catch (DaoException e) {
-              e.printStackTrace();
+            e.printStackTrace();
             throw new AppException("ERRO NA EDIÇÃO DOS DADOS", e);
         }
     }
+
     //Alterado
     public Cliente buscar(String cpf) throws AppException {
-        try { 
+        try {
             return dao.buscar(cpf);
-        } catch (DaoException e){
+        } catch (DaoException e) {
             e.printStackTrace();
             throw new AppException("ERRO NA BUSCA DOS DADOS", e);
-        }     
+        }
     }
-    
+
 }

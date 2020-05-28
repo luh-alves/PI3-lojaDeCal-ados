@@ -52,10 +52,10 @@
                             <label for="">Sexo: </label>
                             <input  type="text" name="sexo">
                         </div>
-                        <div>
+<!--                        <div>
                             <label for="">Dt. Nascimento: </label>
                             <input type="date" name="dtnascimento">
-                        </div>
+                        </div>-->
                     </div>
                     <div class="botoes opcoes">
                         <button type="submit" class="salvar">Salvar</button>

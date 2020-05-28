@@ -8,7 +8,7 @@ cli_cpf varchar(11) not null unique,
 cli_nome varchar(40) not null,
 cli_email varchar(45) not null unique,
 cli_sexo char not null,
-cli_dataNascimento date not null,
+-- cli_dataNascimento date not null,
 cli_dataCadastro datetime default current_timestamp,
 primary key (cli_id)
 );
