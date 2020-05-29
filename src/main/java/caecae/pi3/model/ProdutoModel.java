@@ -17,10 +17,19 @@ public class ProdutoModel {
     private Double valor;
     private String descricao;
     private Integer quantidade;
+    private Integer filial;
     
 
     public int getId() {
         return id;
+    }
+
+    public int getFilial() {
+        return filial;
+    }
+
+    public void setFilial(int filial) {
+        this.filial = filial;
     }
 
     public void setId(int id) {
@@ -58,5 +67,7 @@ public class ProdutoModel {
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
+
+  
         
 }

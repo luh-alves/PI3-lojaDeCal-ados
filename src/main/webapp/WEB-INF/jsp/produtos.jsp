@@ -33,23 +33,15 @@
         </div><!--espacador-->
         <section class="center">
             <div class="nome-aba">Cadastro de Produtos</div>
-            <div class="nome-filial">
-                <label>Nome Filial:</label>
-                <select>
-                    <option disabled selected>Selecione uma Filial...</option>
-                    <option value="">São Paulo</option>
-                    <option value="">Brasilia</option>
-                    <option value="">Curitiba</option>
-                    <option value="">Florianopolis</option>
-                    <option value="">Rio de Janeiro</option>>
-                    <option value="">Minas Gerais</option>
-                    <option value="">Belo Horizonte</option>
-                </select>
 
-            </div>
             <div class="container">
                 <div class="form-container">
                     <form action="${pageContext.request.contextPath}/produtos/salvar" method="POST">
+                        <div class="nome-filial">
+                            <label>Nome Filial:</label>
+                            <input type="text" name="nome" required>
+
+                        </div>
                         <div>
                             <label for="">Nome: </label>
                             <input type="text" name="nome" required>
@@ -57,13 +49,13 @@
                         </div>
                         <div>
                             <label for="">Valor: </label>
-<!--                            <input type="text" name="valor" required>  -->
+                            <!--                            <input type="text" name="valor" required>  -->
                             <input type="text" name="valor" required onkeypress="return isNumberKey(event)"/ required oninvalid="this.setCustomValidity('Atenção no valor')"
                                    onchange="try{setCustomValidity('')}catch(e){} "minlength="1" maxlength="5">
                         </div>     
                         <div>
                             <label for="">Quantidade: </label>
-<!--                            <input type="text" name="quantidade" required>-->
+                            <!--                            <input type="text" name="quantidade" required>-->
                             <input type="text" name="quantidade" required onkeypress="return isNumberKey(event)"/ required oninvalid="this.setCustomValidity('Atenção na Quantidade')"
                                    onchange="try{setCustomValidity('')}catch(e){} "minlength="1" maxlength="5">
                         </div>     
@@ -94,9 +86,10 @@
                         <th class="nomeProduto">Nome</th>
                         <th class="valor">Valor</th>
                         <th class="estoque">Estoque</th>
-                        <th class="descricao">Descrição</th>
+                        <th class="descricao">Descrição</th>                    
                         <th class="excluirB">Excluir</th>
                         <th class="atualizarB">Atualizar</th>
+                        <th class="filial">Filial</th>
                     </tr>
                     <c:forEach items="${listaProdutos}" var="produto" >
                         <tr class="hover">
@@ -104,6 +97,7 @@
                             <td class="valor"><c:out value="${produto.getValor()}"/></td>
                             <td class="estoque"><c:out value="${produto.getQuantidade()}"/></td>                           
                             <td class="descricao"><c:out value="${produto.getDescricao()}"/></td>
+                            <td class="filial"><c:out value="${produto.getFilial()}"/></td>
 
                             <td class="buttonExcluir">
                                 <form action="${pageContext.request.contextPath}/produtos/excluir" method="GET">

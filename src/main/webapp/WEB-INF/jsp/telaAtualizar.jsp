@@ -37,6 +37,10 @@
                 <div class="form-container">
                     <form action="${pageContext.request.contextPath}/produtos/atualizar" method="GET">
                         <div>
+                            <label for="">Nome Filial: </label>
+                            <input type="text" name="nome" value="${produto.getFilial()}">                           
+                        </div>
+                        <div>
                             <label for="">Nome: </label>
                             <input type="text" name="nome" value="${produto.getNome()}">                           
                         </div>

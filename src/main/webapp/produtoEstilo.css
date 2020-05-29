@@ -182,7 +182,7 @@ table {
 .nomeProduto{
     text-align: left;
 }
-.valor{
+.valor .filial{
     text-align: center;
 }
 .estoque{

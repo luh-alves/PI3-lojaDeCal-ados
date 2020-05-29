@@ -23,15 +23,15 @@ import java.util.logging.Logger;
  * @author Luciana Alves
  */
 public class ProdutoDao implements DaoInterface<ProdutoModel> {
-
+    
     @Override
     public ArrayList<ProdutoModel> getAll() throws DaoException {
-        String sql = "SELECT  prod_id ,prod_nome, prod_qtd, prod_preco, prod_descr FROM produto";
+        String sql = "SELECT  prod_id ,prod_nome, prod_qtd, prod_preco, prod_descr, prod_filial FROM produto";
         List<ProdutoModel> produtos = new ArrayList<>();
         try (Connection conn = ConnectionFactory.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(sql);
                 ResultSet rs = stmt.executeQuery()) {
-
+            
             while (rs.next()) {
                 ProdutoModel produto = new ProdutoModel();
                 produto.setId(rs.getInt("prod_id"));
@@ -39,6 +39,7 @@ public class ProdutoDao implements DaoInterface<ProdutoModel> {
                 produto.setQuantidade(rs.getInt("prod_qtd"));
                 produto.setValor(rs.getDouble("prod_preco"));
                 produto.setDescricao(rs.getString("prod_descr"));
+                produto.setFilial(rs.getInt("prod_filial"));
                 produtos.add(produto);
             }
         } catch (SQLException ex) {
@@ -46,10 +47,10 @@ public class ProdutoDao implements DaoInterface<ProdutoModel> {
         }
         return (ArrayList<ProdutoModel>) produtos;
     }
-
+    
     @Override
     public boolean create(ProdutoModel t) throws DaoException {
-        String sql = "INSERT INTO produto (prod_nome, prod_qtd, prod_preco, prod_descr) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO produto (prod_nome, prod_qtd, prod_preco, prod_descr, prod_filial) VALUES (?,?,?,?,?)";
         try (Connection conn = ConnectionFactory.getConnection()) {
             conn.setAutoCommit(false);
             try (PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
@@ -57,6 +58,7 @@ public class ProdutoDao implements DaoInterface<ProdutoModel> {
                 stmt.setInt(2, t.getQuantidade());
                 stmt.setDouble(3, t.getValor());
                 stmt.setString(4, t.getDescricao());
+                stmt.setInt(5, t.getFilial());
                 stmt.execute();
                 conn.commit();
                 return true;
@@ -70,7 +72,7 @@ public class ProdutoDao implements DaoInterface<ProdutoModel> {
             throw new DaoException(ex);
         }
     }
-
+    
     @Override
     public boolean delete(int id) throws DaoException {
         String sql = "DELETE FROM produto WHERE prod_id = ?";
@@ -91,7 +93,7 @@ public class ProdutoDao implements DaoInterface<ProdutoModel> {
             throw new DaoException(ex);
         }
     }
-
+    
     @Override
     public ArrayList<ProdutoModel> get(String nome) throws DaoException {
         String sql = "SELECT * FROM produto where prod_nome like ?";
@@ -100,7 +102,7 @@ public class ProdutoDao implements DaoInterface<ProdutoModel> {
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, "%" + nome + "%");
             ResultSet rs = stmt.executeQuery();
-
+            
             while (rs.next()) {
                 ProdutoModel produto = new ProdutoModel();
                 produto.setId(rs.getInt("prod_id"));
@@ -108,23 +110,24 @@ public class ProdutoDao implements DaoInterface<ProdutoModel> {
                 produto.setQuantidade(rs.getInt("prod_qtd"));
                 produto.setValor(rs.getDouble("prod_preco"));
                 produto.setDescricao(rs.getString("prod_descr"));
+                produto.setFilial(rs.getInt("prod_filial"));
                 produtos.add(produto);
             }
         } catch (SQLException ex) {
             Logger.getLogger(ProdutoDao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return (ArrayList<ProdutoModel>) produtos;
-
+        
     }
-
+    
     @Override
     public boolean update(int id, ProdutoModel p) throws DaoException {
         boolean retorno = false;
         PreparedStatement instrucaoSQL = null;
-
+        
         try {
             Connection conn = ConnectionFactory.getConnection();
-            String sql = "UPDATE produto SET prod_nome = ?, prod_qtd = ?, prod_preco = ?, prod_descr = ? WHERE prod_id = ?";
+            String sql = "UPDATE produto SET prod_nome = ?, prod_qtd = ?, prod_preco = ?, prod_descr = ?, prod_filial = ? WHERE prod_id = ?";
             instrucaoSQL = conn.prepareStatement(sql,
                     Statement.RETURN_GENERATED_KEYS);
             System.out.println(p.getId());
@@ -132,24 +135,25 @@ public class ProdutoDao implements DaoInterface<ProdutoModel> {
             instrucaoSQL.setInt(2, p.getQuantidade());
             instrucaoSQL.setDouble(3, p.getValor());
             instrucaoSQL.setString(4, p.getDescricao());
-            instrucaoSQL.setInt(5, p.getId());
-
+            instrucaoSQL.setInt(5, p.getFilial());
+            instrucaoSQL.setInt(6, p.getId());
+            
             int linhasAfetadas = instrucaoSQL.executeUpdate();
-
+            
             retorno = linhasAfetadas > 0;
-
+            
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
             retorno = false;
         }
-
+        
         return retorno;
     }
-
+    
     @Override
     public ProdutoModel read(int id) throws DaoException {
         String sql = "SELECT * from produto WHERE prod_id = ?";
-
+        
         try (Connection conn = ConnectionFactory.getConnection();) {
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, id);
@@ -161,6 +165,7 @@ public class ProdutoDao implements DaoInterface<ProdutoModel> {
                 produto.setQuantidade(rs.getInt("prod_qtd"));
                 produto.setValor(rs.getDouble("prod_preco"));
                 produto.setDescricao(rs.getString("prod_descr"));
+                produto.setFilial(rs.getInt("prod_filial"));
                 return produto;
             }
         } catch (SQLException ex) {
@@ -168,5 +173,5 @@ public class ProdutoDao implements DaoInterface<ProdutoModel> {
         }
         return null;
     }
-
+    
 }

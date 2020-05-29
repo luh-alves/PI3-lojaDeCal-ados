@@ -35,14 +35,17 @@ public class AtualizarProdutoController extends HttpServlet {
         String quantidade = request.getParameter("quantidade");
         String valor = request.getParameter("valor");
         String descricao = request.getParameter("descricao");
+        String filial = request.getParameter("filial");
 
         int id = Integer.parseInt(sid);
         ProdutoModel produto = new ProdutoModel();
         produto.setId(id);
         produto.setNome(nome);
         produto.setQuantidade(Integer.parseInt(quantidade));
-        produto.setValor(Double.parseDouble(valor));
+        produto.setValor(Double.parseDouble(valor));      
         produto.setDescricao(descricao);
+        produto.setFilial(Integer.parseInt(filial));
+        
 
         HttpSession sessao = request.getSession();
         try {
