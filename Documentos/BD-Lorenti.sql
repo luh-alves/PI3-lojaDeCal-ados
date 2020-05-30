@@ -24,7 +24,7 @@ func_user varchar (40) not null unique,
 func_senha varchar(40)not null,
 primary key (func_id)
 );
-create table Unidade(
+create table unidade(
 unid_id integer auto_increment not null unique,
 unid_nome varchar(40) not null ,
 unid_endereco varchar(50) not null,
