@@ -1,5 +1,5 @@
-drop database lorentiBD;
-create database if not exists lorentiBD;
+
+create database lorentiBD;
 use lorentiBD;
 
 create table cliente(
