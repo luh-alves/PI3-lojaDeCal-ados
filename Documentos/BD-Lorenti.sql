@@ -12,7 +12,7 @@ cli_dataCadastro datetime default current_timestamp,
 primary key (cli_id)
 );
 create table funcionario(
-func_id smallint not null unique,
+func_id smallint not null unique auto_increment,
 func_nome varchar(40) not null,
 func_cpf varchar(11) not null unique,
 func_email varchar(45)not null unique,
