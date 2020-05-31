@@ -39,7 +39,8 @@
                     <form action="${pageContext.request.contextPath}/produtos/salvar" method="POST">
                         <div class="nome-filial">
                             <label>Nome Filial:</label>
-                            <input type="text" name="nome" required>
+                            <input type="text" name="filial" required onkeypress="return isNumberKey(event)"/ required oninvalid="this.setCustomValidity('Colocar Filial')"
+                                   onchange="try{setCustomValidity('')}catch(e){} "minlength="1" maxlength="5">
 
                         </div>
                         <div>
@@ -83,21 +84,22 @@
             <div class="pesquisar">
                 <table>
                     <tr>
+                        <th class="filial">Filial</th>
                         <th class="nomeProduto">Nome</th>
                         <th class="valor">Valor</th>
                         <th class="estoque">Estoque</th>
                         <th class="descricao">Descrição</th>                    
                         <th class="excluirB">Excluir</th>
                         <th class="atualizarB">Atualizar</th>
-                        <th class="filial">Filial</th>
+
                     </tr>
                     <c:forEach items="${listaProdutos}" var="produto" >
                         <tr class="hover">
+                            <td class="filial"><c:out value="${produto.getFilial()}"/></td>
                             <td class="nome" ><c:out value="${produto.getNome()}"/></td>
                             <td class="valor"><c:out value="${produto.getValor()}"/></td>
                             <td class="estoque"><c:out value="${produto.getQuantidade()}"/></td>                           
                             <td class="descricao"><c:out value="${produto.getDescricao()}"/></td>
-                            <td class="filial"><c:out value="${produto.getFilial()}"/></td>
 
                             <td class="buttonExcluir">
                                 <form action="${pageContext.request.contextPath}/produtos/excluir" method="GET">
@@ -112,6 +114,7 @@
 
                                 </form>
                             </td>
+
 
                         </tr>
                     </c:forEach>
