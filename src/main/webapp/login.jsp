@@ -11,8 +11,8 @@
     </body>
     <div class="login-page">
         <div class="form">
-            <form class="login-form" method="post"action="${pageContext.request.contextPath}/login/validate" novalidate>
-                <input type="text" name="user" id="loginUser" placeholder="user" autofocus="" required>
+            <form class="login-form" method="post"action="${pageContext.request.contextPath}/login/validate" >
+                <input type="text" name="user" id="loginUser" placeholder="user" autofocus required>
                 <input type="password" name="senha" id="loginSenha" placeholder="senha" required>
                 <button type="submit" name="LogBtn">login</button>
             </form>
