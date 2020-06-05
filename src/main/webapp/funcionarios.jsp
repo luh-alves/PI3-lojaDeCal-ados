@@ -142,6 +142,11 @@
             </div>
             <div style="clear: both;"></div>
         </section><!--center-->
+        <footer>
+            <div>
+                Felipe Ferreira Henriques, Luciana Alves de Freitas, Matheus Makoto e Rogerio Lucon. 
+            </div>
+        </footer>
     </body>
 </html>
 
