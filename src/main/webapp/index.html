@@ -1,15 +1,75 @@
+
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Start Page</title>
+        <title>Pagina Inicial</title>
+        <link rel="stylesheet" href="/index.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
     <body>
-        <h1>Hello World!</h1>
-        
-        <a href="/vendas.jsp">Vendas</a>
-        <a href="/produtos">Produtos</a>
-        <a href="/clientes">Clientes</a>
-        <a href="/login/validate">Login</a>
+        <header>
+            <div class="home">
+                <h1><font size="6" face="Georgia, Arial" color="maroon">Lojas De Calçados Lorenti</font></h1>
+            </div>
+            <nav>
+                <div class="imagens">
+                    <img src="/imagens/crianca.png.jpg" alt="some text" width=150 height=180>
+                    <img src="/imagens/homem.png.jpg" alt="some text" width=250 height=180>
+                    <img src="/imagens/mulher.png.webp" alt="some text" width=150 height= 180>
+                    <img src="/imagens/menino.webp" alt="some text" width=150 height=180>
+                    <img src="/imagens/m.jpg" alt="some text" width=200 height=180>
+
+                </div><!--center-->
+            </nav>
+        </header>
+        <div class="container paineis">
+            <section class="painel">
+                <h2>Serviços</h2>
+            </section>
+            <section class="painel">
+                <div class="im">
+                    <a href="/login/validate">
+                        <figure>
+                            <img src="imagens/download.png" alt="login" width=150 height=150>
+                            <figcaption>Login</figcaption>
+
+                        </figure>
+                    </a>
+                </div>
+                <div class="im">
+                    <a href="/clientes">
+                        <figure>
+                            <img src="imagens/cliente.png" alt="cliente" width=150 height=150>
+                            <figcaption>Cadastro de Clientes</figcaption>
+
+                        </figure>
+                    </a>
+                </div>
+                <div class="im"> 
+                    <a href="/produtos">
+                        <figure>
+                            <img src="imagens/produtos.jpg" alt="produto" width=150 height=150>
+                            <figcaption>Cadastro de produtos</figcaption>
+
+                        </figure>
+                    </a>
+                </div>
+                <div class="im">
+                    <a href="/vendas.jsp">
+                        <figure>
+                            <img src="imagens/venda.png" alt="venda" width=150 height=150>
+                            <figcaption>Vendas de Produtos</figcaption>
+                        </figure>
+                    </a>
+                </div>
+            </section>
+        </div>
+        <!--        <div class="botoes">
+                    <a href="/vendas.jsp">Vendas</a>
+                    <a href="/produtos">Produtos</a>
+                    <a href="/clientes">Clientes</a>
+                    <a href="/login/validate">Login</a>
+                </div>-->
     </body>
 </html>
+

@@ -1,0 +1,100 @@
+
+/* 
+    Created on : 05/06/2020, 09:58:26
+    Author     : Luciana Alves
+*/
+
+*{
+    margin: 0;
+    padding: 0;
+
+}
+
+body {
+    min-width: 700px;
+    background: #81a167;
+}
+
+button {
+    background: #82dee8;
+}
+#imagem-topo{
+    background: #caecae;
+    text-indent: -9999px;
+}
+/* --- Header Menu Superior ---*/
+
+
+.imagens{
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2%;
+    padding-top: 15px;
+}
+.home{
+    padding-left: 220px;
+    border-bottom: 1px solid;
+    padding-top: 20px;
+}
+
+.painel {
+    display: flex;
+    margin: 10px 0;
+    padding: 10px;
+    width: 750px;
+    border-radius: 4px;
+    box-shadow: inset 1px 1px 4px rgba(255, 255, 255, 0.8);
+    justify-content: space-between;
+    flex-direction: row;
+
+}
+.novidades {
+    justify-content: space-between;
+}
+.container {
+    margin: 0 auto;
+    width: 940px;
+}
+
+header {
+    position: relative;
+}
+.painel li {
+    display: inline-block;
+    vertical-align: top;
+    width: 140px;
+    margin: 2px;
+    padding-bottom: 10px;
+
+}
+.painel h2 {
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    text-shadow: 3px 3px 2px #FFF;
+    padding-left: 300px;
+    padding-top: 5px;
+    
+ 
+}
+
+.painel .im:hover {
+    box-shadow: 0 0 5px #333;
+    transition:all 2.7s;
+    background-color: rgba(255, 255, 255, 0.8);
+    transform: scale(1.0) rotate(-5deg);
+}
+
+.painel a {
+    font-size: 20px;
+    text-align: center;
+    text-decoration: none;
+    face: Georgia Arial;
+    color: maroon;
+    font-weight: bold;
+}
+.container {
+    margin: 0 auto;
+    width: 940px;
+}
