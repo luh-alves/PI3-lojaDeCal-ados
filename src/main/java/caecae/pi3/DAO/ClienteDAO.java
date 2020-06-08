@@ -64,6 +64,7 @@ public class ClienteDAO {
                 stmt.setString(4, String.valueOf(c.getSexo()));
                 //stmt.setDate(5, (java.sql.Date)c.getDataNascimento());
                 stmt.execute();
+                
                 }
                 // EFETIVAR NO BD TODAS AS OPERACOES REALIZADAS
                 conn.commit();

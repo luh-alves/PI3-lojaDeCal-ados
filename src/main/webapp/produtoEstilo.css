@@ -225,3 +225,14 @@ table {
     font-size: 23px;
 
 }
+footer {
+    position:absolute;
+    bottom:0;
+    width:100%;
+}
+footer div{
+    height: 50px;
+    text-align: center;
+    background: #82dee8;
+    padding-top: 20px;
+}
