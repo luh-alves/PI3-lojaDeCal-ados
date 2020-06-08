@@ -52,6 +52,7 @@ public class FuncionariosSalvarServlet extends HttpServlet {
         String nome = request.getParameter("nome");
         String cpf = request.getParameter("cpf");
         String email = request.getParameter("email");
+        String celular = request.getParameter("celular");
         String sexo = request.getParameter("sexo");
         String cargo = request.getParameter("cargo");
         String user = request.getParameter("user");
@@ -62,23 +63,20 @@ public class FuncionariosSalvarServlet extends HttpServlet {
         f.setCpf(cpf);
         f.setEmail(email);
         f.setSexo(sexo);
+        f.setCelular(celular);
         f.setCargo(cargo);
         f.setUser(user);
         f.setSenha(senha);
         
         HttpSession sessao = request.getSession();
-        
         try {
             service.incluir(f);
             sessao.setAttribute("msgSucesso", "Funcionario salvo com sucesso");
         } catch (AppException ex) {
             sessao.setAttribute("msgErro", "Erro ao salvar funcionario - " + ex.getMessage());
-             response.sendRedirect(request.getContextPath() + "/funcionarios");
-        }       catch (DaoException ex) {
-                    Logger.getLogger(FuncionariosSalvarServlet.class.getName()).log(Level.SEVERE, null, ex);
-                     response.sendRedirect(request.getContextPath() + "/funcionarios");
-                }
+        } catch (DaoException ex) {
+            Logger.getLogger(FuncionariosSalvarServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
         response.sendRedirect(request.getContextPath() + "/funcionarios");
     }
-
 }
