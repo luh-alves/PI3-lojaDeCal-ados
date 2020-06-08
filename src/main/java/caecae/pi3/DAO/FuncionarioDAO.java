@@ -39,8 +39,8 @@ public class FuncionarioDAO {
                 funcionario.setCpf(rs.getString("func_cpf"));
                 funcionario.setEmail(rs.getString("func_email"));
                 funcionario.setCelular(rs.getString("func_celular"));
-                funcionario.setSexo("func_sexo");
-                funcionario.setCargo("func_cargo");
+                funcionario.setSexo(rs.getString("func_sexo"));
+                funcionario.setCargo(rs.getString("func_cargo"));
                 funcionario.setUser("func_user");
                 funcionario.setSenha("func_senha");
                 funcionarios.add(funcionario);
@@ -135,14 +135,15 @@ public class FuncionarioDAO {
 
             if (rs.next()) {
                 funcionario = new Funcionario();
-                funcionario.setNome("func_nome");
-                funcionario.setCpf("func_cpf");
-                funcionario.setEmail("func_email");
-                funcionario.setCelular("func_celular");
-                funcionario.setSexo("func_sexo");
-                funcionario.setCargo("func_cargo");
-                funcionario.setUser("func_user");
-                funcionario.setSenha("func_senha");
+                funcionario.setId(rs.getInt("func_id"));
+                funcionario.setNome(rs.getString("func_nome"));
+                funcionario.setCpf(rs.getString("func_cpf"));
+                funcionario.setEmail(rs.getString("func_email"));
+                funcionario.setCelular(rs.getString("func_celular"));
+                funcionario.setSexo(rs.getString("func_sexo"));
+                funcionario.setCargo(rs.getString("func_cargo"));
+                funcionario.setUser(rs.getString("func_user"));
+                funcionario.setSenha(rs.getString("func_senha"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(FuncionarioDAO.class.getName()).log(Level.SEVERE, null, ex);

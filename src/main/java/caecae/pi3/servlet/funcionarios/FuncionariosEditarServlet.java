@@ -11,7 +11,6 @@ import caecae.pi3.service.AppException;
 import caecae.pi3.service.FuncionarioService;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -25,28 +24,16 @@ import javax.servlet.http.HttpSession;
  *
  * @author Felipe
  */
-@WebServlet(name = "FuncionariosSalvarServlet", urlPatterns = {"/funcionarios/salvar"})
-public class FuncionariosSalvarServlet extends HttpServlet {
+@WebServlet(name = "FuncionariosEditarServlet", urlPatterns = {"/funcionarios/atualizar"})
+public class FuncionariosEditarServlet extends HttpServlet {
 
     private FuncionarioService service = new FuncionarioService();
-    
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession sessao = request.getSession();
-        List<Funcionario> funcionarios;
-        try {
-            funcionarios = service.listar();
-            sessao.setAttribute("listarFuncionarios", funcionarios);
-        } catch (AppException ex) {
-            Logger.getLogger(FuncionariosSalvarServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-            request.setCharacterEncoding("UTF-8");
+         request.setCharacterEncoding("UTF-8");
+        String id = request.getParameter("funcionarioId");
         String nome = request.getParameter("nome");
         String cpf = request.getParameter("cpf");
         String email = request.getParameter("email");
@@ -55,26 +42,37 @@ public class FuncionariosSalvarServlet extends HttpServlet {
         String cargo = request.getParameter("cargo");
         String user = request.getParameter("user");
         String senha = request.getParameter("senha");
+        //String dtnascimento = request.getParameter("dtnascimento");
         
-        Funcionario f = new Funcionario();
+        Funcionario f = new Funcionario ();
+        f.setId(Integer.parseInt(id));
+        System.out.println("o Id é:" + id);
         f.setNome(nome);
         f.setCpf(cpf);
         f.setEmail(email);
-        f.setSexo(sexo);
         f.setCelular(celular);
         f.setCargo(cargo);
         f.setUser(user);
         f.setSenha(senha);
+        f.setSexo(sexo);
+        //LocalDate dtNascimento = LocalDate.parse(dtnascimento);
+        //c.setDataNascimento(2017-01-23);
+        
         
         HttpSession sessao = request.getSession();
+        
         try {
-            service.incluir(f);
-            sessao.setAttribute("msgSucesso", "Funcionario salvo com sucesso");
+            service.alterar(f);
+            sessao.setAttribute("msgSucesso", "Funcionario alterado com sucesso");
         } catch (AppException ex) {
-            sessao.setAttribute("msgErro", "Erro ao salvar funcionario - " + ex.getMessage());
-        } catch (DaoException ex) {
-            Logger.getLogger(FuncionariosSalvarServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            sessao.setAttribute("msgErro", "Erro ao editar funcionario - " + ex.getMessage());
+             response.sendRedirect(request.getContextPath() + "/funcionarios");
+        }       catch (DaoException ex) {
+                    Logger.getLogger(FuncionariosSalvarServlet.class.getName()).log(Level.SEVERE, null, ex);
+                     response.sendRedirect(request.getContextPath() + "/funcionarios");
+                }
         response.sendRedirect(request.getContextPath() + "/funcionarios");
+
     }
+
 }

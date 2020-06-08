@@ -18,7 +18,7 @@ public class FuncionarioService {
     
     private FuncionarioDAO dao = new FuncionarioDAO();
 
-    public List<Funcionario> listar() throws AppException, DaoException {
+    public List<Funcionario> listar() throws AppException {
         List<Funcionario> lista;
         try {
             lista = dao.listar();
