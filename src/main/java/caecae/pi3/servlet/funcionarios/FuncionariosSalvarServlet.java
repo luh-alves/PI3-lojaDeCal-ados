@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.mindrot.jbcrypt.BCrypt;
 
 /**
  *
@@ -55,6 +56,8 @@ public class FuncionariosSalvarServlet extends HttpServlet {
         String cargo = request.getParameter("cargo");
         String user = request.getParameter("user");
         String senha = request.getParameter("senha");
+        
+        senha = BCrypt.hashpw(senha, BCrypt.gensalt());
         
         Funcionario f = new Funcionario();
         f.setNome(nome);

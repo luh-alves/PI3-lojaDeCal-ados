@@ -19,6 +19,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import org.mindrot.jbcrypt.BCrypt;
 public class LoginDAO {
 PreparedStatement stmt;
 ResultSet rs;
@@ -43,8 +44,8 @@ Connection con;
                 login.setUser(rs.getString("func_user"));
                 login.setSenha(rs.getString("func_senha"));
             }
-            if ((usuario.equals(login.getUser()))&&(senha.equals(login.getSenha()))) {
-                return true;
+            if (usuario.equals(login.getUser())) {
+                return BCrypt.checkpw(senha, login.getSenha());
             } else {
                 return false;
             }
@@ -53,6 +54,5 @@ Connection con;
             return false;
         }
     }
-
 
 }
