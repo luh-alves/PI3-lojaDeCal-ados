@@ -12,15 +12,16 @@ cli_dataCadastro datetime default current_timestamp,
 primary key (cli_id)
 );
 create table funcionario(
-func_id smallint not null unique auto_increment,
+func_id int not null unique auto_increment,
 func_nome varchar(40) not null,
 func_cpf varchar(11) not null unique,
 func_email varchar(45)not null unique,
 func_celular varchar (11)not null unique,
 func_sexo char not null,
+func_filial int not null,
 func_cargo varchar (40) not null,
 func_user varchar (40) not null unique,
-func_senha varchar(40)not null,
+func_senha varchar(1000)not null,
 primary key (func_id)
 );
 create table unidade(
@@ -46,7 +47,6 @@ venda_data_venda datetime default current_timestamp,
 venda_func smallint not null,
 venda_val_total numeric(10,2) not null,
 venda_cli_id integer not null,
-venda_qnt integer not null,
 venda_filial int,
 primary key (venda_id),
 foreign key (venda_func) references funcionario(func_id),
@@ -102,3 +102,12 @@ INSERT INTO produto(prod_nome, prod_qtd, prod_preco, prod_descr, prod_filial) VA
 ('Chinelo', 50, 15, 'Chinelo de alca', 5),
 ('Chuteira', 50, 100, 'Chuteira Toperson', 6),
 ('Sapato Masc', 50, 150, 'Sapato Social Marrom', 6);
+
+DELIMITER //
+Create Trigger after_vender_item
+	after insert on itens for each row
+    begin
+    update produto set prod_qtd = prod_qtd - new.it_qtd where prod_id = New.it_produto;
+    end//
+    
+DELIMITER ;
