@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.mindrot.jbcrypt.BCrypt;
+import caecae.pi3.DAO.SessaoDAO;
+import caecae.pi3.service.AppException;
 
 @WebServlet(name = "validate", urlPatterns = {"/login/validate"})
 public class validate extends HttpServlet {
@@ -46,9 +48,15 @@ public class validate extends HttpServlet {
         request.setAttribute("loginSenha", senha);
         
         try {
+            SessaoDAO sessao = new SessaoDAO();
             boolean teste = caecae.pi3.DAO.LoginDAO.verifUser(user,senha);
             if(teste == true){
                 request.setAttribute("loginUser", "DEU CERTO");
+                try {
+                    sessao.guardaSessao(user);
+                } catch (AppException ex) {
+                    Logger.getLogger(validate.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }else{
                 request.setAttribute("loginUser", "DEU ERRADO");
             }
