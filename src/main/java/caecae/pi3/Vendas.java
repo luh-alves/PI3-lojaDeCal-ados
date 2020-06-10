@@ -61,8 +61,7 @@ public class Vendas extends HttpServlet {
         // FeedBacks
 //        request.setAttribute("erroCliente", "CPF do Cliente Invalido");
         
-        RequestDispatcher dispatcher = request.getRequestDispatcher(request.getContextPath() + "/WEB-INF/jsp/vendas.jsp");
-        dispatcher.forward(request, response);
+        request.getRequestDispatcher(request.getContextPath() + "/WEB-INF/jsp/vendas.jsp").forward(request, response);
     }
 
     /**
