@@ -33,11 +33,12 @@
         <section class="center">
             <div class="nome-aba">Vendas</div>
             <div id="primeira">
-                <div class="conteudo">
-                    <label for="">Filial: </label>
-                    <input disabled type="text" name="filial">
-                </div><!--conteudo-->
+                
                 <form id="form1" method="post" action="${pageContext.request.contextPath}/restrito/vendas" novalidate>
+                    <div class="conteudo">
+                    <label for="">Filial: </label>
+                    <input disabled type="text" name="filial" value="${filialAtr}">
+                </div><!--conteudo-->
                     <div>
                         <label for="">Cliente CPF: </label>
                         <input type="text" name="cliente" value="${clienteAtr}">
