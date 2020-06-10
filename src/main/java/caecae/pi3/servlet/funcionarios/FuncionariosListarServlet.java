@@ -25,7 +25,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Felipe
  */
-@WebServlet(name = "FuncionariosListarServlet", urlPatterns = {"/funcionarios"})
+@WebServlet(name = "FuncionariosListarServlet", urlPatterns = {"/restrito/funcionarios"})
 public class FuncionariosListarServlet extends HttpServlet {
     
     private FuncionarioService service = new FuncionarioService();
@@ -49,7 +49,7 @@ public class FuncionariosListarServlet extends HttpServlet {
             String msg = ex.getMessage();
             request.setAttribute("msgErro", msg);
         } 
-        request.getRequestDispatcher("funcionarios.jsp").forward(request, response);
+        request.getRequestDispatcher(request.getContextPath() + "/WEB-INF/jsp/funcionarios.jsp").forward(request, response);
     
     }
 }

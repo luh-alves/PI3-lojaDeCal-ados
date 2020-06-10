@@ -24,7 +24,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Rogerio
  */
-@WebFilter(filterName = "Filtro", urlPatterns = {"/*"})
+@WebFilter(filterName = "Filtro", urlPatterns = {"/restrito/*"})
 public class Filtro implements Filter {
     
     private static final boolean debug = true;
@@ -48,11 +48,11 @@ public class Filtro implements Filter {
         
         return;
 //        if(sessao.getAttribute("usuario") == null){
-//            httpResponse.sendRedirect(httpRequest.getContextPath() + "/login");
+//            httpResponse.sendRedirect(httpRequest.getContextPath() + "/login/validate");
 //            return;
 //        }
 
-        //recebe o usuario =(UsuarioSistema) sessao.getAttribute("usuario")
+        //Sessao user =(Sessao) sessao.getAttribute("usuario")
         
         //if(verificaUsuario(usuario, httpRequest)){
 //           chain.doFilter(request, response); 
@@ -73,12 +73,17 @@ public class Filtro implements Filter {
 
 //    private boolean verificaAcesso(UsuarioSiatema, usuario, HttpServletRequest request){
 //      String urlAcessada = request.getRequestURI();
-//      if(urlAcessado.endWith("/home")){
+    
+//      if(urlAcessado.endWith("/vendas") && usuario.getCargo() == 1){
 //              return true
 //      }
-//      if(urlAcessado.endWith("/ralatorio") && usuario.getCargo()){
+//      if(urlAcessado.endWith("/vendas") && usuario.getCargo() == 1){
 //              return true
 //      }
+//      if(urlAcessado.endWith("/vendas") && usuario.getCargo() == 1){
+//              return true
+//      }     
+//        return false;
 //    }
    
 }

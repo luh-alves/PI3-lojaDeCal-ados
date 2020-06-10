@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Felipe
  */
-@WebServlet(name = "FuncionariosExcluirServlet", urlPatterns = {"/funcionarios/excluir"})
+@WebServlet(name = "FuncionariosExcluirServlet", urlPatterns = {"/restrito/funcionarios/excluir"})
 public class FuncionariosExcluirServlet extends HttpServlet {
 
     private FuncionarioService service = new FuncionarioService();
@@ -36,7 +36,7 @@ public class FuncionariosExcluirServlet extends HttpServlet {
         } catch (AppException ex) {
             Logger.getLogger(FuncionariosExcluirServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-        response.sendRedirect(request.getContextPath() + "/funcionarios");
+        response.sendRedirect(request.getContextPath() + "/WEB-INF/jsp/funcionarios");
     }
 
 }
