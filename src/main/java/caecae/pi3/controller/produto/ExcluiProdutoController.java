@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Luciana Alves
  */
-@WebServlet(name = "excluiProdutoController", urlPatterns = {"/produtos/excluir"})
+@WebServlet(name = "excluiProdutoController", urlPatterns = {"/restrito/produtos/excluir"})
 public class ExcluiProdutoController extends HttpServlet {
 
     private ProdutoService service = new ProdutoService();
@@ -36,7 +36,7 @@ public class ExcluiProdutoController extends HttpServlet {
         } catch (AppException ex) {
             Logger.getLogger(ExcluiProdutoController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        resp.sendRedirect(req.getContextPath() + "/produtos");
+        resp.sendRedirect(req.getContextPath() + "/restrito/produtos");
 
     }
 

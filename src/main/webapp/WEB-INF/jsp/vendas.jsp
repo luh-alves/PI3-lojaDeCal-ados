@@ -9,7 +9,7 @@
 <html>
     <head>
         <title>CAECAE PI3</title>
-        <link rel="stylesheet" href="vendaEstilo.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/vendaEstilo.css">
         <!--<script src="selecionaLinha.js"></script>--> 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
@@ -19,10 +19,10 @@
                 <div class="center">
                     <ul>
                         <button type="button" value="Voltar" onClick="history.go(-1)">Voltar</button>
-                        <li><a href="/clientes">Gestao de Cliente</a></li>
-                        <li><a href="/produtos">Gestao de Produtos</a></li>
-                        <li><a href="/relatorioAnalitico.jsp">Relatorio Financeiro</a></li>
-                        <li><a href="/vendas.jsp">Vendas</a></li>
+                        <li><a href="/restrito/clientes">Gestao de Cliente</a></li>
+                        <li><a href="/restrito/produtos">Gestao de Produtos</a></li>
+                        <li><a href="/restrito/relatorioAnalitico.jsp">Relatorio Financeiro</a></li>
+                        <li><a href="/restrito/vendas.jsp">Vendas</a></li>
                     </ul>
                 </div><!--center-->
             </nav>
@@ -37,7 +37,7 @@
                     <label for="">Filial: </label>
                     <input disabled type="text" name="filial">
                 </div><!--conteudo-->
-                <form id="form1" method="post" action="${pageContext.request.contextPath}/vendas" novalidate>
+                <form id="form1" method="post" action="${pageContext.request.contextPath}/restrito/vendas" novalidate>
                     <div>
                         <label for="">Cliente CPF: </label>
                         <input type="text" name="cliente" value="${clienteAtr}">

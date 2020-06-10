@@ -20,10 +20,10 @@
                 <div class="center">
                     <ul>
                         <button type="button" value="Voltar" onClick="history.go(-1)">Voltar</button>
-                        <li><a href="/clientes">Gestao de Cliente</a></li>
-                        <li><a href="/produtos">Gestao de Produtos</a></li>
-                        <li><a href="/relatorioAnalitico.jsp">Relatorio Financeiro</a></li>
-                        <li><a href="/vendas.jsp">Vendas</a></li>
+                        <li><a href="/restrito/clientes">Gestao de Cliente</a></li>
+                        <li><a href="/restrito/produtos">Gestao de Produtos</a></li>
+                        <li><a href="/restrito/relatorioAnalitico.jsp">Relatorio Financeiro</a></li>
+                        <li><a href="/restrito/vendas.jsp">Vendas</a></li>
                     </ul>
                 </div><!--center-->
             </nav>
@@ -36,7 +36,7 @@
 
             <div class="container">
                 <div class="form-container">
-                    <form action="${pageContext.request.contextPath}/produtos/salvar" method="POST">
+                    <form action="${pageContext.request.contextPath}/restrito/produtos/salvar" method="POST">
                         <div class="nome-filial">
                             <label>Nome Filial:</label>
                             <input type="text" name="filial" required onkeypress="return isNumberKey(event)"/ required oninvalid="this.setCustomValidity('Colocar Filial')"
@@ -73,7 +73,7 @@
             </div>
             <div class="conteudo">
 
-                <form action="${pageContext.request.contextPath}/produtos" method="GET">
+                <form action="${pageContext.request.contextPath}/restrito/produtos" method="GET">
                     <label>Nome Produto:</label>
                     <input name="produtoNome" type="text"/>                        
                     <button type="submit">Buscar</button>
@@ -102,13 +102,13 @@
                             <td class="descricao"><c:out value="${produto.getDescricao()}"/></td>
 
                             <td class="buttonExcluir">
-                                <form action="${pageContext.request.contextPath}/produtos/excluir" method="GET">
+                                <form action="${pageContext.request.contextPath}/restrito/produtos/excluir" method="GET">
                                     <input name="produtoId" value="${produto.getId()}" type="hidden"/>                        
                                     <button type="submit">Excluir</button>
                                 </form>
                             </td>
                             <td class="buttonAtualizar">
-                                <form action="${pageContext.request.contextPath}/produtos/redireciona-para-atualizar" method="GET">
+                                <form action="${pageContext.request.contextPath}/restrito/produtos/redireciona-para-atualizar" method="GET">
                                     <input name="produtoId" value="${produto.getId()}" type="hidden"/>                        
                                     <button type="/telaAtualizar">Atualizar</button>
 

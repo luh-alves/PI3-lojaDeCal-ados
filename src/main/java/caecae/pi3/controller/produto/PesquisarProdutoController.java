@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Luciana Alves
  */
-@WebServlet(name = "PesquisarProdutoController", urlPatterns = {"/produtos/buscar"})
+@WebServlet(name = "PesquisarProdutoController", urlPatterns = {"/restrito/produtos/buscar"})
 public class PesquisarProdutoController extends HttpServlet {
 
     private ProdutoService service = new ProdutoService();

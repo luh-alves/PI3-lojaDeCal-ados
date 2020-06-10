@@ -35,7 +35,7 @@
             <div class="nome-aba">Atualização de Produtos</div>
             <div class="container">
                 <div class="form-container">
-                    <form action="${pageContext.request.contextPath}/produtos/atualizar" method="GET">
+                    <form action="${pageContext.request.contextPath}/restrito/produtos/atualizar" method="GET">
                         <div>
                             <label for="">Nome Filial: </label>
                             <input type="text" name="nome" value="${produto.getFilial()}">                           

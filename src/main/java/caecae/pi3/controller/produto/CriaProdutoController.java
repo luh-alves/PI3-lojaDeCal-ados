@@ -24,7 +24,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Luciana Alves
  */
-@WebServlet(name = "Produtos", urlPatterns = {"/produtos/salvar"})
+@WebServlet(name = "Produtos", urlPatterns = {"/restrito/produtos/salvar"})
 public class CriaProdutoController extends HttpServlet {
 
     private ProdutoService service = new ProdutoService();
@@ -73,6 +73,6 @@ public class CriaProdutoController extends HttpServlet {
             System.out.println(ex.getMessage());
             sessao.setAttribute("msgErro", "Erro ao salvar Produto - " + ex.getMessage());
         }
-        response.sendRedirect(request.getContextPath() + "/produtos");
+        response.sendRedirect(request.getContextPath() + "/restrito/produtos");
     }
 }
