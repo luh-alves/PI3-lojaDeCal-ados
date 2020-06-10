@@ -18,10 +18,10 @@
                 <div class="center">
                     <ul>
                         <button>Voltar</button>
-                        <li><a href="">Gestão de Clientes</a></li>
-                        <li><a href="">Gestão de Produtos</a></li>
-                        <li><a href="">Relatorio Financeiro</a></li>
-                        <li><a href="">Vendas</a></li>
+                        <li><a href="/restrito/clientes">Gestao de Cliente</a></li>
+                        <li><a href="/restrito/produtos">Gestao de Produtos</a></li>
+                        <!--<li><a href="/restrito/relatorioAnalitico.jsp">Relatorio Financeiro</a></li>-->
+                        <li><a href="/restrito/vendas.jsp">Vendas</a></li>
                     </ul>
                 </div><!--center-->
             </nav>
@@ -33,7 +33,7 @@
             <div class="nome-aba">Atualização de Clientes</div>
             <div class="container">
                 <div class="tela">
-                    <form action="${pageContext.request.contextPath}/clientes/atualizar" method="GET">
+                    <form action="${pageContext.request.contextPath}/restrito/clientes/atualizar" method="GET">
                         <div>
                             <label for="">Nome: </label>
                             <input type="text" name="nome" value="${cliente.getNome()}">                           

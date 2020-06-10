@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="css/clientesEstilo.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/clientesEstilo.css">
         <title>Clientes</title>      
     </head>
     <body id="duas-col">
@@ -19,10 +19,10 @@
                 <div class="center">
                     <ul>
                         <button type="button" value="Voltar" onClick="history.go(-1)">Voltar</button>
-                        <li><a href="/clientes">Gestao de Cliente</a></li>
-                        <li><a href="/produtos">Gestao de Produtos</a></li>
-                        <li><a href="/relatorioAnalitico.jsp">Relatorio Financeiro</a></li>
-                        <li><a href="/vendas.jsp">Vendas</a></li>
+                        <li><a href="/restrito/clientes">Gestao de Cliente</a></li>
+                        <li><a href="/restrito/produtos">Gestao de Produtos</a></li>
+                        <!--<li><a href="/restrito/relatorioAnalitico.jsp">Relatorio Financeiro</a></li>-->
+                        <li><a href="/restrito/vendas.jsp">Vendas</a></li>
                     </ul>
                 </div><!--center-->
             </nav>
@@ -34,7 +34,7 @@
             <div class="nome-aba">Clientes</div>
             <div id="tela">
                 <div class="conteudo">
-                    <form method="post" action="${pageContext.request.contextPath}/clientes/salvar">
+                    <form method="post" action="${pageContext.request.contextPath}/restrito/clientes/salvar">
                         <div class="inputs">
                             <div>
                                 <label for="">Nome: </label>
@@ -74,7 +74,7 @@
 
 
                 <!--buscar--> 
-                <form action="${pageContext.request.contextPath}/clientes" method="GET">    
+                <form action="${pageContext.request.contextPath}/restrito/clientes" method="GET">    
                     <label for="">Buscar (CPF): </label>
                     <input  name="CPF" type="text">  <button type="submit">Buscar</button>
                 </form>
@@ -100,11 +100,11 @@
                                     <td class="email"><c:out value="${cliente.getEmail()}"/></td>
                                     <td class="sexo"><c:out value="${cliente.getSexo()}"/></td>
                                     <td class="buttonExcluir">
-                                        <form action="${pageContext.request.contextPath}/clientes/excluir" method="GET">
+                                        <form action="${pageContext.request.contextPath}/restrito/clientes/excluir" method="GET">
                                             <input name="ID" value="${cliente.getId()}" type="hidden"/>
                                             <button type="submit" id ="actions">Excluir</button>
                                         </form>
-                                        <form action="${pageContext.request.contextPath}/clientes/redireciona" method="GET">  
+                                        <form action="${pageContext.request.contextPath}/restrito/clientes/redireciona" method="GET">  
                                             <input name="clienteCpf" value="${cliente.getCpf()}" type="hidden"/>
                                             <button type="submit" id ="actions">Editar</button>
                                         </form>

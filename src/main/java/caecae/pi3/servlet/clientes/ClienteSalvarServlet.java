@@ -30,7 +30,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Felipe
  */
-@WebServlet(name = "ClienteSalvarServlet", urlPatterns = {"/clientes/salvar"})
+@WebServlet(name = "ClienteSalvarServlet", urlPatterns = {"/restrito/clientes/salvar"})
 public class ClienteSalvarServlet extends HttpServlet {
             private ClienteService service  = new ClienteService();
 
@@ -77,7 +77,7 @@ public class ClienteSalvarServlet extends HttpServlet {
                     Logger.getLogger(ClienteSalvarServlet.class.getName()).log(Level.SEVERE, null, ex);
                      response.sendRedirect(request.getContextPath() + "/clientes");
                 }
-        response.sendRedirect(request.getContextPath() + "/clientes");
+        response.sendRedirect(request.getContextPath() + "/WEB-INF/jsp/clientes");
     }
 
 

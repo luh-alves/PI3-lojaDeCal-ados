@@ -20,10 +20,10 @@
                 <div class="center">
                     <ul>
                         <button>Voltar</button>
-                        <li><a href="">Gestão de Clientes</a></li>
-                        <li><a href="">Gestão de Produtos</a></li>
-                        <li><a href="">Relatorio Financeiro</a></li>
-                        <li><a href="">Vendas</a></li>
+                        <li><a href="/restrito/clientes">Gestao de Cliente</a></li>
+                        <li><a href="/restrito/produtos">Gestao de Produtos</a></li>
+                        <!--<li><a href="/restrito/relatorioAnalitico.jsp">Relatorio Financeiro</a></li>-->
+                        <li><a href="/restrito/vendas.jsp">Vendas</a></li>
                     </ul>
                 </div><!--center-->
             </nav>

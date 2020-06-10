@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Felipe
  */
-@WebServlet(name = "ClienteExcluirServlet", urlPatterns = {"/clientes/excluir"})
+@WebServlet(name = "ClienteExcluirServlet", urlPatterns = {"/restrito/clientes/excluir"})
 public class ClienteExcluirServlet extends HttpServlet {
 
           private ClienteService service = new ClienteService();
@@ -36,7 +36,7 @@ public class ClienteExcluirServlet extends HttpServlet {
         } catch (AppException ex) {
             Logger.getLogger(ClienteExcluirServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-        response.sendRedirect(request.getContextPath() + "/clientes");
+        response.sendRedirect(request.getContextPath() + "/WEB-INF/jsp/clientes");
     }
 
     @Override
