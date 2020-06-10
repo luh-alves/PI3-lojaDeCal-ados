@@ -45,21 +45,21 @@ public class Filtro implements Filter {
         //verifica se esta logado
         HttpSession sessao = httpRequest.getSession();
         
-//        chain.doFilter(request, response); 
+        chain.doFilter(request, response); 
         
-//        return;
-        if(sessao.getAttribute("usuario") == null){
-            httpResponse.sendRedirect(httpRequest.getContextPath() + "/login/validate");
-            return;
-        }
-
-        Sessao usuario = (Sessao) sessao.getAttribute("usuario");
-        
-        if(verificaAcesso(usuario, httpRequest)){
-           chain.doFilter(request, response); 
-        } else{
-//              nao autorizado
-        }
+        return;
+//        if(sessao.getAttribute("usuario") == null){
+//            httpResponse.sendRedirect(httpRequest.getContextPath() + "/login/validate");
+//            return;
+//        }
+//
+//        Sessao usuario = (Sessao) sessao.getAttribute("usuario");
+//        
+//        if(verificaAcesso(usuario, httpRequest)){
+//           chain.doFilter(request, response); 
+//        } else{
+////              nao autorizado
+//        }
     }
 
     @Override
