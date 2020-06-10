@@ -1,33 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1dcb12f0-056a-47c4-9275-7c507c9fa39d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/caecae/pi3/DAO/FuncionarioDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/caecae/pi3/DAO/LoginDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/caecae/pi3/model/Funcionario.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/caecae/pi3/model/Login.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/caecae/pi3/service/FuncionarioService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/caecae/pi3/servlet/funcionarios/FuncionarioRedireciona.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/caecae/pi3/servlet/funcionarios/FuncionariosEditarServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/caecae/pi3/servlet/funcionarios/FuncionariosExcluirServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/caecae/pi3/servlet/funcionarios/FuncionariosListarServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/caecae/pi3/servlet/funcionarios/FuncionariosSalvarServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/funcionarios.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/funcionariosAtualizar.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Documentos/BD-Lorenti.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Documentos/BD-Lorenti.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/caecae/pi3/DAO/ClienteDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/caecae/pi3/DAO/ClienteDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/caecae/pi3/login/servlet/validate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/caecae/pi3/login/servlet/validate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/produtos.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/produtos.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/clientes.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/clientes.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/clientesEstilo.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/clientesEstilo.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/produtoEstilo.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/produtoEstilo.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/testeDeLogin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/testeDeLogin.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/vendaEstilo.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/vendaEstilo.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/vendas.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/vendas.jsp" afterDir="false" />
-    </list>
+    <list default="true" id="1dcb12f0-056a-47c4-9275-7c507c9fa39d" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -40,9 +14,7 @@
     <leaf>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-408" />
-          </provider>
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -126,6 +98,15 @@
     </task>
     <servers />
   </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
@@ -192,9 +173,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-408" />
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
 </project>

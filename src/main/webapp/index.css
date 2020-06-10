@@ -14,21 +14,10 @@ body {
     min-width: 700px;
     background: #81a167;
 }
-
-button {
-    background: #82dee8;
-}
-#imagem-topo{
-    background: #caecae;
-    text-indent: -9999px;
-}
-/* --- Header Menu Superior ---*/
-
-
 .imagens{
     max-width: 1100px;
     margin: 0 auto;
-    padding: 0 2%;
+    padding-left: 65px;
     padding-top: 15px;
 }
 .home{
@@ -38,10 +27,11 @@ button {
 }
 
 .painel {
+   
     display: flex;
     margin: 10px 0;
     padding: 10px;
-    width: 750px;
+    width: 800px;
     border-radius: 4px;
     box-shadow: inset 1px 1px 4px rgba(255, 255, 255, 0.8);
     justify-content: space-between;
@@ -55,7 +45,9 @@ button {
     margin: 0 auto;
     width: 940px;
 }
-
+.im{
+    margin: 5px;
+}
 header {
     position: relative;
 }
@@ -75,8 +67,8 @@ header {
     text-shadow: 3px 3px 2px #FFF;
     padding-left: 300px;
     padding-top: 5px;
-    
- 
+
+
 }
 
 .painel .im:hover {
