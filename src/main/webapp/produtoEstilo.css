@@ -217,6 +217,7 @@ table {
     margin-left: 84.5%;
 
 }
+
 .valorTotal input{
     background-color: #caecae;
 }
@@ -226,7 +227,7 @@ table {
 
 }
 footer {
-    position:absolute;
+    position:relative;
     bottom:0;
     width:100%;
 }

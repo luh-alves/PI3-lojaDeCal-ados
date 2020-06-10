@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Felipe
  */
-@WebServlet(name = "ClienteRedireciona", urlPatterns = {"/clientes/redireciona"})
+@WebServlet(name = "ClienteRedireciona", urlPatterns = {"/restrito/clientes/redireciona"})
 public class ClienteRedireciona extends HttpServlet {
 
     private ClienteService service = new ClienteService();
@@ -39,7 +39,7 @@ public class ClienteRedireciona extends HttpServlet {
             String msg = ex.getMessage();
             request.setAttribute("msgErro", msg);
         }
-        request.getRequestDispatcher("/clientesAtualizar.jsp").forward(request, response);
+        request.getRequestDispatcher(request.getContextPath() + "/WEB-INF/jsp/clientesAtualizar.jsp").forward(request, response);
 
 
     }

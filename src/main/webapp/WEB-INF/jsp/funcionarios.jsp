@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="css/clientesEstilo.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/clientesEstilo.css">
         <title>Funcionários</title>      
     </head>
     <body id="duas-col">
@@ -19,10 +19,10 @@
                 <div class="center">
                     <ul>
                         <button type="button" value="Voltar" onClick="history.go(-1)">Voltar</button>
-                        <li><a href="/clientes">Gestao de Cliente</a></li>
-                        <li><a href="/produtos">Gestao de Produtos</a></li>
-                        <li><a href="/relatorioAnalitico.jsp">Relatorio Financeiro</a></li>
-                        <li><a href="/vendas.jsp">Vendas</a></li>
+                        <li><a href="/restrito/clientes">Gestao de Cliente</a></li>
+                        <li><a href="/restrito/produtos">Gestao de Produtos</a></li>
+                        <!--<li><a href="/restrito/relatorioAnalitico.jsp">Relatorio Financeiro</a></li>-->
+                        <li><a href="/restrito/vendas.jsp">Vendas</a></li>
                     </ul>
                 </div><!--center-->
             </nav>
@@ -34,7 +34,7 @@
             <div class="nome-aba">Funcionários</div>
             <div id="tela">
                 <div class="conteudo">
-                    <form method="post" action="${pageContext.request.contextPath}/funcionarios/salvar">
+                    <form method="post" action="${pageContext.request.contextPath}/restrito/funcionarios/salvar">
                         <div class="inputs">
                             <div>
                                 <label for="">Nome: </label>
@@ -94,7 +94,7 @@
 
 
                 <!--buscar--> 
-                <form action="${pageContext.request.contextPath}/funcionarios" method="GET">    
+                <form action="${pageContext.request.contextPath}/restrito/funcionarios" method="GET">    
                     <label for="">Buscar (CPF): </label>
                     <input  name="CPF" type="text">  <button type="submit">Buscar</button>
                 </form>
@@ -124,11 +124,11 @@
                                     <td class="sexo"><c:out value="${funcionario.getSexo()}"/></td>
                                     <td class="cargo" ><c:out value="${funcionario.getCargo()}"/></td>
                                     <td class="buttonExcluir">
-                                        <form action="${pageContext.request.contextPath}/funcionarios/excluir" method="GET">
+                                        <form action="${pageContext.request.contextPath}/restrito/funcionarios/excluir" method="GET">
                                             <input name="ID" value="${funcionario.getId()}" type="hidden"/>
                                             <button type="submit" id ="actions">Excluir</button>
                                         </form>
-                                        <form action="${pageContext.request.contextPath}/funcionarios/redireciona" method="GET">  
+                                        <form action="${pageContext.request.contextPath}/restrito/funcionarios/redireciona" method="GET">  
                                             <input name="funcionarioCpf" value="${funcionario.getCpf()}" type="hidden"/>
                                             <button type="submit" id ="actions">Editar</button>
                                         </form>

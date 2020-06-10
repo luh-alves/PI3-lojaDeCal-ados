@@ -90,4 +90,15 @@ public class ProdutoService {
             throw new AppException(ex.getMessage(), ex);
         }
     }
+    // Precisa de login
+    public ProdutoModel pesquisarPorFilia(int id, int filial) throws AppException {
+        ProdutoModel produto;
+        try {
+            produto = produtoDao.readFilial(id, filial);
+            return produto;
+        } catch (DaoException ex) {
+            System.out.println(ex.getMessage());
+            throw new AppException(ex.getMessage(), ex);
+        }
+    }
 }

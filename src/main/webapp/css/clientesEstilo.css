@@ -196,7 +196,7 @@ tr:hover.hover{
     padding-bottom:  50px;
 }
 footer {
-    position:absolute;
+    position:relative;
     bottom:0;
     width:100%;
 }

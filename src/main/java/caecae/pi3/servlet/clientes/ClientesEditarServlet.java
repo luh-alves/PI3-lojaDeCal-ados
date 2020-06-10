@@ -24,7 +24,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Felipe
  */
-@WebServlet(name = "ClientesEditarServlet", urlPatterns = {"/clientes/atualizar"})
+@WebServlet(name = "ClientesEditarServlet", urlPatterns = {"/restrito/clientes/atualizar"})
 public class ClientesEditarServlet extends HttpServlet {
 
     private ClienteService service = new ClienteService();
@@ -58,12 +58,12 @@ public class ClientesEditarServlet extends HttpServlet {
             sessao.setAttribute("msgSucesso", "Cliente alterado com sucesso");
         } catch (AppException ex) {
             sessao.setAttribute("msgErro", "Erro ao editar cliente - " + ex.getMessage());
-             response.sendRedirect(request.getContextPath() + "/clientes");
+             response.sendRedirect(request.getContextPath() + "/WEB-INF/jsp/clientes");
         }       catch (DaoException ex) {
                     Logger.getLogger(ClienteSalvarServlet.class.getName()).log(Level.SEVERE, null, ex);
-                     response.sendRedirect(request.getContextPath() + "/clientes");
+                     response.sendRedirect(request.getContextPath() + "/WEB-INF/jsp/clientes");
                 }
-        response.sendRedirect(request.getContextPath() + "/clientes");
+        response.sendRedirect(request.getContextPath() + "/WEB-INF/jsp/clientes");
 
     }
 

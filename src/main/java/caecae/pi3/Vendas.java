@@ -9,6 +9,7 @@ import caecae.pi3.DAO.ProdutoDao;
 import caecae.pi3.exception.DaoException;
 import caecae.pi3.model.Cliente;
 import caecae.pi3.model.ProdutoModel;
+import caecae.pi3.model.Sessao;
 import caecae.pi3.model.VendaModel;
 import caecae.pi3.service.AppException;
 import caecae.pi3.service.ClienteService;
@@ -30,7 +31,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author rolucon
  */
-@WebServlet(name = "Vendas", urlPatterns = {"/vendas"})
+@WebServlet(name = "Vendas", urlPatterns = {"/restrito/vendas"})
 public class Vendas extends HttpServlet {
     ProdutoService prodService = new ProdutoService();
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -52,7 +53,8 @@ public class Vendas extends HttpServlet {
             sessao.setAttribute("carrinho", carrinho);
         }
         carrinho = (CarrinhoDeCompras) sessao.getAttribute("carrinho");
-        
+        Sessao user = (Sessao) sessao.getAttribute("usuario");// Precisa de login
+        request.setAttribute("filiaeAtr", user.getFilial()); // Precisa de login
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/plain");
         
@@ -61,8 +63,7 @@ public class Vendas extends HttpServlet {
         // FeedBacks
 //        request.setAttribute("erroCliente", "CPF do Cliente Invalido");
         
-        RequestDispatcher dispatcher = request.getRequestDispatcher("vendas.jsp");
-        dispatcher.forward(request, response);
+        request.getRequestDispatcher(request.getContextPath() + "/WEB-INF/jsp/vendas.jsp").forward(request, response);
     }
 
     /**
@@ -94,6 +95,8 @@ public class Vendas extends HttpServlet {
         }
         carrinho = (CarrinhoDeCompras) sessao.getAttribute("carrinho");
         
+        Sessao user = (Sessao) sessao.getAttribute("usuario");// Precisa de login
+        request.setAttribute("filiaeAtr", user.getFilial()); // Precisa de login
         
         if(addProd){
             try {
@@ -137,7 +140,7 @@ public class Vendas extends HttpServlet {
         request.setAttribute("totalAtr", "R$: " + carrinho.getTotal());
         request.setAttribute("listaProd", carrinho.getProdutos());
         
-        RequestDispatcher dispatcher = request.getRequestDispatcher("vendas.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher(request.getContextPath() + "/WEB-INF/jsp/vendas.jsp");
         dispatcher.forward(request, response);
 //        response.sendRedirect(request.getContextPath() + "/vendas"); Problemas para mostrar o feedback
     }
@@ -146,11 +149,13 @@ public class Vendas extends HttpServlet {
             CarrinhoDeCompras carrinho) throws AppException{
         String idProd = (request.getParameter("produtoId"));
         String qtd = request.getParameter("qtd");
+        String flial = request.getParameter("filiaeAtr"); // Precisa de login
         boolean erro = false;
         //Validaçoes dos Campos deve vir aqui
         try{
             int id = Integer.parseInt(idProd);
-            ProdutoModel prod = prodService.pesquisar(id);
+//            ProdutoModel prod = prodService.pesquisar(id);
+            ProdutoModel prod = prodService.pesquisarPorFilia(id, Integer.parseInt(flial));
             
             if(prod == null){
                 request.setAttribute("erroProdId", "Id do Produto Invalido");

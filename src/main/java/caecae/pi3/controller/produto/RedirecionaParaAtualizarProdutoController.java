@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Luciana Alves
  */
-@WebServlet(name = "RedirecionaParaAtualizarProdutoController", urlPatterns = {"/produtos/redireciona-para-atualizar"})
+@WebServlet(name = "RedirecionaParaAtualizarProdutoController", urlPatterns = {"/restrito/produtos/redireciona-para-atualizar"})
 public class RedirecionaParaAtualizarProdutoController extends HttpServlet {
 
     private ProdutoService service = new ProdutoService();

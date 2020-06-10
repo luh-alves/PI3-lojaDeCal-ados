@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Felipe
  */
-@WebServlet(name = "ClienteListarServlet", urlPatterns = {"/clientes"})
+@WebServlet(name = "ClienteListarServlet", urlPatterns = {"/restrito/clientes"})
 public class ClienteListarServlet extends HttpServlet {
 
         private ClienteService service = new ClienteService();
@@ -46,7 +46,7 @@ public class ClienteListarServlet extends HttpServlet {
             String msg = ex.getMessage();
             request.setAttribute("msgErro", msg);
         }
-        request.getRequestDispatcher("clientes.jsp").forward(request, response);
+        request.getRequestDispatcher(request.getContextPath() + "/WEB-INF/jsp/clientes.jsp").forward(request, response);
     
     }
 

@@ -24,7 +24,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Felipe
  */
-@WebServlet(name = "FuncionariosEditarServlet", urlPatterns = {"/funcionarios/atualizar"})
+@WebServlet(name = "FuncionariosEditarServlet", urlPatterns = {"/restrito/funcionarios/atualizar"})
 public class FuncionariosEditarServlet extends HttpServlet {
 
     private FuncionarioService service = new FuncionarioService();
@@ -71,7 +71,7 @@ public class FuncionariosEditarServlet extends HttpServlet {
                     Logger.getLogger(FuncionariosSalvarServlet.class.getName()).log(Level.SEVERE, null, ex);
                      response.sendRedirect(request.getContextPath() + "/funcionarios");
                 }
-        response.sendRedirect(request.getContextPath() + "/funcionarios");
+        response.sendRedirect(request.getContextPath() + "/WEB-INF/jsp/funcionarios");
 
     }
 

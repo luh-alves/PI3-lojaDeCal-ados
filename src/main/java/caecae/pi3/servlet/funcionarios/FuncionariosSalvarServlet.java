@@ -26,7 +26,7 @@ import org.mindrot.jbcrypt.BCrypt;
  *
  * @author Felipe
  */
-@WebServlet(name = "FuncionariosSalvarServlet", urlPatterns = {"/funcionarios/salvar"})
+@WebServlet(name = "FuncionariosSalvarServlet", urlPatterns = {"/restrito/funcionarios/salvar"})
 public class FuncionariosSalvarServlet extends HttpServlet {
 
     private FuncionarioService service = new FuncionarioService();
@@ -78,6 +78,6 @@ public class FuncionariosSalvarServlet extends HttpServlet {
         } catch (DaoException ex) {
             Logger.getLogger(FuncionariosSalvarServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-        response.sendRedirect(request.getContextPath() + "/funcionarios");
+        response.sendRedirect(request.getContextPath() + "/WEB-INF/jsp/funcionarios");
     }
 }

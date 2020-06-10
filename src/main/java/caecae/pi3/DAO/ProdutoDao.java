@@ -173,5 +173,29 @@ public class ProdutoDao implements DaoInterface<ProdutoModel> {
         }
         return null;
     }
+    // Precisa de login
+    public ProdutoModel readFilial(int id, int filial) throws DaoException {
+        String sql = "SELECT * from produto WHERE prod_id = ? and prod_filial = ?";
+        
+        try (Connection conn = ConnectionFactory.getConnection();) {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, id);
+            stmt.setInt(2, filial);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                ProdutoModel produto = new ProdutoModel();
+                produto.setId(rs.getInt("prod_id"));
+                produto.setNome(rs.getString("prod_nome"));
+                produto.setQuantidade(rs.getInt("prod_qtd"));
+                produto.setValor(rs.getDouble("prod_preco"));
+                produto.setDescricao(rs.getString("prod_descr"));
+                produto.setFilial(rs.getInt("prod_filial"));
+                return produto;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutoDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
     
 }
