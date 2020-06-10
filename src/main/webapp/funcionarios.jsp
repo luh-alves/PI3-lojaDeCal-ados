@@ -144,7 +144,7 @@
         </section><!--center-->
         <footer>
             <div>
-                Felipe Ferreira Henriques, Luciana Alves de Freitas, Matheus Makoto e Rogerio Lucon. 
+                Felipe Ferreira Henriques, Luciana Alves, Matheus Makoto e Rogerio Lucon. 
             </div>
         </footer>
     </body>
