@@ -5,6 +5,7 @@
  */
 package caecae.pi3.filter;
 
+import caecae.pi3.model.Sessao;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
@@ -44,21 +45,21 @@ public class Filtro implements Filter {
         //verifica se esta logado
         HttpSession sessao = httpRequest.getSession();
         
-        chain.doFilter(request, response); 
+//        chain.doFilter(request, response); 
         
-        return;
-//        if(sessao.getAttribute("usuario") == null){
-//            httpResponse.sendRedirect(httpRequest.getContextPath() + "/login/validate");
-//            return;
-//        }
+//        return;
+        if(sessao.getAttribute("usuario") == null){
+            httpResponse.sendRedirect(httpRequest.getContextPath() + "/login/validate");
+            return;
+        }
 
-        //Sessao user =(Sessao) sessao.getAttribute("usuario")
+        Sessao usuario = (Sessao) sessao.getAttribute("usuario");
         
-        //if(verificaUsuario(usuario, httpRequest)){
-//           chain.doFilter(request, response); 
-//        } else{
+        if(verificaAcesso(usuario, httpRequest)){
+           chain.doFilter(request, response); 
+        } else{
 //              nao autorizado
-//        }
+        }
     }
 
     @Override
@@ -71,19 +72,23 @@ public class Filtro implements Filter {
        
     }
 
-//    private boolean verificaAcesso(UsuarioSiatema, usuario, HttpServletRequest request){
-//      String urlAcessada = request.getRequestURI();
+    private boolean verificaAcesso(Sessao usuario, HttpServletRequest request){
+      String urlAcessada = request.getRequestURI();
     
-//      if(urlAcessado.endWith("/vendas") && usuario.getCargo() == 1){
-//              return true
-//      }
-//      if(urlAcessado.endWith("/vendas") && usuario.getCargo() == 1){
-//              return true
-//      }
-//      if(urlAcessado.endWith("/vendas") && usuario.getCargo() == 1){
-//              return true
-//      }     
-//        return false;
-//    }
+      if(urlAcessada.endsWith("/vendas") && usuario.getCargo().equalsIgnoreCase("1")){
+            return true;
+      }
+      if(urlAcessada.endsWith("/"
+              + "funcionario") && usuario.getCargo().equalsIgnoreCase("1")){
+            return true;
+      }
+      if(urlAcessada.endsWith("/produto") && usuario.getCargo().equalsIgnoreCase("1")){
+            return true;
+      }     
+      if(urlAcessada.endsWith("/cliente") && usuario.getCargo().equalsIgnoreCase("1")){
+            return true;
+      }     
+        return false;
+    }
    
 }
