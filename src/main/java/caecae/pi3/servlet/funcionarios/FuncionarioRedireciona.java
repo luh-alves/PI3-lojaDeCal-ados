@@ -9,7 +9,6 @@ import caecae.pi3.model.Funcionario;
 import caecae.pi3.service.AppException;
 import caecae.pi3.service.FuncionarioService;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
